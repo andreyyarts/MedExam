@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4e4ec5a07bd43828a949a2a41511833" Name="Diagram1" ShowGrid="false" DisplayType="true" >
+        <EntityTypeShape EntityType="MedExamModel.an_fio_doc" Width="1.5" PointX="14.25" PointY="7.875" />
+        <EntityTypeShape EntityType="MedExamModel.analiz" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="MedExamModel.doc_fio_doc" Width="1.5" PointX="11.25" PointY="0.875" />
+        <EntityTypeShape EntityType="MedExamModel.doctor" Width="1.5" PointX="6" PointY="5" />
+        <EntityTypeShape EntityType="MedExamModel.fac_an" Width="1.5" PointX="14.25" PointY="13.375" />
+        <EntityTypeShape EntityType="MedExamModel.fac_doc" Width="1.5" PointX="11.25" PointY="15.375" />
+        <EntityTypeShape EntityType="MedExamModel.factor" Width="1.5" PointX="9" PointY="19.375" />
+        <EntityTypeShape EntityType="MedExamModel.fio_doctor" Width="1.5" PointX="9" PointY="1.5" />
+        <EntityTypeShape EntityType="MedExamModel.mar_list_an" Width="1.5" PointX="14.25" PointY="4.625" />
+        <EntityTypeShape EntityType="MedExamModel.mar_list_doc" Width="1.5" PointX="11.25" PointY="3.625" />
+        <EntityTypeShape EntityType="MedExamModel.ob_analiz" Width="1.5" PointX="3" PointY="21.5" />
+        <EntityTypeShape EntityType="MedExamModel.ob_doctor" Width="1.5" PointX="8.25" PointY="23.5" />
+        <EntityTypeShape EntityType="MedExamModel.organization" Width="1.5" PointX="3.75" PointY="15.25" />
+        <EntityTypeShape EntityType="MedExamModel.pac_an" Width="1.5" PointX="8.25" PointY="7.375" />
+        <EntityTypeShape EntityType="MedExamModel.pac_doc" Width="1.5" PointX="8.25" PointY="15.375" />
+        <EntityTypeShape EntityType="MedExamModel.pac_fac" Width="1.5" PointX="11.25" PointY="11.375" />
+        <EntityTypeShape EntityType="MedExamModel.pacient" Width="1.5" PointX="6" PointY="9.25" />
+        <EntityTypeShape EntityType="MedExamModel.priem" Width="1.5" PointX="8.25" PointY="11.125" />
+        <EntityTypeShape EntityType="MedExamModel.priem_an" Width="1.5" PointX="11.25" PointY="7.125" />
+        <EntityTypeShape EntityType="MedExamModel.prof_an" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="MedExamModel.prof_doc" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="MedExamModel.profess" Width="1.5" PointX="0.75" PointY="11.625" />
+        <AssociationConnector Association="MedExamModel.FK_an_fio_doc_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_an_fio_doc_fio_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_fac_an_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_mar_list_an_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_ob_analiz_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_pac_an_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_priem_an_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_prof_an_analiz" />
+        <AssociationConnector Association="MedExamModel.FK_doc_fio_doc_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_doc_fio_doc_fio_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_fac_doc_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_mar_list_doc_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_ob_doctor_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_pac_doc_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_priem_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_prof_doc_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_fac_an_factor" />
+        <AssociationConnector Association="MedExamModel.FK_fac_doc_factor" />
+        <AssociationConnector Association="MedExamModel.FK_pac_fac_factor" />
+        <AssociationConnector Association="MedExamModel.FK_mar_list_an_fio_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_mar_list_doc_fio_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_priem_an_fio_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_priem_fio_doctor" />
+        <AssociationConnector Association="MedExamModel.FK_pacient_organization" />
+        <AssociationConnector Association="MedExamModel.FK_pacient_organization1" />
+        <AssociationConnector Association="MedExamModel.FK_pac_an_pacient" />
+        <AssociationConnector Association="MedExamModel.FK_pac_doc_pacient" />
+        <AssociationConnector Association="MedExamModel.FK_pac_fac_pacient" />
+        <AssociationConnector Association="MedExamModel.FK_pacient_profess" />
+        <AssociationConnector Association="MedExamModel.FK_priem_an_pacient" />
+        <AssociationConnector Association="MedExamModel.FK_priem_pacient" />
+        <AssociationConnector Association="MedExamModel.FK_prof_an_profess" />
+        <AssociationConnector Association="MedExamModel.FK_prof_doc_profess" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

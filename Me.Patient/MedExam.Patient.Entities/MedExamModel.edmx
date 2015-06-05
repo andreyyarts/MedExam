@@ -1,0 +1,1992 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2000" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="an_fio_doc">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name_an" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="analiz">
+          <Key>
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name_an" Type="varchar" MaxLength="200" />
+          <Property Name="kabinrt" Type="varchar" MaxLength="30" />
+          <Property Name="stoimosty" Type="float" />
+          <Property Name="kod_preys" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="doc_fio_doc">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="doctor">
+          <Key>
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+          <Property Name="kabinet" Type="varchar" MaxLength="30" />
+          <Property Name="kod_preys" Type="varchar" MaxLength="15" />
+          <Property Name="stavka" Type="float" />
+        </EntityType>
+        <EntityType Name="fac_an">
+          <Key>
+            <PropertyRef Name="num_fac" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_fac" Type="int" Nullable="false" />
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name_an" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="fac_doc">
+          <Key>
+            <PropertyRef Name="num_fac" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_fac" Type="int" Nullable="false" />
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="factor">
+          <Key>
+            <PropertyRef Name="num_fac" />
+          </Key>
+          <Property Name="num_fac" Type="int" Nullable="false" />
+          <Property Name="name_fac" Type="varchar" MaxLength="50" />
+          <Property Name="kod_prik" Type="varchar" MaxLength="15" />
+          <Property Name="prik_83" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="fio_doctor">
+          <Key>
+            <PropertyRef Name="tab_num" />
+          </Key>
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="fio_doc" Type="varchar" MaxLength="50" />
+          <Property Name="otdel" Type="int" />
+          <Property Name="bool_doc" Type="char" MaxLength="10" />
+          <Property Name="num_m_s" Type="int" />
+          <Property Name="nak_sum" Type="float" />
+          <Property Name="pr_doc" Type="float" />
+          <Property Name="pr_m_s" Type="float" />
+          <Property Name="an_doc" Type="float" />
+          <Property Name="an_m_s" Type="float" />
+          <Property Name="an_dop" Type="float" />
+        </EntityType>
+        <EntityType Name="mar_list_an">
+          <Key>
+            <PropertyRef Name="num_an" />
+            <PropertyRef Name="num_mar" />
+          </Key>
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name_an" Type="varchar" MaxLength="200" />
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="fio_doc" Type="varchar" MaxLength="50" />
+          <Property Name="kabinet" Type="varchar" MaxLength="30" />
+          <Property Name="num_mar" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mar_list_doc">
+          <Key>
+            <PropertyRef Name="num_doc" />
+            <PropertyRef Name="num_mar" />
+          </Key>
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="fio_doc" Type="varchar" MaxLength="50" />
+          <Property Name="kabinet" Type="varchar" MaxLength="50" />
+          <Property Name="num_mar" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ob_analiz">
+          <Key>
+            <PropertyRef Name="num_kat" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_kat" Type="int" Nullable="false" />
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name_an" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ob_doctor">
+          <Key>
+            <PropertyRef Name="num_kat" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_kat" Type="int" Nullable="false" />
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="organization">
+          <Key>
+            <PropertyRef Name="num_org" />
+          </Key>
+          <Property Name="num_org" Type="int" Nullable="false" />
+          <Property Name="name_org" Type="varchar" MaxLength="100" />
+          <Property Name="inn_org" Type="varchar" MaxLength="20" />
+          <Property Name="kpp_org" Type="varchar" MaxLength="20" />
+          <Property Name="adr_org" Type="varchar" MaxLength="50" />
+          <Property Name="bool_org" Type="varchar" MaxLength="1" />
+          <Property Name="okvd" Type="varchar" MaxLength="15" />
+          <Property Name="num_dog" Type="varchar" MaxLength="25" />
+          <Property Name="fio_zak" Type="varchar" MaxLength="40" />
+          <Property Name="fio_zak_k" Type="varchar" MaxLength="25" />
+          <Property Name="name_org2" Type="varchar" MaxLength="50" />
+          <Property Name="akt_date" Type="datetime" />
+          <Property Name="akt_num" Type="varchar" MaxLength="25" />
+          <Property Name="akt_sum" Type="float" />
+          <Property Name="akt_sum_an" Type="float" />
+          <Property Name="akt_sum_dop" Type="float" />
+          <Property Name="akt_sum_an_dop" Type="float" />
+        </EntityType>
+        <EntityType Name="pac_an">
+          <Key>
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_pac" Type="int" Nullable="false" />
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="nume_an" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="1" />
+          <Property Name="dop" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="pac_doc">
+          <Key>
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_pac" Type="int" Nullable="false" />
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+          <Property Name="status" Type="varchar" MaxLength="1" />
+          <Property Name="dop" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="pac_fac">
+          <Key>
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="num_fac" />
+          </Key>
+          <Property Name="num_pac" Type="int" Nullable="false" />
+          <Property Name="num_fac" Type="int" Nullable="false" />
+          <Property Name="name_fac" Type="varchar" MaxLength="50" />
+          <Property Name="kod_prik" Type="varchar" MaxLength="15" />
+          <Property Name="kod_83" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="pacient">
+          <Key>
+            <PropertyRef Name="num_pac" />
+          </Key>
+          <Property Name="num_pac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fam_pac" Type="varchar" MaxLength="30" />
+          <Property Name="io_pac" Type="varchar" MaxLength="30" />
+          <Property Name="pol" Type="varchar" MaxLength="1" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="data_birth" Type="datetime" />
+          <Property Name="polic_ser" Type="varchar" MaxLength="17" />
+          <Property Name="polic_nom" Type="varchar" MaxLength="12" />
+          <Property Name="polic" Type="datetime" />
+          <Property Name="data_kart" Type="datetime" />
+          <Property Name="platel" Type="varchar" MaxLength="7" />
+          <Property Name="rol" Type="varchar" MaxLength="15" />
+          <Property Name="zacr" Type="varchar" MaxLength="1" />
+          <Property Name="num_m_rab" Type="int" Nullable="false" />
+          <Property Name="num_org" Type="int" Nullable="false" />
+          <Property Name="num_prof" Type="int" Nullable="false" />
+          <Property Name="stag" Type="varchar" MaxLength="20" />
+          <Property Name="pech_kart" Type="varchar" MaxLength="1" />
+          <Property Name="snils" Type="varchar" MaxLength="15" />
+          <Property Name="change_date" Type="varchar" MaxLength="1" />
+          <Property Name="fac_is" Type="varchar" MaxLength="1" />
+          <Property Name="obyem_is" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="priem">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_doc" />
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="date_priem" />
+          </Key>
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="num_pac" Type="int" Nullable="false" />
+          <Property Name="fam_pac" Type="varchar" MaxLength="30" />
+          <Property Name="date_priem" Type="datetime" Nullable="false" />
+          <Property Name="num_m_s" Type="int" />
+          <Property Name="dop" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="priem_an">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_an" />
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="date_priem" />
+          </Key>
+          <Property Name="tab_num" Type="int" Nullable="false" />
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="num_pac" Type="int" Nullable="false" />
+          <Property Name="fam_pac" Type="varchar" MaxLength="30" />
+          <Property Name="date_priem" Type="datetime" Nullable="false" />
+          <Property Name="num_m_s" Type="int" />
+          <Property Name="dop" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="prof_an">
+          <Key>
+            <PropertyRef Name="num_prof" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_prof" Type="int" Nullable="false" />
+          <Property Name="num_an" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="name_an" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="prof_doc">
+          <Key>
+            <PropertyRef Name="num_prof" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_prof" Type="int" Nullable="false" />
+          <Property Name="num_doc" Type="int" Nullable="false" />
+          <Property Name="name_doc" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="profess">
+          <Key>
+            <PropertyRef Name="num_prof" />
+          </Key>
+          <Property Name="num_prof" Type="int" Nullable="false" />
+          <Property Name="name_prof" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_an_fio_doc_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="an_fio_doc" Type="Self.an_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="an_fio_doc">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_an_fio_doc_fio_doctor">
+          <End Role="fio_doctor" Type="Self.fio_doctor" Multiplicity="1" />
+          <End Role="an_fio_doc" Type="Self.an_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="an_fio_doc">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_doc_fio_doc_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="doc_fio_doc" Type="Self.doc_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="doc_fio_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_doc_fio_doc_fio_doctor">
+          <End Role="fio_doctor" Type="Self.fio_doctor" Multiplicity="1" />
+          <End Role="doc_fio_doc" Type="Self.doc_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="doc_fio_doc">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_an_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="fac_an" Type="Self.fac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="fac_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_an_factor">
+          <End Role="factor" Type="Self.factor" Multiplicity="1" />
+          <End Role="fac_an" Type="Self.fac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="num_fac" />
+            </Principal>
+            <Dependent Role="fac_an">
+              <PropertyRef Name="num_fac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_doc_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="fac_doc" Type="Self.fac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="fac_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_doc_factor">
+          <End Role="factor" Type="Self.factor" Multiplicity="1" />
+          <End Role="fac_doc" Type="Self.fac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="num_fac" />
+            </Principal>
+            <Dependent Role="fac_doc">
+              <PropertyRef Name="num_fac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_an_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="mar_list_an" Type="Self.mar_list_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="mar_list_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_an_fio_doctor">
+          <End Role="fio_doctor" Type="Self.fio_doctor" Multiplicity="1" />
+          <End Role="mar_list_an" Type="Self.mar_list_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="mar_list_an">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_doc_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="mar_list_doc" Type="Self.mar_list_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="mar_list_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_doc_fio_doctor">
+          <End Role="fio_doctor" Type="Self.fio_doctor" Multiplicity="1" />
+          <End Role="mar_list_doc" Type="Self.mar_list_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="mar_list_doc">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ob_analiz_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="ob_analiz" Type="Self.ob_analiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="ob_analiz">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ob_doctor_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="ob_doctor" Type="Self.ob_doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="ob_doctor">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_an_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="pac_an" Type="Self.pac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="pac_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_an_pacient">
+          <End Role="pacient" Type="Self.pacient" Multiplicity="1" />
+          <End Role="pac_an" Type="Self.pac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="pac_an">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_doc_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="pac_doc" Type="Self.pac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="pac_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_doc_pacient">
+          <End Role="pacient" Type="Self.pacient" Multiplicity="1" />
+          <End Role="pac_doc" Type="Self.pac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="pac_doc">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_fac_factor">
+          <End Role="factor" Type="Self.factor" Multiplicity="1" />
+          <End Role="pac_fac" Type="Self.pac_fac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="num_fac" />
+            </Principal>
+            <Dependent Role="pac_fac">
+              <PropertyRef Name="num_fac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_fac_pacient">
+          <End Role="pacient" Type="Self.pacient" Multiplicity="1" />
+          <End Role="pac_fac" Type="Self.pac_fac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="pac_fac">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacient_organization">
+          <End Role="organization" Type="Self.organization" Multiplicity="1" />
+          <End Role="pacient" Type="Self.pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organization">
+              <PropertyRef Name="num_org" />
+            </Principal>
+            <Dependent Role="pacient">
+              <PropertyRef Name="num_m_rab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacient_organization1">
+          <End Role="organization" Type="Self.organization" Multiplicity="1" />
+          <End Role="pacient" Type="Self.pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organization">
+              <PropertyRef Name="num_org" />
+            </Principal>
+            <Dependent Role="pacient">
+              <PropertyRef Name="num_org" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacient_profess">
+          <End Role="profess" Type="Self.profess" Multiplicity="1" />
+          <End Role="pacient" Type="Self.pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profess">
+              <PropertyRef Name="num_prof" />
+            </Principal>
+            <Dependent Role="pacient">
+              <PropertyRef Name="num_prof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_an_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="priem_an" Type="Self.priem_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="priem_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_an_fio_doctor">
+          <End Role="fio_doctor" Type="Self.fio_doctor" Multiplicity="1" />
+          <End Role="priem_an" Type="Self.priem_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="priem_an">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_an_pacient">
+          <End Role="pacient" Type="Self.pacient" Multiplicity="1" />
+          <End Role="priem_an" Type="Self.priem_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="priem_an">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_fio_doctor">
+          <End Role="fio_doctor" Type="Self.fio_doctor" Multiplicity="1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_pacient">
+          <End Role="pacient" Type="Self.pacient" Multiplicity="1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_an_analiz">
+          <End Role="analiz" Type="Self.analiz" Multiplicity="1" />
+          <End Role="prof_an" Type="Self.prof_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="prof_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_an_profess">
+          <End Role="profess" Type="Self.profess" Multiplicity="1" />
+          <End Role="prof_an" Type="Self.prof_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profess">
+              <PropertyRef Name="num_prof" />
+            </Principal>
+            <Dependent Role="prof_an">
+              <PropertyRef Name="num_prof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_doc_doctor">
+          <End Role="doctor" Type="Self.doctor" Multiplicity="1" />
+          <End Role="prof_doc" Type="Self.prof_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="prof_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_doc_profess">
+          <End Role="profess" Type="Self.profess" Multiplicity="1" />
+          <End Role="prof_doc" Type="Self.prof_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profess">
+              <PropertyRef Name="num_prof" />
+            </Principal>
+            <Dependent Role="prof_doc">
+              <PropertyRef Name="num_prof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StoreContainer">
+          <EntitySet Name="an_fio_doc" EntityType="Self.an_fio_doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="analiz" EntityType="Self.analiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doc_fio_doc" EntityType="Self.doc_fio_doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fac_an" EntityType="Self.fac_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fac_doc" EntityType="Self.fac_doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="factor" EntityType="Self.factor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fio_doctor" EntityType="Self.fio_doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mar_list_an" EntityType="Self.mar_list_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mar_list_doc" EntityType="Self.mar_list_doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ob_analiz" EntityType="Self.ob_analiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ob_doctor" EntityType="Self.ob_doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="organization" EntityType="Self.organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pac_an" EntityType="Self.pac_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pac_doc" EntityType="Self.pac_doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pac_fac" EntityType="Self.pac_fac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pacient" EntityType="Self.pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="priem" EntityType="Self.priem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="priem_an" EntityType="Self.priem_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prof_an" EntityType="Self.prof_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="prof_doc" EntityType="Self.prof_doc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profess" EntityType="Self.profess" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_an_fio_doc_analiz" Association="Self.FK_an_fio_doc_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="an_fio_doc" EntitySet="an_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_an_fio_doc_fio_doctor" Association="Self.FK_an_fio_doc_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="an_fio_doc" EntitySet="an_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_doc_fio_doc_doctor" Association="Self.FK_doc_fio_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="doc_fio_doc" EntitySet="doc_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_doc_fio_doc_fio_doctor" Association="Self.FK_doc_fio_doc_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="doc_fio_doc" EntitySet="doc_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_an_analiz" Association="Self.FK_fac_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="fac_an" EntitySet="fac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_an_factor" Association="Self.FK_fac_an_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="fac_an" EntitySet="fac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_doc_doctor" Association="Self.FK_fac_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="fac_doc" EntitySet="fac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_doc_factor" Association="Self.FK_fac_doc_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="fac_doc" EntitySet="fac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_an_analiz" Association="Self.FK_mar_list_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="mar_list_an" EntitySet="mar_list_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_an_fio_doctor" Association="Self.FK_mar_list_an_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="mar_list_an" EntitySet="mar_list_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_doc_doctor" Association="Self.FK_mar_list_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="mar_list_doc" EntitySet="mar_list_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_doc_fio_doctor" Association="Self.FK_mar_list_doc_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="mar_list_doc" EntitySet="mar_list_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ob_analiz_analiz" Association="Self.FK_ob_analiz_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="ob_analiz" EntitySet="ob_analiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ob_doctor_doctor" Association="Self.FK_ob_doctor_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="ob_doctor" EntitySet="ob_doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_an_analiz" Association="Self.FK_pac_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="pac_an" EntitySet="pac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_an_pacient" Association="Self.FK_pac_an_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="pac_an" EntitySet="pac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_doc_doctor" Association="Self.FK_pac_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="pac_doc" EntitySet="pac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_doc_pacient" Association="Self.FK_pac_doc_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="pac_doc" EntitySet="pac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_fac_factor" Association="Self.FK_pac_fac_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="pac_fac" EntitySet="pac_fac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_fac_pacient" Association="Self.FK_pac_fac_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="pac_fac" EntitySet="pac_fac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacient_organization" Association="Self.FK_pacient_organization">
+            <End Role="organization" EntitySet="organization" />
+            <End Role="pacient" EntitySet="pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacient_organization1" Association="Self.FK_pacient_organization1">
+            <End Role="organization" EntitySet="organization" />
+            <End Role="pacient" EntitySet="pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacient_profess" Association="Self.FK_pacient_profess">
+            <End Role="profess" EntitySet="profess" />
+            <End Role="pacient" EntitySet="pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_an_analiz" Association="Self.FK_priem_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="priem_an" EntitySet="priem_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_an_fio_doctor" Association="Self.FK_priem_an_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="priem_an" EntitySet="priem_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_an_pacient" Association="Self.FK_priem_an_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="priem_an" EntitySet="priem_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_doctor" Association="Self.FK_priem_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_fio_doctor" Association="Self.FK_priem_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_pacient" Association="Self.FK_priem_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_an_analiz" Association="Self.FK_prof_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="prof_an" EntitySet="prof_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_an_profess" Association="Self.FK_prof_an_profess">
+            <End Role="profess" EntitySet="profess" />
+            <End Role="prof_an" EntitySet="prof_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_doc_doctor" Association="Self.FK_prof_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="prof_doc" EntitySet="prof_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_doc_profess" Association="Self.FK_prof_doc_profess">
+            <End Role="profess" EntitySet="profess" />
+            <End Role="prof_doc" EntitySet="prof_doc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MedExamModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="MedExamEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="an_fio_doc" EntityType="MedExamModel.an_fio_doc" />
+          <EntitySet Name="analiz" EntityType="MedExamModel.analiz" />
+          <EntitySet Name="doc_fio_doc" EntityType="MedExamModel.doc_fio_doc" />
+          <EntitySet Name="doctor" EntityType="MedExamModel.doctor" />
+          <EntitySet Name="fac_an" EntityType="MedExamModel.fac_an" />
+          <EntitySet Name="fac_doc" EntityType="MedExamModel.fac_doc" />
+          <EntitySet Name="factor" EntityType="MedExamModel.factor" />
+          <EntitySet Name="fio_doctor" EntityType="MedExamModel.fio_doctor" />
+          <EntitySet Name="mar_list_an" EntityType="MedExamModel.mar_list_an" />
+          <EntitySet Name="mar_list_doc" EntityType="MedExamModel.mar_list_doc" />
+          <EntitySet Name="ob_analiz" EntityType="MedExamModel.ob_analiz" />
+          <EntitySet Name="ob_doctor" EntityType="MedExamModel.ob_doctor" />
+          <EntitySet Name="organization" EntityType="MedExamModel.organization" />
+          <EntitySet Name="pac_an" EntityType="MedExamModel.pac_an" />
+          <EntitySet Name="pac_doc" EntityType="MedExamModel.pac_doc" />
+          <EntitySet Name="pac_fac" EntityType="MedExamModel.pac_fac" />
+          <EntitySet Name="pacient" EntityType="MedExamModel.pacient" />
+          <EntitySet Name="priem" EntityType="MedExamModel.priem" />
+          <EntitySet Name="priem_an" EntityType="MedExamModel.priem_an" />
+          <EntitySet Name="prof_an" EntityType="MedExamModel.prof_an" />
+          <EntitySet Name="prof_doc" EntityType="MedExamModel.prof_doc" />
+          <EntitySet Name="profess" EntityType="MedExamModel.profess" />
+          <AssociationSet Name="FK_an_fio_doc_analiz" Association="MedExamModel.FK_an_fio_doc_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="an_fio_doc" EntitySet="an_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_an_fio_doc_fio_doctor" Association="MedExamModel.FK_an_fio_doc_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="an_fio_doc" EntitySet="an_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_an_analiz" Association="MedExamModel.FK_fac_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="fac_an" EntitySet="fac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_an_analiz" Association="MedExamModel.FK_mar_list_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="mar_list_an" EntitySet="mar_list_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ob_analiz_analiz" Association="MedExamModel.FK_ob_analiz_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="ob_analiz" EntitySet="ob_analiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_an_analiz" Association="MedExamModel.FK_pac_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="pac_an" EntitySet="pac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_an_analiz" Association="MedExamModel.FK_priem_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="priem_an" EntitySet="priem_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_an_analiz" Association="MedExamModel.FK_prof_an_analiz">
+            <End Role="analiz" EntitySet="analiz" />
+            <End Role="prof_an" EntitySet="prof_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_doc_fio_doc_doctor" Association="MedExamModel.FK_doc_fio_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="doc_fio_doc" EntitySet="doc_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_doc_fio_doc_fio_doctor" Association="MedExamModel.FK_doc_fio_doc_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="doc_fio_doc" EntitySet="doc_fio_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_doc_doctor" Association="MedExamModel.FK_fac_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="fac_doc" EntitySet="fac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_doc_doctor" Association="MedExamModel.FK_mar_list_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="mar_list_doc" EntitySet="mar_list_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ob_doctor_doctor" Association="MedExamModel.FK_ob_doctor_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="ob_doctor" EntitySet="ob_doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_doc_doctor" Association="MedExamModel.FK_pac_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="pac_doc" EntitySet="pac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_doctor" Association="MedExamModel.FK_priem_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_doc_doctor" Association="MedExamModel.FK_prof_doc_doctor">
+            <End Role="doctor" EntitySet="doctor" />
+            <End Role="prof_doc" EntitySet="prof_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_an_factor" Association="MedExamModel.FK_fac_an_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="fac_an" EntitySet="fac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fac_doc_factor" Association="MedExamModel.FK_fac_doc_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="fac_doc" EntitySet="fac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_fac_factor" Association="MedExamModel.FK_pac_fac_factor">
+            <End Role="factor" EntitySet="factor" />
+            <End Role="pac_fac" EntitySet="pac_fac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_an_fio_doctor" Association="MedExamModel.FK_mar_list_an_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="mar_list_an" EntitySet="mar_list_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mar_list_doc_fio_doctor" Association="MedExamModel.FK_mar_list_doc_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="mar_list_doc" EntitySet="mar_list_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_an_fio_doctor" Association="MedExamModel.FK_priem_an_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="priem_an" EntitySet="priem_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_fio_doctor" Association="MedExamModel.FK_priem_fio_doctor">
+            <End Role="fio_doctor" EntitySet="fio_doctor" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacient_organization" Association="MedExamModel.FK_pacient_organization">
+            <End Role="organization" EntitySet="organization" />
+            <End Role="pacient" EntitySet="pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacient_organization1" Association="MedExamModel.FK_pacient_organization1">
+            <End Role="organization" EntitySet="organization" />
+            <End Role="pacient" EntitySet="pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_an_pacient" Association="MedExamModel.FK_pac_an_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="pac_an" EntitySet="pac_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_doc_pacient" Association="MedExamModel.FK_pac_doc_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="pac_doc" EntitySet="pac_doc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pac_fac_pacient" Association="MedExamModel.FK_pac_fac_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="pac_fac" EntitySet="pac_fac" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pacient_profess" Association="MedExamModel.FK_pacient_profess">
+            <End Role="profess" EntitySet="profess" />
+            <End Role="pacient" EntitySet="pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_an_pacient" Association="MedExamModel.FK_priem_an_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="priem_an" EntitySet="priem_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_pacient" Association="MedExamModel.FK_priem_pacient">
+            <End Role="pacient" EntitySet="pacient" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_an_profess" Association="MedExamModel.FK_prof_an_profess">
+            <End Role="profess" EntitySet="profess" />
+            <End Role="prof_an" EntitySet="prof_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prof_doc_profess" Association="MedExamModel.FK_prof_doc_profess">
+            <End Role="profess" EntitySet="profess" />
+            <End Role="prof_doc" EntitySet="prof_doc" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="an_fio_doc">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="name_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_an_fio_doc_analiz" FromRole="an_fio_doc" ToRole="analiz" />
+          <NavigationProperty Name="fio_doctor" Relationship="MedExamModel.FK_an_fio_doc_fio_doctor" FromRole="an_fio_doc" ToRole="fio_doctor" />
+        </EntityType>
+        <EntityType Name="analiz">
+          <Key>
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="name_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="kabinrt" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="stoimosty" Type="Double" />
+          <Property Name="kod_preys" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="an_fio_doc" Relationship="MedExamModel.FK_an_fio_doc_analiz" FromRole="analiz" ToRole="an_fio_doc" />
+          <NavigationProperty Name="fac_an" Relationship="MedExamModel.FK_fac_an_analiz" FromRole="analiz" ToRole="fac_an" />
+          <NavigationProperty Name="mar_list_an" Relationship="MedExamModel.FK_mar_list_an_analiz" FromRole="analiz" ToRole="mar_list_an" />
+          <NavigationProperty Name="ob_analiz" Relationship="MedExamModel.FK_ob_analiz_analiz" FromRole="analiz" ToRole="ob_analiz" />
+          <NavigationProperty Name="pac_an" Relationship="MedExamModel.FK_pac_an_analiz" FromRole="analiz" ToRole="pac_an" />
+          <NavigationProperty Name="priem_an" Relationship="MedExamModel.FK_priem_an_analiz" FromRole="analiz" ToRole="priem_an" />
+          <NavigationProperty Name="prof_an" Relationship="MedExamModel.FK_prof_an_analiz" FromRole="analiz" ToRole="prof_an" />
+        </EntityType>
+        <EntityType Name="doc_fio_doc">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_doc_fio_doc_doctor" FromRole="doc_fio_doc" ToRole="doctor" />
+          <NavigationProperty Name="fio_doctor" Relationship="MedExamModel.FK_doc_fio_doc_fio_doctor" FromRole="doc_fio_doc" ToRole="fio_doctor" />
+        </EntityType>
+        <EntityType Name="doctor">
+          <Key>
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="kabinet" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="kod_preys" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="stavka" Type="Double" />
+          <NavigationProperty Name="doc_fio_doc" Relationship="MedExamModel.FK_doc_fio_doc_doctor" FromRole="doctor" ToRole="doc_fio_doc" />
+          <NavigationProperty Name="fac_doc" Relationship="MedExamModel.FK_fac_doc_doctor" FromRole="doctor" ToRole="fac_doc" />
+          <NavigationProperty Name="mar_list_doc" Relationship="MedExamModel.FK_mar_list_doc_doctor" FromRole="doctor" ToRole="mar_list_doc" />
+          <NavigationProperty Name="ob_doctor" Relationship="MedExamModel.FK_ob_doctor_doctor" FromRole="doctor" ToRole="ob_doctor" />
+          <NavigationProperty Name="pac_doc" Relationship="MedExamModel.FK_pac_doc_doctor" FromRole="doctor" ToRole="pac_doc" />
+          <NavigationProperty Name="priem" Relationship="MedExamModel.FK_priem_doctor" FromRole="doctor" ToRole="priem" />
+          <NavigationProperty Name="prof_doc" Relationship="MedExamModel.FK_prof_doc_doctor" FromRole="doctor" ToRole="prof_doc" />
+        </EntityType>
+        <EntityType Name="fac_an">
+          <Key>
+            <PropertyRef Name="num_fac" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_fac" Type="Int32" Nullable="false" />
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="name_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_fac_an_analiz" FromRole="fac_an" ToRole="analiz" />
+          <NavigationProperty Name="factor" Relationship="MedExamModel.FK_fac_an_factor" FromRole="fac_an" ToRole="factor" />
+        </EntityType>
+        <EntityType Name="fac_doc">
+          <Key>
+            <PropertyRef Name="num_fac" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_fac" Type="Int32" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_fac_doc_doctor" FromRole="fac_doc" ToRole="doctor" />
+          <NavigationProperty Name="factor" Relationship="MedExamModel.FK_fac_doc_factor" FromRole="fac_doc" ToRole="factor" />
+        </EntityType>
+        <EntityType Name="factor">
+          <Key>
+            <PropertyRef Name="num_fac" />
+          </Key>
+          <Property Name="num_fac" Type="Int32" Nullable="false" />
+          <Property Name="name_fac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kod_prik" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="prik_83" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="fac_an" Relationship="MedExamModel.FK_fac_an_factor" FromRole="factor" ToRole="fac_an" />
+          <NavigationProperty Name="fac_doc" Relationship="MedExamModel.FK_fac_doc_factor" FromRole="factor" ToRole="fac_doc" />
+          <NavigationProperty Name="pac_fac" Relationship="MedExamModel.FK_pac_fac_factor" FromRole="factor" ToRole="pac_fac" />
+        </EntityType>
+        <EntityType Name="fio_doctor">
+          <Key>
+            <PropertyRef Name="tab_num" />
+          </Key>
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="fio_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="otdel" Type="Int32" />
+          <Property Name="bool_doc" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="num_m_s" Type="Int32" />
+          <Property Name="nak_sum" Type="Double" />
+          <Property Name="pr_doc" Type="Double" />
+          <Property Name="pr_m_s" Type="Double" />
+          <Property Name="an_doc" Type="Double" />
+          <Property Name="an_m_s" Type="Double" />
+          <Property Name="an_dop" Type="Double" />
+          <NavigationProperty Name="an_fio_doc" Relationship="MedExamModel.FK_an_fio_doc_fio_doctor" FromRole="fio_doctor" ToRole="an_fio_doc" />
+          <NavigationProperty Name="doc_fio_doc" Relationship="MedExamModel.FK_doc_fio_doc_fio_doctor" FromRole="fio_doctor" ToRole="doc_fio_doc" />
+          <NavigationProperty Name="mar_list_an" Relationship="MedExamModel.FK_mar_list_an_fio_doctor" FromRole="fio_doctor" ToRole="mar_list_an" />
+          <NavigationProperty Name="mar_list_doc" Relationship="MedExamModel.FK_mar_list_doc_fio_doctor" FromRole="fio_doctor" ToRole="mar_list_doc" />
+          <NavigationProperty Name="priem_an" Relationship="MedExamModel.FK_priem_an_fio_doctor" FromRole="fio_doctor" ToRole="priem_an" />
+          <NavigationProperty Name="priem" Relationship="MedExamModel.FK_priem_fio_doctor" FromRole="fio_doctor" ToRole="priem" />
+        </EntityType>
+        <EntityType Name="mar_list_an">
+          <Key>
+            <PropertyRef Name="num_an" />
+            <PropertyRef Name="num_mar" />
+          </Key>
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="name_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="fio_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kabinet" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="num_mar" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_mar_list_an_analiz" FromRole="mar_list_an" ToRole="analiz" />
+          <NavigationProperty Name="fio_doctor" Relationship="MedExamModel.FK_mar_list_an_fio_doctor" FromRole="mar_list_an" ToRole="fio_doctor" />
+        </EntityType>
+        <EntityType Name="mar_list_doc">
+          <Key>
+            <PropertyRef Name="num_doc" />
+            <PropertyRef Name="num_mar" />
+          </Key>
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="fio_doc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kabinet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="num_mar" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_mar_list_doc_doctor" FromRole="mar_list_doc" ToRole="doctor" />
+          <NavigationProperty Name="fio_doctor" Relationship="MedExamModel.FK_mar_list_doc_fio_doctor" FromRole="mar_list_doc" ToRole="fio_doctor" />
+        </EntityType>
+        <EntityType Name="ob_analiz">
+          <Key>
+            <PropertyRef Name="num_kat" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_kat" Type="Int32" Nullable="false" />
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="name_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_ob_analiz_analiz" FromRole="ob_analiz" ToRole="analiz" />
+        </EntityType>
+        <EntityType Name="ob_doctor">
+          <Key>
+            <PropertyRef Name="num_kat" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_kat" Type="Int32" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_ob_doctor_doctor" FromRole="ob_doctor" ToRole="doctor" />
+        </EntityType>
+        <EntityType Name="organization">
+          <Key>
+            <PropertyRef Name="num_org" />
+          </Key>
+          <Property Name="num_org" Type="Int32" Nullable="false" />
+          <Property Name="name_org" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="inn_org" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="kpp_org" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="adr_org" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bool_org" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="okvd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="num_dog" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="fio_zak" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="fio_zak_k" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="name_org2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="akt_date" Type="DateTime" Precision="3" />
+          <Property Name="akt_num" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="akt_sum" Type="Double" />
+          <Property Name="akt_sum_an" Type="Double" />
+          <Property Name="akt_sum_dop" Type="Double" />
+          <Property Name="akt_sum_an_dop" Type="Double" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_pacient_organization" FromRole="organization" ToRole="pacient" />
+        </EntityType>
+        <EntityType Name="pac_an">
+          <Key>
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_pac" Type="Int32" Nullable="false" />
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nume_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="dop" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_pac_an_analiz" FromRole="pac_an" ToRole="analiz" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_pac_an_pacient" FromRole="pac_an" ToRole="pacient" />
+        </EntityType>
+        <EntityType Name="pac_doc">
+          <Key>
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_pac" Type="Int32" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="dop" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_pac_doc_doctor" FromRole="pac_doc" ToRole="doctor" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_pac_doc_pacient" FromRole="pac_doc" ToRole="pacient" />
+        </EntityType>
+        <EntityType Name="pac_fac">
+          <Key>
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="num_fac" />
+          </Key>
+          <Property Name="num_pac" Type="Int32" Nullable="false" />
+          <Property Name="num_fac" Type="Int32" Nullable="false" />
+          <Property Name="name_fac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="kod_prik" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="kod_83" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="factor" Relationship="MedExamModel.FK_pac_fac_factor" FromRole="pac_fac" ToRole="factor" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_pac_fac_pacient" FromRole="pac_fac" ToRole="pacient" />
+        </EntityType>
+        <EntityType Name="pacient">
+          <Key>
+            <PropertyRef Name="num_pac" />
+          </Key>
+          <Property Name="num_pac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fam_pac" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="io_pac" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pol" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data_birth" Type="DateTime" Precision="3" />
+          <Property Name="polic_ser" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="polic_nom" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="polic" Type="DateTime" Precision="3" />
+          <Property Name="data_kart" Type="DateTime" Precision="3" />
+          <Property Name="platel" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="zacr" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="num_m_rab" Type="Int32" Nullable="false" />
+          <Property Name="num_org" Type="Int32" Nullable="false" />
+          <Property Name="num_prof" Type="Int32" Nullable="false" />
+          <Property Name="stag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pech_kart" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="snils" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="change_date" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="fac_is" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="obyem_is" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="organization" Relationship="MedExamModel.FK_pacient_organization" FromRole="pacient" ToRole="organization" />
+          <NavigationProperty Name="pac_an" Relationship="MedExamModel.FK_pac_an_pacient" FromRole="pacient" ToRole="pac_an" />
+          <NavigationProperty Name="pac_doc" Relationship="MedExamModel.FK_pac_doc_pacient" FromRole="pacient" ToRole="pac_doc" />
+          <NavigationProperty Name="pac_fac" Relationship="MedExamModel.FK_pac_fac_pacient" FromRole="pacient" ToRole="pac_fac" />
+          <NavigationProperty Name="profess" Relationship="MedExamModel.FK_pacient_profess" FromRole="pacient" ToRole="profess" />
+          <NavigationProperty Name="priem_an" Relationship="MedExamModel.FK_priem_an_pacient" FromRole="pacient" ToRole="priem_an" />
+          <NavigationProperty Name="priem" Relationship="MedExamModel.FK_priem_pacient" FromRole="pacient" ToRole="priem" />
+        </EntityType>
+        <EntityType Name="priem">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_doc" />
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="date_priem" />
+          </Key>
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="num_pac" Type="Int32" Nullable="false" />
+          <Property Name="fam_pac" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date_priem" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="num_m_s" Type="Int32" />
+          <Property Name="dop" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_priem_doctor" FromRole="priem" ToRole="doctor" />
+          <NavigationProperty Name="fio_doctor" Relationship="MedExamModel.FK_priem_fio_doctor" FromRole="priem" ToRole="fio_doctor" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_priem_pacient" FromRole="priem" ToRole="pacient" />
+        </EntityType>
+        <EntityType Name="priem_an">
+          <Key>
+            <PropertyRef Name="tab_num" />
+            <PropertyRef Name="num_an" />
+            <PropertyRef Name="num_pac" />
+            <PropertyRef Name="date_priem" />
+          </Key>
+          <Property Name="tab_num" Type="Int32" Nullable="false" />
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="num_pac" Type="Int32" Nullable="false" />
+          <Property Name="fam_pac" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date_priem" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="num_m_s" Type="Int32" />
+          <Property Name="dop" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_priem_an_analiz" FromRole="priem_an" ToRole="analiz" />
+          <NavigationProperty Name="fio_doctor" Relationship="MedExamModel.FK_priem_an_fio_doctor" FromRole="priem_an" ToRole="fio_doctor" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_priem_an_pacient" FromRole="priem_an" ToRole="pacient" />
+        </EntityType>
+        <EntityType Name="prof_an">
+          <Key>
+            <PropertyRef Name="num_prof" />
+            <PropertyRef Name="num_an" />
+          </Key>
+          <Property Name="num_prof" Type="Int32" Nullable="false" />
+          <Property Name="num_an" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="name_an" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="analiz" Relationship="MedExamModel.FK_prof_an_analiz" FromRole="prof_an" ToRole="analiz" />
+          <NavigationProperty Name="profess" Relationship="MedExamModel.FK_prof_an_profess" FromRole="prof_an" ToRole="profess" />
+        </EntityType>
+        <EntityType Name="prof_doc">
+          <Key>
+            <PropertyRef Name="num_prof" />
+            <PropertyRef Name="num_doc" />
+          </Key>
+          <Property Name="num_prof" Type="Int32" Nullable="false" />
+          <Property Name="num_doc" Type="Int32" Nullable="false" />
+          <Property Name="name_doc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doctor" Relationship="MedExamModel.FK_prof_doc_doctor" FromRole="prof_doc" ToRole="doctor" />
+          <NavigationProperty Name="profess" Relationship="MedExamModel.FK_prof_doc_profess" FromRole="prof_doc" ToRole="profess" />
+        </EntityType>
+        <EntityType Name="profess">
+          <Key>
+            <PropertyRef Name="num_prof" />
+          </Key>
+          <Property Name="num_prof" Type="Int32" Nullable="false" />
+          <Property Name="name_prof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pacient" Relationship="MedExamModel.FK_pacient_profess" FromRole="profess" ToRole="pacient" />
+          <NavigationProperty Name="prof_an" Relationship="MedExamModel.FK_prof_an_profess" FromRole="profess" ToRole="prof_an" />
+          <NavigationProperty Name="prof_doc" Relationship="MedExamModel.FK_prof_doc_profess" FromRole="profess" ToRole="prof_doc" />
+        </EntityType>
+        <Association Name="FK_an_fio_doc_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.an_fio_doc" Role="an_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="an_fio_doc">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_an_fio_doc_fio_doctor">
+          <End Type="MedExamModel.fio_doctor" Role="fio_doctor" Multiplicity="1" />
+          <End Type="MedExamModel.an_fio_doc" Role="an_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="an_fio_doc">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_an_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.fac_an" Role="fac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="fac_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_an_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.mar_list_an" Role="mar_list_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="mar_list_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ob_analiz_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.ob_analiz" Role="ob_analiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="ob_analiz">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_an_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.pac_an" Role="pac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="pac_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_an_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.priem_an" Role="priem_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="priem_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_an_analiz">
+          <End Type="MedExamModel.analiz" Role="analiz" Multiplicity="1" />
+          <End Type="MedExamModel.prof_an" Role="prof_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="analiz">
+              <PropertyRef Name="num_an" />
+            </Principal>
+            <Dependent Role="prof_an">
+              <PropertyRef Name="num_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_doc_fio_doc_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.doc_fio_doc" Role="doc_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="doc_fio_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_doc_fio_doc_fio_doctor">
+          <End Type="MedExamModel.fio_doctor" Role="fio_doctor" Multiplicity="1" />
+          <End Type="MedExamModel.doc_fio_doc" Role="doc_fio_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="doc_fio_doc">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_doc_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.fac_doc" Role="fac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="fac_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_doc_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.mar_list_doc" Role="mar_list_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="mar_list_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ob_doctor_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.ob_doctor" Role="ob_doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="ob_doctor">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_doc_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.pac_doc" Role="pac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="pac_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.priem" Role="priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_doc_doctor">
+          <End Type="MedExamModel.doctor" Role="doctor" Multiplicity="1" />
+          <End Type="MedExamModel.prof_doc" Role="prof_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doctor">
+              <PropertyRef Name="num_doc" />
+            </Principal>
+            <Dependent Role="prof_doc">
+              <PropertyRef Name="num_doc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_an_factor">
+          <End Type="MedExamModel.factor" Role="factor" Multiplicity="1" />
+          <End Type="MedExamModel.fac_an" Role="fac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="num_fac" />
+            </Principal>
+            <Dependent Role="fac_an">
+              <PropertyRef Name="num_fac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fac_doc_factor">
+          <End Type="MedExamModel.factor" Role="factor" Multiplicity="1" />
+          <End Type="MedExamModel.fac_doc" Role="fac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="num_fac" />
+            </Principal>
+            <Dependent Role="fac_doc">
+              <PropertyRef Name="num_fac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_fac_factor">
+          <End Type="MedExamModel.factor" Role="factor" Multiplicity="1" />
+          <End Type="MedExamModel.pac_fac" Role="pac_fac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factor">
+              <PropertyRef Name="num_fac" />
+            </Principal>
+            <Dependent Role="pac_fac">
+              <PropertyRef Name="num_fac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_an_fio_doctor">
+          <End Type="MedExamModel.fio_doctor" Role="fio_doctor" Multiplicity="1" />
+          <End Type="MedExamModel.mar_list_an" Role="mar_list_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="mar_list_an">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mar_list_doc_fio_doctor">
+          <End Type="MedExamModel.fio_doctor" Role="fio_doctor" Multiplicity="1" />
+          <End Type="MedExamModel.mar_list_doc" Role="mar_list_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="mar_list_doc">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_an_fio_doctor">
+          <End Type="MedExamModel.fio_doctor" Role="fio_doctor" Multiplicity="1" />
+          <End Type="MedExamModel.priem_an" Role="priem_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="priem_an">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_fio_doctor">
+          <End Type="MedExamModel.fio_doctor" Role="fio_doctor" Multiplicity="1" />
+          <End Type="MedExamModel.priem" Role="priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fio_doctor">
+              <PropertyRef Name="tab_num" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="tab_num" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacient_organization">
+          <End Type="MedExamModel.organization" Role="organization" Multiplicity="1" />
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organization">
+              <PropertyRef Name="num_org" />
+            </Principal>
+            <Dependent Role="pacient">
+              <PropertyRef Name="num_m_rab" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacient_organization1">
+          <End Type="MedExamModel.organization" Role="organization" Multiplicity="1" />
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organization">
+              <PropertyRef Name="num_org" />
+            </Principal>
+            <Dependent Role="pacient">
+              <PropertyRef Name="num_org" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_an_pacient">
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="1" />
+          <End Type="MedExamModel.pac_an" Role="pac_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="pac_an">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_doc_pacient">
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="1" />
+          <End Type="MedExamModel.pac_doc" Role="pac_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="pac_doc">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pac_fac_pacient">
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="1" />
+          <End Type="MedExamModel.pac_fac" Role="pac_fac" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="pac_fac">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pacient_profess">
+          <End Type="MedExamModel.profess" Role="profess" Multiplicity="1" />
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profess">
+              <PropertyRef Name="num_prof" />
+            </Principal>
+            <Dependent Role="pacient">
+              <PropertyRef Name="num_prof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_an_pacient">
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="1" />
+          <End Type="MedExamModel.priem_an" Role="priem_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="priem_an">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_pacient">
+          <End Type="MedExamModel.pacient" Role="pacient" Multiplicity="1" />
+          <End Type="MedExamModel.priem" Role="priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacient">
+              <PropertyRef Name="num_pac" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="num_pac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_an_profess">
+          <End Type="MedExamModel.profess" Role="profess" Multiplicity="1" />
+          <End Type="MedExamModel.prof_an" Role="prof_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profess">
+              <PropertyRef Name="num_prof" />
+            </Principal>
+            <Dependent Role="prof_an">
+              <PropertyRef Name="num_prof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prof_doc_profess">
+          <End Type="MedExamModel.profess" Role="profess" Multiplicity="1" />
+          <End Type="MedExamModel.prof_doc" Role="prof_doc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profess">
+              <PropertyRef Name="num_prof" />
+            </Principal>
+            <Dependent Role="prof_doc">
+              <PropertyRef Name="num_prof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="MedExamEntities" >
+          <EntitySetMapping Name="an_fio_doc">
+            <EntityTypeMapping TypeName="MedExamModel.an_fio_doc">
+              <MappingFragment StoreEntitySet="an_fio_doc">
+                <ScalarProperty Name="name_an" ColumnName="name_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="analiz">
+            <EntityTypeMapping TypeName="MedExamModel.analiz">
+              <MappingFragment StoreEntitySet="analiz">
+                <ScalarProperty Name="kod_preys" ColumnName="kod_preys" />
+                <ScalarProperty Name="stoimosty" ColumnName="stoimosty" />
+                <ScalarProperty Name="kabinrt" ColumnName="kabinrt" />
+                <ScalarProperty Name="name_an" ColumnName="name_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doc_fio_doc">
+            <EntityTypeMapping TypeName="MedExamModel.doc_fio_doc">
+              <MappingFragment StoreEntitySet="doc_fio_doc">
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doctor">
+            <EntityTypeMapping TypeName="MedExamModel.doctor">
+              <MappingFragment StoreEntitySet="doctor">
+                <ScalarProperty Name="stavka" ColumnName="stavka" />
+                <ScalarProperty Name="kod_preys" ColumnName="kod_preys" />
+                <ScalarProperty Name="kabinet" ColumnName="kabinet" />
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fac_an">
+            <EntityTypeMapping TypeName="MedExamModel.fac_an">
+              <MappingFragment StoreEntitySet="fac_an">
+                <ScalarProperty Name="name_an" ColumnName="name_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+                <ScalarProperty Name="num_fac" ColumnName="num_fac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fac_doc">
+            <EntityTypeMapping TypeName="MedExamModel.fac_doc">
+              <MappingFragment StoreEntitySet="fac_doc">
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="num_fac" ColumnName="num_fac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="factor">
+            <EntityTypeMapping TypeName="MedExamModel.factor">
+              <MappingFragment StoreEntitySet="factor">
+                <ScalarProperty Name="prik_83" ColumnName="prik_83" />
+                <ScalarProperty Name="kod_prik" ColumnName="kod_prik" />
+                <ScalarProperty Name="name_fac" ColumnName="name_fac" />
+                <ScalarProperty Name="num_fac" ColumnName="num_fac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fio_doctor">
+            <EntityTypeMapping TypeName="MedExamModel.fio_doctor">
+              <MappingFragment StoreEntitySet="fio_doctor">
+                <ScalarProperty Name="an_dop" ColumnName="an_dop" />
+                <ScalarProperty Name="an_m_s" ColumnName="an_m_s" />
+                <ScalarProperty Name="an_doc" ColumnName="an_doc" />
+                <ScalarProperty Name="pr_m_s" ColumnName="pr_m_s" />
+                <ScalarProperty Name="pr_doc" ColumnName="pr_doc" />
+                <ScalarProperty Name="nak_sum" ColumnName="nak_sum" />
+                <ScalarProperty Name="num_m_s" ColumnName="num_m_s" />
+                <ScalarProperty Name="bool_doc" ColumnName="bool_doc" />
+                <ScalarProperty Name="otdel" ColumnName="otdel" />
+                <ScalarProperty Name="fio_doc" ColumnName="fio_doc" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mar_list_an">
+            <EntityTypeMapping TypeName="MedExamModel.mar_list_an">
+              <MappingFragment StoreEntitySet="mar_list_an">
+                <ScalarProperty Name="num_mar" ColumnName="num_mar" />
+                <ScalarProperty Name="kabinet" ColumnName="kabinet" />
+                <ScalarProperty Name="fio_doc" ColumnName="fio_doc" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+                <ScalarProperty Name="name_an" ColumnName="name_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mar_list_doc">
+            <EntityTypeMapping TypeName="MedExamModel.mar_list_doc">
+              <MappingFragment StoreEntitySet="mar_list_doc">
+                <ScalarProperty Name="num_mar" ColumnName="num_mar" />
+                <ScalarProperty Name="kabinet" ColumnName="kabinet" />
+                <ScalarProperty Name="fio_doc" ColumnName="fio_doc" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ob_analiz">
+            <EntityTypeMapping TypeName="MedExamModel.ob_analiz">
+              <MappingFragment StoreEntitySet="ob_analiz">
+                <ScalarProperty Name="name_an" ColumnName="name_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+                <ScalarProperty Name="num_kat" ColumnName="num_kat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ob_doctor">
+            <EntityTypeMapping TypeName="MedExamModel.ob_doctor">
+              <MappingFragment StoreEntitySet="ob_doctor">
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="num_kat" ColumnName="num_kat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="organization">
+            <EntityTypeMapping TypeName="MedExamModel.organization">
+              <MappingFragment StoreEntitySet="organization">
+                <ScalarProperty Name="akt_sum_an_dop" ColumnName="akt_sum_an_dop" />
+                <ScalarProperty Name="akt_sum_dop" ColumnName="akt_sum_dop" />
+                <ScalarProperty Name="akt_sum_an" ColumnName="akt_sum_an" />
+                <ScalarProperty Name="akt_sum" ColumnName="akt_sum" />
+                <ScalarProperty Name="akt_num" ColumnName="akt_num" />
+                <ScalarProperty Name="akt_date" ColumnName="akt_date" />
+                <ScalarProperty Name="name_org2" ColumnName="name_org2" />
+                <ScalarProperty Name="fio_zak_k" ColumnName="fio_zak_k" />
+                <ScalarProperty Name="fio_zak" ColumnName="fio_zak" />
+                <ScalarProperty Name="num_dog" ColumnName="num_dog" />
+                <ScalarProperty Name="okvd" ColumnName="okvd" />
+                <ScalarProperty Name="bool_org" ColumnName="bool_org" />
+                <ScalarProperty Name="adr_org" ColumnName="adr_org" />
+                <ScalarProperty Name="kpp_org" ColumnName="kpp_org" />
+                <ScalarProperty Name="inn_org" ColumnName="inn_org" />
+                <ScalarProperty Name="name_org" ColumnName="name_org" />
+                <ScalarProperty Name="num_org" ColumnName="num_org" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pac_an">
+            <EntityTypeMapping TypeName="MedExamModel.pac_an">
+              <MappingFragment StoreEntitySet="pac_an">
+                <ScalarProperty Name="dop" ColumnName="dop" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="nume_an" ColumnName="nume_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+                <ScalarProperty Name="num_pac" ColumnName="num_pac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pac_doc">
+            <EntityTypeMapping TypeName="MedExamModel.pac_doc">
+              <MappingFragment StoreEntitySet="pac_doc">
+                <ScalarProperty Name="dop" ColumnName="dop" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="num_pac" ColumnName="num_pac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pac_fac">
+            <EntityTypeMapping TypeName="MedExamModel.pac_fac">
+              <MappingFragment StoreEntitySet="pac_fac">
+                <ScalarProperty Name="kod_83" ColumnName="kod_83" />
+                <ScalarProperty Name="kod_prik" ColumnName="kod_prik" />
+                <ScalarProperty Name="name_fac" ColumnName="name_fac" />
+                <ScalarProperty Name="num_fac" ColumnName="num_fac" />
+                <ScalarProperty Name="num_pac" ColumnName="num_pac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pacient">
+            <EntityTypeMapping TypeName="MedExamModel.pacient">
+              <MappingFragment StoreEntitySet="pacient">
+                <ScalarProperty Name="obyem_is" ColumnName="obyem_is" />
+                <ScalarProperty Name="fac_is" ColumnName="fac_is" />
+                <ScalarProperty Name="change_date" ColumnName="change_date" />
+                <ScalarProperty Name="snils" ColumnName="snils" />
+                <ScalarProperty Name="pech_kart" ColumnName="pech_kart" />
+                <ScalarProperty Name="stag" ColumnName="stag" />
+                <ScalarProperty Name="num_prof" ColumnName="num_prof" />
+                <ScalarProperty Name="num_org" ColumnName="num_org" />
+                <ScalarProperty Name="num_m_rab" ColumnName="num_m_rab" />
+                <ScalarProperty Name="zacr" ColumnName="zacr" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="platel" ColumnName="platel" />
+                <ScalarProperty Name="data_kart" ColumnName="data_kart" />
+                <ScalarProperty Name="polic" ColumnName="polic" />
+                <ScalarProperty Name="polic_nom" ColumnName="polic_nom" />
+                <ScalarProperty Name="polic_ser" ColumnName="polic_ser" />
+                <ScalarProperty Name="data_birth" ColumnName="data_birth" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="pol" ColumnName="pol" />
+                <ScalarProperty Name="io_pac" ColumnName="io_pac" />
+                <ScalarProperty Name="fam_pac" ColumnName="fam_pac" />
+                <ScalarProperty Name="num_pac" ColumnName="num_pac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="priem">
+            <EntityTypeMapping TypeName="MedExamModel.priem">
+              <MappingFragment StoreEntitySet="priem">
+                <ScalarProperty Name="dop" ColumnName="dop" />
+                <ScalarProperty Name="num_m_s" ColumnName="num_m_s" />
+                <ScalarProperty Name="date_priem" ColumnName="date_priem" />
+                <ScalarProperty Name="fam_pac" ColumnName="fam_pac" />
+                <ScalarProperty Name="num_pac" ColumnName="num_pac" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="priem_an">
+            <EntityTypeMapping TypeName="MedExamModel.priem_an">
+              <MappingFragment StoreEntitySet="priem_an">
+                <ScalarProperty Name="dop" ColumnName="dop" />
+                <ScalarProperty Name="num_m_s" ColumnName="num_m_s" />
+                <ScalarProperty Name="date_priem" ColumnName="date_priem" />
+                <ScalarProperty Name="fam_pac" ColumnName="fam_pac" />
+                <ScalarProperty Name="num_pac" ColumnName="num_pac" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+                <ScalarProperty Name="tab_num" ColumnName="tab_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prof_an">
+            <EntityTypeMapping TypeName="MedExamModel.prof_an">
+              <MappingFragment StoreEntitySet="prof_an">
+                <ScalarProperty Name="name_an" ColumnName="name_an" />
+                <ScalarProperty Name="num_an" ColumnName="num_an" />
+                <ScalarProperty Name="num_prof" ColumnName="num_prof" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="prof_doc">
+            <EntityTypeMapping TypeName="MedExamModel.prof_doc">
+              <MappingFragment StoreEntitySet="prof_doc">
+                <ScalarProperty Name="name_doc" ColumnName="name_doc" />
+                <ScalarProperty Name="num_doc" ColumnName="num_doc" />
+                <ScalarProperty Name="num_prof" ColumnName="num_prof" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profess">
+            <EntityTypeMapping TypeName="MedExamModel.profess">
+              <MappingFragment StoreEntitySet="profess">
+                <ScalarProperty Name="name_prof" ColumnName="name_prof" />
+                <ScalarProperty Name="num_prof" ColumnName="num_prof" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

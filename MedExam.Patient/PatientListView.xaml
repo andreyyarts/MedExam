@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="MedExam.Patient.PatientListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:MedExam.Patient.viewModel"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModel:PatientListViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel>
+        <DockPanel Dock="Top" Margin="2" Height="30">
+            <Button DockPanel.Dock="Right" ToolTip="Обновить"
+                    Command="{Binding Refresh}"
+                    CommandParameter="{Binding Organizations/}">
+                <Image Source="{StaticResource RefreshSource}" />
+            </Button>
+            <WrapPanel>
+                <ComboBox DockPanel.Dock="Left" ItemsSource="{Binding Organizations}" Width="400"
+                          IsSynchronizedWithCurrentItem="True" IsReadOnly="True"
+                          SelectedValuePath="Id" DisplayMemberPath="FullName"
+                          VerticalContentAlignment="Center">
+                </ComboBox>
+                <Button ToolTip="Печать отчетов" Command="{Binding PrintReports}">
+                    <Image Source="{StaticResource PrinterSource}" />
+                </Button>
+            </WrapPanel>
+        </DockPanel>
+        <Grid>
+            <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Center"
+		             Height="20" Margin="10,10,0,0" Width="200"
+		             Name="B" Visibility="Collapsed" Foreground="Salmon"/>
+
+            <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="viewModel:PatientViewModel">
+                                <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="№" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding PersonName.LastName}" Width="100" />
+                    <DataGridTextColumn Header="Имя" Binding="{Binding PersonName.FirstName}" Width="100" />
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding PersonName.MiddleName}" Width="100" />
+                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate}" />
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" />
+                    <DataGridTemplateColumn Header="Полис">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="viewModel:PatientViewModel">
+                                <TextBlock DataContext="{Binding Policy}" >
+                            <Run Text="{Binding Series}"/>
+                            <Run Text="{Binding Number}"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</UserControl>
