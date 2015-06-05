@@ -1,3 +1,3 @@
 # MedExam
 Medical Examinations
-Профосмотры
+РџСЂРѕС„РѕСЃРјРѕС‚СЂС‹
