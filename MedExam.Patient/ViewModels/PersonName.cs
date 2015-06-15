@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MedExam.Patient.viewModel
+namespace MedExam.Patient.ViewModels
 {
     public class PersonName
     {

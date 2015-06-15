@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using MedExam.Patient.viewModel;
+using MedExam.Patient.ViewModels;
 
-namespace MedExam.Patient
+namespace MedExam.Patient.Views
 {
     /// <summary>
     /// Interaction logic for PatientListView.xaml

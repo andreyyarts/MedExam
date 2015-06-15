@@ -2,15 +2,16 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using MedExam.Common;
 using MedExam.Patient.dto;
 using MedExam.Patient.services;
 using Microsoft.Practices.Prism;
 using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace MedExam.Patient.viewModel
+namespace MedExam.Patient.ViewModels
 {
     public class PatientListViewModel
     {
@@ -25,11 +26,13 @@ namespace MedExam.Patient.viewModel
             var organizations = organizationService.GetOrganizations();
             Organizations = new ListCollectionView(organizations);
             Patients = new ObservableCollection<PatientViewModel>();
-            
+
             Organizations.CurrentChanged += (sender, args) =>
             {
                 LoadPatients((OrganizationDto)Organizations.CurrentItem);
             };
+
+            NotificationRequest = new InteractionRequest<Notification>();
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; private set; }
@@ -45,19 +48,18 @@ namespace MedExam.Patient.viewModel
             get { return _printReports ?? (_printReports = new DelegateCommand(OnPrintReports)); }
         }
 
+        public InteractionRequest<Notification> NotificationRequest { get; set; }
+
         private void OnPrintReports()
         {
-            ShowDebugMessage();
+            var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
+
+            ShowDebugMessage(new ItemsNotification<long>(patientIds) { Title = "Печать" });
         }
 
-        private void ShowDebugMessage()
+        private void ShowDebugMessage(Notification notification)
         {
-            var patients = Patients.Where(p => p.IsSelected);
-            var patientsData =
-                string.Join(", ", patients.Select(p => p.PersonName)
-                    .Select(n => string.Concat(n.LastName, " ", n.FirstName)));
-
-            MessageBox.Show(patientsData);
+            NotificationRequest.Raise(notification);
         }
 
         private void OnRefresh(OrganizationDto organization)
@@ -81,10 +83,10 @@ namespace MedExam.Patient.viewModel
             {
                 Id = patient.Id,
                 Address = patient.Address,
-                BirthDate = patient.BirthDate,
+                BirthDate = patient.BirthDate.HasValue ? patient.BirthDate.Value.ToShortDateString() : "",
                 PersonName = PersonNameMap(patient.PersonName),
                 Policy = patient.Policy,
-                Gender = patient.Gender
+                Gender = patient.Gender == Gender.Female ? "Ж" : "М"
             };
         }
 

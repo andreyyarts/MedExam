@@ -218,9 +218,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="config\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="hospital.ico" />
   </ItemGroup>

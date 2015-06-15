@@ -1,18 +1,17 @@
-﻿using System;
-using MedExam.Patient.dto;
+﻿using MedExam.Patient.dto;
 using Microsoft.Practices.Prism.ViewModel;
 
-namespace MedExam.Patient.viewModel
+namespace MedExam.Patient.ViewModels
 {
     public class PatientViewModel : NotificationObject
     {
         private bool _isSelected;
         public long Id { get; set; }
         public PersonName PersonName { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public string BirthDate { get; set; }
         public string Address { get; set; }
         public Policy Policy { get; set; }
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         public bool IsSelected
         {

@@ -58,31 +58,41 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dto\Gender.cs" />
-    <Compile Include="dto\OrganizationDto.cs" />
-    <Compile Include="dto\PatientDto.cs" />
-    <Compile Include="dto\PersonNameDto.cs" />
+    <Compile Include="Dto\Gender.cs" />
+    <Compile Include="Dto\OrganizationDto.cs" />
+    <Compile Include="Dto\PatientDto.cs" />
+    <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
-    <Compile Include="PatientListView.xaml.cs">
+    <Compile Include="ViewModels\ItemsNotificationListViewModel.cs" />
+    <Compile Include="ViewModels\ReportListViewModel.cs" />
+    <Compile Include="Views\PatientListView.xaml.cs">
       <DependentUpon>PatientListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="services\OrganizationService.cs" />
-    <Compile Include="services\PatientService.cs" />
-    <Compile Include="viewModel\PatientListViewModel.cs" />
-    <Compile Include="viewModel\PatientViewModel.cs" />
-    <Compile Include="viewModel\PersonName.cs" />
-    <Compile Include="dto\Policy.cs" />
+    <Compile Include="Services\OrganizationService.cs" />
+    <Compile Include="Services\PatientService.cs" />
+    <Compile Include="ViewModels\PatientListViewModel.cs" />
+    <Compile Include="ViewModels\PatientViewModel.cs" />
+    <Compile Include="ViewModels\PersonName.cs" />
+    <Compile Include="Dto\Policy.cs" />
+    <Compile Include="Views\ReportListView.xaml.cs">
+      <DependentUpon>ReportListView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="PatientListView.xaml">
+    <Page Include="Views\PatientListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
