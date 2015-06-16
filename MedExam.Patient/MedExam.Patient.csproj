@@ -70,7 +70,6 @@
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
     <Compile Include="ViewModels\ItemsNotificationListViewModel.cs" />
-    <Compile Include="ViewModels\ReportListViewModel.cs" />
     <Compile Include="Views\PatientListView.xaml.cs">
       <DependentUpon>PatientListView.xaml</DependentUpon>
     </Compile>
