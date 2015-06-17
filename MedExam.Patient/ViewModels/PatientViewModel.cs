@@ -1,4 +1,5 @@
-﻿using MedExam.Patient.dto;
+﻿using System;
+using MedExam.Patient.dto;
 using Microsoft.Practices.Prism.ViewModel;
 
 namespace MedExam.Patient.ViewModels
@@ -8,7 +9,7 @@ namespace MedExam.Patient.ViewModels
         private bool _isSelected;
         public long Id { get; set; }
         public PersonName PersonName { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string Address { get; set; }
         public Policy Policy { get; set; }
         public string Gender { get; set; }

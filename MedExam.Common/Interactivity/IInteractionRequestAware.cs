@@ -1,8 +1,7 @@
 using System;
-using MedExam.Common.Behaviors;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace MedExam.Common.Interfaces
+namespace MedExam.Common.Interactivity
 {
     /// <summary>
     /// Interface used by the <see cref="PopupWindowAction"/>.

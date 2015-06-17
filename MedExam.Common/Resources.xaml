@@ -2,5 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="resources/Images.xaml" />
+        <ResourceDictionary Source="resources/Base.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonBaseStyle}" />
+    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ButtonBaseStyle}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
 </ResourceDictionary>

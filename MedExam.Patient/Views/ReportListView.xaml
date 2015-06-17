@@ -5,20 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:MedExam.Patient.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             d:DataContext="{d:DesignInstance viewModels:ItemsNotificationListViewModel}">
+             d:DesignHeight="200" d:DesignWidth="250"
+             MinHeight="200" MinWidth="250"
+             d:DataContext="{d:DesignData Source=../SampleData/Reports.xaml}"
+             Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate x:Key="ReportTemplate" DataType="viewModels:ReportViewModel">
+                <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Title}"
+                          Margin="5 0 0 0" Padding="5 0" />
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Text="Patient List" />
-        <ListView Grid.Row="1" ItemsSource="{Binding Items}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ListBox ItemsSource="{Binding Reports}" ItemTemplate="{StaticResource ReportTemplate}" HorizontalContentAlignment="Stretch"/>
+        <StackPanel Grid.Row="1">
+            <CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />
+            <DockPanel HorizontalAlignment="Center">
+                <Button Content="Печать" />
+                <Button Content="Отмена" />
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -1,0 +1,6 @@
+﻿<viewModels:ReportListViewModel xmlns:viewModels="clr-namespace:MedExam.Patient.ViewModels">
+    <viewModels:ReportListViewModel.Reports>
+        <viewModels:ReportViewModel Title="Report 1" />
+        <viewModels:ReportViewModel Title="Report 2" />
+    </viewModels:ReportListViewModel.Reports>
+</viewModels:ReportListViewModel>

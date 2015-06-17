@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
-using MedExam.Common;
 using MedExam.Patient.dto;
 using MedExam.Patient.services;
 using Microsoft.Practices.Prism;
@@ -18,6 +17,7 @@ namespace MedExam.Patient.ViewModels
         private readonly PatientService _patientService;
         private ICommand _refresh;
         private ICommand _printReports;
+        private ICommand _selectPatient;
 
         public PatientListViewModel(OrganizationService organizationService, PatientService patientService)
         {
@@ -37,6 +37,7 @@ namespace MedExam.Patient.ViewModels
 
         public ObservableCollection<PatientViewModel> Patients { get; private set; }
         public ICollectionView Organizations { get; private set; }
+        public InteractionRequest<Notification> NotificationRequest { get; set; }
 
         public ICommand Refresh
         {
@@ -48,16 +49,28 @@ namespace MedExam.Patient.ViewModels
             get { return _printReports ?? (_printReports = new DelegateCommand(OnPrintReports)); }
         }
 
-        public InteractionRequest<Notification> NotificationRequest { get; set; }
+        public ICommand SelectPatient
+        {
+            get { return _selectPatient ?? (_selectPatient = new DelegateCommand<PatientViewModel>(OnSelectPatient)); }
+        }
+
+        private void OnSelectPatient(PatientViewModel patient)
+        {
+            if (patient == null)
+                return;
+
+            var selectPatient = Patients.Single(p => p.Id == patient.Id);
+            selectPatient.IsSelected = !selectPatient.IsSelected;
+        }
 
         private void OnPrintReports()
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
-            ShowDebugMessage(new ItemsNotification<long>(patientIds) { Title = "Печать" });
+            ShowViewNotification(new ReportListViewModel(patientIds) { Title = "Печать" });
         }
 
-        private void ShowDebugMessage(Notification notification)
+        private void ShowViewNotification(Notification notification)
         {
             NotificationRequest.Raise(notification);
         }
@@ -83,7 +96,8 @@ namespace MedExam.Patient.ViewModels
             {
                 Id = patient.Id,
                 Address = patient.Address,
-                BirthDate = patient.BirthDate.HasValue ? patient.BirthDate.Value.ToShortDateString() : "",
+                //BirthDate = patient.BirthDate.HasValue ? patient.BirthDate.Value.ToShortDateString() : "",
+                BirthDate = patient.BirthDate,
                 PersonName = PersonNameMap(patient.PersonName),
                 Policy = patient.Policy,
                 Gender = patient.Gender == Gender.Female ? "Ж" : "М"

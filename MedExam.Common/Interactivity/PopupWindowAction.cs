@@ -1,11 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Interactivity;
-using MedExam.Common.Interfaces;
+using System.Windows.Navigation;
 using MedExam.Common.Windows;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 
-namespace MedExam.Common.Behaviors
+namespace MedExam.Common.Interactivity
 {
     /// <summary>
     ///     Shows a popup window in response to an <see cref="InteractionRequest{T}" /> being raised.
@@ -90,7 +91,6 @@ namespace MedExam.Common.Behaviors
             var wrapperWindow = GetWindow(args.Context);
             wrapperWindow.SizeToContent = SizeToContent.WidthAndHeight;
 
-            // We invoke the callback when the interaction's window is closed.
             var callback = args.Callback;
             EventHandler handler = null;
             handler =
@@ -102,21 +102,18 @@ namespace MedExam.Common.Behaviors
                 };
             wrapperWindow.Closed += handler;
 
-            if (CenterOverAssociatedObject && AssociatedObject != null)
+            if (AssociatedObject != null)
             {
-                SizeChangedEventHandler sizeHandler = null;
-                sizeHandler =
-                    (o, e) =>
-                    {
-                        wrapperWindow.SizeChanged -= sizeHandler;
+                var viewCurrent = AssociatedObject;
+                while ((viewCurrent as Window) == null)
+                {
+                    viewCurrent = (FrameworkElement)viewCurrent.Parent;
+                }
+                wrapperWindow.Owner = viewCurrent as Window;
 
-                        var view = AssociatedObject;
-                        var position = view.PointToScreen(new Point(0, 0));
-
-                        wrapperWindow.Top = position.Y + ((view.ActualHeight - wrapperWindow.ActualHeight) / 2);
-                        wrapperWindow.Left = position.X + ((view.ActualWidth - wrapperWindow.ActualWidth) / 2);
-                    };
-                wrapperWindow.SizeChanged += sizeHandler;
+                wrapperWindow.WindowStartupLocation = CenterOverAssociatedObject
+                                                      ? WindowStartupLocation.CenterOwner
+                                                      : WindowStartupLocation.CenterScreen;
             }
 
             if (IsModal)

@@ -5,40 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:prism="http://www.codeplex.com/prism"
-             xmlns:behaviors="clr-namespace:MedExam.Common.Behaviors;assembly=MedExam.Common"
              xmlns:viewModels="clr-namespace:MedExam.Patient.ViewModels"
              xmlns:views="clr-namespace:MedExam.Patient.Views"
+             xmlns:interactivity="clr-namespace:MedExam.Common.Interactivity;assembly=MedExam.Common"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance viewModels:PatientListViewModel}">
+             d:DataContext="{d:DesignInstance {x:Type viewModels:PatientListViewModel}}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonIconStyle}" />
+            <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                <Setter Property="Margin" Value="5 0" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <i:Interaction.Triggers>
         <prism:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
-            <behaviors:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
-                <behaviors:PopupWindowAction.WindowContent>
+            <interactivity:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <interactivity:PopupWindowAction.WindowContent>
                     <views:ReportListView />
-                </behaviors:PopupWindowAction.WindowContent>
-            </behaviors:PopupWindowAction>
+                </interactivity:PopupWindowAction.WindowContent>
+            </interactivity:PopupWindowAction>
         </prism:InteractionRequestTrigger>
     </i:Interaction.Triggers>
     <DockPanel>
-        <DockPanel Dock="Top" Margin="2" Height="30">
+        <DockPanel DockPanel.Dock="Top" Margin="5" Height="30">
             <Button DockPanel.Dock="Right" ToolTip="Обновить"
-                    Command="{Binding Refresh}"
-                    CommandParameter="{Binding Organizations/}">
+				Command="{Binding Refresh}"
+				CommandParameter="{Binding Organizations/}">
                 <Image Source="{StaticResource RefreshSource}" />
             </Button>
             <WrapPanel>
                 <ComboBox DockPanel.Dock="Left" ItemsSource="{Binding Organizations}" Width="400"
-                          IsSynchronizedWithCurrentItem="True" IsReadOnly="True"
-                          SelectedValuePath="Id" DisplayMemberPath="FullName"
-                          VerticalContentAlignment="Center">
-                </ComboBox>
+					IsSynchronizedWithCurrentItem="True" IsReadOnly="True"
+					SelectedValuePath="Id" DisplayMemberPath="FullName"
+					VerticalContentAlignment="Center"/>
                 <Button ToolTip="Печать отчетов" Command="{Binding PrintReports}">
                     <Image Source="{StaticResource PrinterSource}" />
                 </Button>
@@ -46,10 +52,14 @@
         </DockPanel>
         <Grid>
             <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Center"
-		             Height="20" Margin="10,10,0,0" Width="200"
-		             Name="B" Visibility="Collapsed" Foreground="Salmon"/>
+				Height="20" Margin="10,10,0,0" Width="200"
+				x:Name="B" Visibility="Collapsed" Foreground="Salmon"/>
 
-            <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" IsSynchronizedWithCurrentItem="True">
+                <DataGrid.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding SelectPatient}"
+                                  CommandParameter="{Binding Patients/}" />
+                </DataGrid.InputBindings>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
@@ -63,14 +73,15 @@
                     <DataGridTextColumn Header="Имя" Binding="{Binding PersonName.FirstName}" Width="100" />
                     <DataGridTextColumn Header="Отчество" Binding="{Binding PersonName.MiddleName}" Width="100" />
                     <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" Width="40" />
-                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate}" />
+                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" />
                     <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" />
                     <DataGridTemplateColumn Header="Полис">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate DataType="viewModels:PatientViewModel">
                                 <TextBlock DataContext="{Binding Policy}" >
-                            <Run Text="{Binding Series}"/>
-                            <Run Text="{Binding Number}"/>
+                                    <Run Text="{Binding Series}"/>
+                                    <Run Text=" "/>
+                                    <Run Text="{Binding Number}"/>
                                 </TextBlock>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
