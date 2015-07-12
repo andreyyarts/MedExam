@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Interactivity;
-using System.Windows.Navigation;
 using MedExam.Common.Windows;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 

@@ -32,12 +32,12 @@ namespace MedExam.Patient.ViewModels
                 LoadPatients((OrganizationDto)Organizations.CurrentItem);
             };
 
-            NotificationRequest = new InteractionRequest<Notification>();
+            NotificationRequest = new InteractionRequest<ReportListViewModel>();
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; private set; }
         public ICollectionView Organizations { get; private set; }
-        public InteractionRequest<Notification> NotificationRequest { get; set; }
+        public InteractionRequest<ReportListViewModel> NotificationRequest { get; set; }
 
         public ICommand Refresh
         {
@@ -70,7 +70,7 @@ namespace MedExam.Patient.ViewModels
             ShowViewNotification(new ReportListViewModel(patientIds) { Title = "Печать" });
         }
 
-        private void ShowViewNotification(Notification notification)
+        private void ShowViewNotification(ReportListViewModel notification)
         {
             NotificationRequest.Raise(notification);
         }
@@ -96,7 +96,6 @@ namespace MedExam.Patient.ViewModels
             {
                 Id = patient.Id,
                 Address = patient.Address,
-                //BirthDate = patient.BirthDate.HasValue ? patient.BirthDate.Value.ToShortDateString() : "",
                 BirthDate = patient.BirthDate,
                 PersonName = PersonNameMap(patient.PersonName),
                 Policy = patient.Policy,
