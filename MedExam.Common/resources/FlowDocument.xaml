@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Brush x:Key="DefaultBorderBrush">Black</Brush>
+
+    <Style x:Key="FlowTableCellStyle" TargetType="TableCell">
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBorderBrush}" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Padding" Value="3 2" />
+    </Style>
+    <Style x:Key="FlowHeaderRowStyle" TargetType="TableRow">
+        <Style.Resources>
+            <Style TargetType="TableCell" BasedOn="{StaticResource FlowTableCellStyle}">
+                <Setter Property="TextAlignment" Value="Center" />
+            </Style>
+        </Style.Resources>
+    </Style>
+    <Style x:Key="FlowTableStyle" TargetType="Table">
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBorderBrush}" />
+        <Setter Property="CellSpacing" Value="0" />
+        <Style.Resources>
+            <Style TargetType="TableCell" BasedOn="{StaticResource FlowTableCellStyle}" />
+        </Style.Resources>
+    </Style>
+    <ControlTemplate x:Key="ReportFieldTemplate" TargetType="ContentControl">
+        <DockPanel Margin="0 8">
+            <TextBlock Text="{TemplateBinding Tag}" Margin="5 0" />
+            <Border BorderThickness="0 0 0 1" BorderBrush="Black">
+                <TextBlock Text="{TemplateBinding Content}" FontStyle="Italic" HorizontalAlignment="Center" />
+            </Border>
+        </DockPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ReportFieldContentTemplate" TargetType="ContentControl">
+        <DockPanel Margin="0 10">
+            <TextBlock Text="{TemplateBinding Tag}" Margin="5 0" />
+            <ContentPresenter />
+        </DockPanel>
+    </ControlTemplate>
+    <Style x:Key="ReportHeaderFieldStyle" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style x:Key="ReportSectionStyle" TargetType="Section">
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+</ResourceDictionary>

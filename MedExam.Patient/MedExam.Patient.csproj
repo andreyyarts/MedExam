@@ -70,6 +70,11 @@
     <Compile Include="Dto\PatientDto.cs" />
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
+    <Compile Include="Reports\DirectionInImmunologyLaboratoryReport.xaml.cs">
+      <DependentUpon>DirectionInImmunologyLaboratoryReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ViewModels\DirectionInImmunologyLaboratoryReportViewModel.cs" />
+    <Compile Include="Reports\ViewModels\ReportFieldViewModel.cs" />
     <Compile Include="ViewModels\ReportListViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="Views\PatientListView.xaml.cs">
@@ -88,6 +93,13 @@
   </ItemGroup>
   <ItemGroup>
     <DesignData Include="SampleData\Reports.xaml">
+      <SubType>Designer</SubType>
+    </DesignData>
+    <Page Include="Reports\DirectionInImmunologyLaboratoryReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <DesignData Include="SampleData\DirectionInImmunologyLaboratoryReport.xaml">
       <SubType>Designer</SubType>
     </DesignData>
     <Page Include="Views\PatientListView.xaml">

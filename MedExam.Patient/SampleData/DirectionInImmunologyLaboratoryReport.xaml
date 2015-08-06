@@ -1,0 +1,8 @@
+﻿<viewModels:DirectionInImmunologyLaboratoryReportViewModel xmlns:viewModels="clr-namespace:MedExam.Patient.Reports.ViewModels"
+                                                           CurrentOrganizationName="ГБУЗ ТО &#171;ОКБ №1&#187;"
+                                                           CurrentDepartmentName="ОТДЕЛЕНИЕ ПРОФОСМОТРОВ"
+                                                           PatientFullName="Ivanov Sergey Igorevich"
+                                                           PatientOrganizationName="sdrhreer"
+                                                           PatientAge="21"
+                                                           DoctorNameWithInitials="Куликова Л.В.">
+</viewModels:DirectionInImmunologyLaboratoryReportViewModel>

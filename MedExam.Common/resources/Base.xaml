@@ -3,6 +3,7 @@
 
     <Thickness x:Key="DefaultPadding">15 3</Thickness>
     <Thickness x:Key="DefaultMarginAtPanel">5</Thickness>
+    <Brush x:Key="DefaultBorderBrush">Black</Brush>
 
     <Style x:Key="DefaultContentControlStyle" TargetType="{x:Type ContentControl}">
         <Setter Property="Margin" Value="{StaticResource DefaultMarginAtPanel}" />
@@ -16,6 +17,12 @@
     <Style x:Key="ButtonIconStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonBaseStyle}">
         <Setter Property="Margin" Value="5 0" />
         <Setter Property="Padding" Value="2" />
+    </Style>
+    <Style x:Key="BorderBottomLineStyle" TargetType="Border">
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
     </Style>
 
 </ResourceDictionary>
