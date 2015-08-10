@@ -1,11 +1,11 @@
-﻿namespace MedExam.Patient.Reports
+﻿namespace MedExam.Patient.Reports.Views
 {
     /// <summary>
-    /// Interaction logic for DirectionInImmunologyLaboratoryReport.xaml
+    /// Interaction logic for DirectionInImmunologyLaboratoryReportView.xaml
     /// </summary>
-    public partial class DirectionInImmunologyLaboratoryReport
+    public partial class DirectionInImmunologyLaboratoryReportView
     {
-        public DirectionInImmunologyLaboratoryReport()
+        public DirectionInImmunologyLaboratoryReportView()
         {
             InitializeComponent();
 

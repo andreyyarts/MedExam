@@ -6,6 +6,7 @@ using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Unity;
+using PrintingService;
 
 namespace MedExam
 {
@@ -19,6 +20,7 @@ namespace MedExam
 
             RegisterTypeIfMissing(typeof(ILoggerApp<>), typeof(Logger<>), false);
             RegisterTypeIfMissing(typeof(IEntitiesFactory<>), typeof(EntitiesFactory<>), true);
+            RegisterTypeIfMissing(typeof(IPrintService), typeof(PrintService), true);
         }
 
         protected override ILoggerFacade CreateLogger()

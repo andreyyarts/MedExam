@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
+using MedExam.Common.interfaces;
 using MedExam.Patient.dto;
 using MedExam.Patient.services;
 using Microsoft.Practices.Prism;
@@ -15,13 +16,15 @@ namespace MedExam.Patient.ViewModels
     public class PatientListViewModel
     {
         private readonly PatientService _patientService;
+        private readonly IPrintService _printService;
         private ICommand _refresh;
         private ICommand _printReports;
         private ICommand _selectPatient;
 
-        public PatientListViewModel(OrganizationService organizationService, PatientService patientService)
+        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService)
         {
             _patientService = patientService;
+            _printService = printService;
 
             var organizations = organizationService.GetOrganizations();
             Organizations = new ListCollectionView(organizations);
@@ -67,10 +70,10 @@ namespace MedExam.Patient.ViewModels
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
-            ShowViewNotification(new ReportListViewModel(patientIds) { Title = "Печать" });
+            ShowReports(new ReportListViewModel(_printService, patientIds) { Title = "Печать" });
         }
 
-        private void ShowViewNotification(ReportListViewModel notification)
+        private void ShowReports(ReportListViewModel notification)
         {
             NotificationRequest.Raise(notification);
         }

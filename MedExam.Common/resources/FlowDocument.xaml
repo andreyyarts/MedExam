@@ -45,5 +45,6 @@
         <Setter Property="Padding" Value="15" />
         <Setter Property="Margin" Value="0" />
     </Style>
+    <Thickness x:Key="FlowDocumentBlockPadding">15</Thickness>
 
 </ResourceDictionary>

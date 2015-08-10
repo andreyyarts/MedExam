@@ -1,9 +1,8 @@
-﻿<FlowDocumentPageViewer x:Class="MedExam.Patient.Reports.DirectionInImmunologyLaboratoryReport"
+﻿<FlowDocumentPageViewer x:Class="MedExam.Patient.Reports.Views.DirectionInImmunologyLaboratoryReportView"
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                        xmlns:viewModels="clr-namespace:MedExam.Patient.Reports.ViewModels"
                         mc:Ignorable="d" 
                         d:DesignWidth="400"
                         d:DesignHeight="560"
@@ -18,7 +17,7 @@
 
         </FlowDocument.Resources>
 
-        <Section x:Name="ReportSection" Style="{StaticResource ReportSectionStyle}">
+        <Section Style="{StaticResource ReportSectionStyle}">
 
             <BlockUIContainer Margin="0 30">
                 <StackPanel>

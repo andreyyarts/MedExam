@@ -203,6 +203,10 @@
       <Project>{78070BAE-C90E-44FB-B344-5732699D2EC0}</Project>
       <Name>MedExam.Patient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\PrintingService\PrintingService.csproj">
+      <Project>{0D7B1532-AA48-4229-BE0B-FC06A8479210}</Project>
+      <Name>PrintingService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

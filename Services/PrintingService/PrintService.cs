@@ -6,16 +6,9 @@ using MedExam.Common.interfaces;
 
 namespace PrintingService
 {
-    public class PrintService
+    public class PrintService : IPrintService
     {
-        private readonly string _printerName;
-
-        public PrintService(string printerName = "")
-        {
-            _printerName = printerName;
-        }
-
-        public void PrintDocument(IEnumerable<IReportFlow> reports, bool withShowDialog = false)
+        public void PrintDocument(IEnumerable<IReportFlow> reports, bool withShowDialog = false, string printerName = "")
         {
             var dialog = new PrintDialog();
             if (withShowDialog)
@@ -23,9 +16,9 @@ namespace PrintingService
                 if (dialog.ShowDialog() != true)
                     return;
             }
-            else if (!string.IsNullOrEmpty(_printerName))
+            else if (!string.IsNullOrEmpty(printerName))
             {
-                dialog.PrintQueue = new PrintQueue(new LocalPrintServer(), _printerName);
+                dialog.PrintQueue = new PrintQueue(new LocalPrintServer(), printerName);
             }
 
             var document = new CompositeFlowDocument(reports);

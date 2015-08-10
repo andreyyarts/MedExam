@@ -4,8 +4,8 @@ namespace MedExam.Common.interfaces
 {
     public interface IReportFlow
     {
-        int CountAtWidth { get; }
-        int CountAtHeight { get; }
+        int CountInWidth { get; }
+        int CountInHeight { get; }
         Block Report { get; }
     }
 }

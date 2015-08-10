@@ -31,7 +31,7 @@
         <StackPanel Grid.Row="1">
             <CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />
             <DockPanel HorizontalAlignment="Center">
-                <Button Content="Печать" />
+                <Button Content="Печать" Command="{Binding PrintReports}" />
                 <Button Content="Отмена" />
             </DockPanel>
         </StackPanel>

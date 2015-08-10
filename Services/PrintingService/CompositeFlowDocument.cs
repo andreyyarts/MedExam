@@ -25,7 +25,7 @@ namespace PrintingService
             };
 
             paragraph.Inlines.AddRange(reports
-                                    .OrderBy(r => r.CountAtWidth).ThenBy(r => r.CountAtHeight)
+                                    .OrderBy(r => r.CountInWidth).ThenBy(r => r.CountInHeight)
                                     .Select(DataToInline));
 
             Blocks.Add(paragraph);
@@ -36,8 +36,8 @@ namespace PrintingService
             return new Figure(report.Report)
             {
                 HorizontalAnchor = FigureHorizontalAnchor.PageLeft,
-                Width = new FigureLength(Math.Truncate(PageWidth) / report.CountAtWidth),
-                Height = new FigureLength(Math.Truncate(PageHeight) / report.CountAtHeight),
+                Width = new FigureLength(Math.Truncate(PageWidth) / report.CountInWidth),
+                Height = new FigureLength(Math.Truncate(PageHeight) / report.CountInHeight),
                 Padding = new Thickness(0),
                 Margin = new Thickness(0)
             };
