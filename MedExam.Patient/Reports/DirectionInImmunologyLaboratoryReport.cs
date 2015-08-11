@@ -28,9 +28,14 @@ namespace MedExam.Patient.Reports
         {
             get
             {
-                var view = new DirectionInImmunologyLaboratoryReportView { DataContext = _data };
-                return view.FlowDocument.Blocks.FirstBlock;
+                var view = new DirectionInImmunologyLaboratoryReportView();
+                return view.ReportSection;
             }
+        }
+
+        public object Data
+        {
+            get { return _data; }
         }
     }
 }

@@ -33,7 +33,7 @@ namespace PrintingService
 
         private Figure DataToInline(IReportFlow report)
         {
-            return new Figure(report.Report)
+            return new Figure(GetReportWithFillData(report))
             {
                 HorizontalAnchor = FigureHorizontalAnchor.PageLeft,
                 Width = new FigureLength(Math.Truncate(PageWidth) / report.CountInWidth),
@@ -41,6 +41,13 @@ namespace PrintingService
                 Padding = new Thickness(0),
                 Margin = new Thickness(0)
             };
+        }
+
+        private static Block GetReportWithFillData(IReportFlow report)
+        {
+            var block = report.Report;
+            block.DataContext = report.Data;
+            return block;
         }
     }
 }

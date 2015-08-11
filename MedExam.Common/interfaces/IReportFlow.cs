@@ -7,5 +7,6 @@ namespace MedExam.Common.interfaces
         int CountInWidth { get; }
         int CountInHeight { get; }
         Block Report { get; }
+        object Data { get; }
     }
 }

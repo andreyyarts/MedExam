@@ -7,17 +7,16 @@
                         d:DesignWidth="400"
                         d:DesignHeight="560"
                         d:DataContext="{d:DesignData Source=SampleData/DirectionInImmunologyLaboratoryReport.xaml}">
-    <FlowDocument x:Name="FlowDocument" FontFamily="Arial">
+    <FlowDocument>
         <FlowDocument.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
-
         </FlowDocument.Resources>
 
-        <Section Style="{StaticResource ReportSectionStyle}">
+        <Section x:Name="ReportSection" Style="{StaticResource ReportSectionStyle}">
 
             <BlockUIContainer Margin="0 30">
                 <StackPanel>

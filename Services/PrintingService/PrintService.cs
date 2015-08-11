@@ -8,7 +8,7 @@ namespace PrintingService
 {
     public class PrintService : IPrintService
     {
-        public void PrintDocument(IEnumerable<IReportFlow> reports, bool withShowDialog = false, string printerName = "")
+        public void PrintDocuments(IEnumerable<IReportFlow> reports, bool withShowDialog = false, string printerName = "")
         {
             var dialog = new PrintDialog();
             if (withShowDialog)

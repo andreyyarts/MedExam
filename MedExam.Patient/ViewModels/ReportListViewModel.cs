@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Windows.Input;
 using MedExam.Common;
 using MedExam.Common.interfaces;
@@ -11,6 +10,8 @@ namespace MedExam.Patient.ViewModels
 {
     public class ReportListViewModel : ItemsNotification<long>
     {
+        private const string Laquo = "\u00AB";
+        private const string Raquo = "\u00BB";
         private readonly IPrintService _printService;
         private ICommand _printReports;
 
@@ -35,14 +36,15 @@ namespace MedExam.Patient.ViewModels
 
         private void OnPrintReports()
         {
-            _printService.PrintDocument(new[]
+
+            var reportData = new DirectionInImmunologyLaboratoryReportViewModel
             {
-                new DirectionInImmunologyLaboratoryReport(new DirectionInImmunologyLaboratoryReportViewModel
-                {
-                    CurrentOrganizationName = "ГБУЗ ТО &#171;ОКБ №1&#187;",
-                    CurrentDepartmentName = "ОТДЕЛЕНИЕ ПРОФОСМОТРОВ"
-                })
-            });
+                CurrentOrganizationName = string.Concat("ГБУЗ ТО ", Laquo, "ОКБ №1", Raquo),
+                CurrentDepartmentName = "ОТДЕЛЕНИЕ ПРОФОСМОТРОВ"
+            };
+            _printService.PrintDocuments(new[] { new DirectionInImmunologyLaboratoryReport(reportData) });
+
+
         }
     }
 }
