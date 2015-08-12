@@ -1,3 +1,4 @@
+using MedExam.Common.interfaces;
 using Microsoft.Practices.Prism.ViewModel;
 
 namespace MedExam.Patient.ViewModels
@@ -7,21 +8,17 @@ namespace MedExam.Patient.ViewModels
         private string _title;
         private bool _isSelected;
 
-        public ReportViewModel(string name, string title)
+        public ReportViewModel(IReportFlow report, string title = null)
         {
-            _title = title;
-            Name = name;
-        }
-
-        public ReportViewModel(string name):this(name, name)
-        {
+            _title = title ?? report.Title;
+            Report = report;
         }
 
         public ReportViewModel()
         {
         }
 
-        public string Name { get; private set; }
+        public IReportFlow Report { get; private set; }
 
         public string Title
         {

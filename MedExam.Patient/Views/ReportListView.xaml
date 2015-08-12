@@ -15,7 +15,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
+
             <DataTemplate x:Key="ReportTemplate" DataType="viewModels:ReportViewModel">
                 <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Title}"
                           Margin="5 0 0 0" Padding="5 0" />
@@ -32,7 +32,7 @@
             <CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />
             <DockPanel HorizontalAlignment="Center">
                 <Button Content="Печать" Command="{Binding PrintReports}" />
-                <Button Content="Отмена" />
+                <Button Content="Отмена" IsCancel="True" />
             </DockPanel>
         </StackPanel>
     </Grid>

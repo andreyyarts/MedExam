@@ -1,4 +1,6 @@
-﻿using System.Windows.Documents;
+﻿using System.Linq;
+using System.Windows.Documents;
+using MedExam.Common;
 using MedExam.Common.interfaces;
 using MedExam.Patient.Reports.ViewModels;
 using MedExam.Patient.Reports.Views;
@@ -7,11 +9,16 @@ namespace MedExam.Patient.Reports
 {
     public class DirectionInImmunologyLaboratoryReport : IReportFlow
     {
-        private readonly DirectionInImmunologyLaboratoryReportViewModel _data;
+        private readonly long[] _patientIds;
 
-        public DirectionInImmunologyLaboratoryReport(DirectionInImmunologyLaboratoryReportViewModel data)
+        public DirectionInImmunologyLaboratoryReport(long[] patientIds)
         {
-            _data = data;
+            _patientIds = patientIds;
+        }
+
+        public string Title
+        {
+            get { return "Направление в иммунологическую лабораторию"; }
         }
 
         public int CountInWidth
@@ -33,9 +40,18 @@ namespace MedExam.Patient.Reports
             }
         }
 
-        public object Data
+        public object[] Datas
         {
-            get { return _data; }
+            get
+            {
+                var datas = _patientIds.Select(pId => new DirectionInImmunologyLaboratoryReportViewModel
+                {
+                    CurrentOrganizationName = string.Concat("ГБУЗ ТО ", SpecialChars.Laquo, "ОКБ №1", SpecialChars.Raquo),
+                    CurrentDepartmentName = "ОТДЕЛЕНИЕ ПРОФОСМОТРОВ",
+                    PatientFullName = "patient " + pId
+                }).Cast<object>().ToArray();
+                return datas;
+            }
         }
     }
 }
