@@ -35,7 +35,7 @@ namespace MedExam.Patient.ViewModels
 
         private void OnPrintReports()
         {
-            _printService.PrintDocuments(Reports.Select(r => r.Report));
+            _printService.PrintDocuments(Reports.Where(r => r.IsSelected).Select(r => r.Report));
         }
     }
 }

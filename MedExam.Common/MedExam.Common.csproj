@@ -57,6 +57,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormatSizes.cs" />
     <Compile Include="Interactivity\PopupWindowAction.cs" />
     <Compile Include="Interfaces\IEntitiesFactory.cs" />
     <Compile Include="Interactivity\IInteractionRequestAware.cs" />

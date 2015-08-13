@@ -36,7 +36,7 @@ namespace MedExam.Patient.Reports
             get
             {
                 var view = new DirectionInImmunologyLaboratoryReportView();
-                return view.ReportSection;
+                return view.ReportBlock;
             }
         }
 

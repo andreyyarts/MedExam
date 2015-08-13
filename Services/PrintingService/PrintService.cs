@@ -21,7 +21,7 @@ namespace PrintingService
                 dialog.PrintQueue = new PrintQueue(new LocalPrintServer(), printerName);
             }
 
-            var document = new CompositeFlowDocument(reports);
+            var document = new CompositionReportsOnFlowDocument(reports);
 
             dialog.PrintDocument(((IDocumentPaginatorSource)document).DocumentPaginator, "Flow Document");
         }

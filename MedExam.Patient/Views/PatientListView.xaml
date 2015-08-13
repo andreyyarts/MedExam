@@ -45,7 +45,7 @@
 					IsSynchronizedWithCurrentItem="True" IsReadOnly="True"
 					SelectedValuePath="Id" DisplayMemberPath="FullName"
 					VerticalContentAlignment="Center"/>
-                <Button ToolTip="Печать отчетов" Command="{Binding PrintReports}">
+                <Button ToolTip="Печать отчетов" Command="{Binding PrintReports, UpdateSourceTrigger=PropertyChanged}">
                     <Image Source="{StaticResource PrinterSource}" />
                 </Button>
             </WrapPanel>

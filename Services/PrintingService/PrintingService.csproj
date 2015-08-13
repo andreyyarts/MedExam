@@ -42,7 +42,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeFlowDocument.cs" />
+    <Compile Include="CompositionReportsOnFlowDocument.cs" />
     <Compile Include="PrintService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

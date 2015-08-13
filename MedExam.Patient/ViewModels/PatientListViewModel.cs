@@ -7,6 +7,7 @@ using System.Windows.Input;
 using MedExam.Common.interfaces;
 using MedExam.Patient.dto;
 using MedExam.Patient.services;
+using Microsoft.Practices.ObjectBuilder2;
 using Microsoft.Practices.Prism;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
@@ -35,12 +36,28 @@ namespace MedExam.Patient.ViewModels
                 LoadPatients((OrganizationDto)Organizations.CurrentItem);
             };
 
+            CanPrintReports = new ObservableObject<bool>();
+            Patients.ForEach(p => p.PropertyChanged += (sender, args) =>
+            {
+                if (args.PropertyName == "IsSelected")
+                {
+                    //_printReports.CanExecute(new object());
+                    CanPrintReports.Value = Patients.Any(c => c.IsSelected);
+                }
+            });
+            _printReports = new DelegateCommand(OnPrintReports, () => CanPrintReports.Value);
             NotificationRequest = new InteractionRequest<ReportListViewModel>();
+        }
+
+        void _printReports_CanExecuteChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; private set; }
         public ICollectionView Organizations { get; private set; }
-        public InteractionRequest<ReportListViewModel> NotificationRequest { get; set; }
+        public InteractionRequest<ReportListViewModel> NotificationRequest { get; private set; }
+        private ObservableObject<bool> CanPrintReports { get; set; }
 
         public ICommand Refresh
         {
@@ -49,7 +66,7 @@ namespace MedExam.Patient.ViewModels
 
         public ICommand PrintReports
         {
-            get { return _printReports ?? (_printReports = new DelegateCommand(OnPrintReports)); }
+            get { return _printReports; }
         }
 
         public ICommand SelectPatient

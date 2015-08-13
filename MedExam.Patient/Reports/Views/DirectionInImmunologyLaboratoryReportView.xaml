@@ -3,9 +3,10 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                        mc:Ignorable="d" 
-                        d:DesignWidth="397"
-                        d:DesignHeight="560"
+                        xmlns:common="clr-namespace:MedExam.Common;assembly=MedExam.Common"
+                        mc:Ignorable="d"
+                        d:DesignWidth="{Binding Width, Source={x:Static common:FormatSizes.QuarterA4}}"
+                        d:DesignHeight="{Binding Height, Source={x:Static common:FormatSizes.QuarterA4}}"
                         d:DataContext="{d:DesignData Source=SampleData/DirectionInImmunologyLaboratoryReport.xaml}">
     <FlowDocument>
         <FlowDocument.Resources>
@@ -16,52 +17,51 @@
             </ResourceDictionary>
         </FlowDocument.Resources>
 
-        <Section  >
-
-            <BlockUIContainer x:Name="ReportSection" FontFamily="Arial">
-                <StackPanel Margin="15 30">
-                    <StackPanel Margin="0 10" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding CurrentOrganizationName}" Style="{StaticResource ReportHeaderFieldStyle}" />
-                        <TextBlock Text="{Binding CurrentDepartmentName}" Style="{StaticResource ReportHeaderFieldStyle}" 
+        <!--<Section >-->
+        <Paragraph x:Name="ReportBlock" Style="{StaticResource RootParagraphStyle}">
+            <StackPanel Margin="0 30">
+                <StackPanel Margin="0 10" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding CurrentOrganizationName}" Style="{StaticResource ReportHeaderFieldStyle}" />
+                    <TextBlock Text="{Binding CurrentDepartmentName}" Style="{StaticResource ReportHeaderFieldStyle}" 
                                    FontStyle="Italic"/>
-                        <TextBlock Margin="0 18" Style="{StaticResource ReportHeaderFieldStyle}">
+                    <TextBlock Margin="0 18" Style="{StaticResource ReportHeaderFieldStyle}">
                             НАПРАВЛЕНИЕ<LineBreak />
                             в иммунологическую лабораторию
-                        </TextBlock>
-                    </StackPanel>
-                    <ContentControl Template="{StaticResource ReportFieldTemplate}"
+                    </TextBlock>
+                </StackPanel>
+                <ContentControl Template="{StaticResource ReportFieldTemplate}"
                                     Tag="Ф.И.О."
                                     Content="{Binding PatientFullName}" />
-                    <ContentControl Template="{StaticResource ReportFieldTemplate}"
+                <ContentControl Template="{StaticResource ReportFieldTemplate}"
                                     Tag="Организация"
                                     Content="{Binding PatientOrganizationName}" />
-                    <ContentControl Template="{StaticResource ReportFieldTemplate}"
+                <ContentControl Template="{StaticResource ReportFieldTemplate}"
                                     Tag="Возраст"
                                     Content="{Binding PatientAge}" />
-                    <ContentControl Template="{StaticResource ReportFieldTemplate}"
+                <ContentControl Template="{StaticResource ReportFieldTemplate}"
                                     Tag="Диагноз:"
                                     Content="обследование" />
 
-                    <TextBlock Margin="0 24" Style="{StaticResource ReportHeaderFieldStyle}">
+                <TextBlock Margin="0 24" Style="{StaticResource ReportHeaderFieldStyle}">
                             Анализ крови: РПГА на брюшной тиф
-                    </TextBlock>
+                </TextBlock>
 
-                    <StackPanel Margin="0 0 60 0">
-                        <ContentControl Template="{StaticResource ReportFieldContentTemplate}"
+                <StackPanel Margin="0 0 60 0">
+                    <ContentControl Template="{StaticResource ReportFieldContentTemplate}"
                                     Tag="Дата">
-                            <TextBlock>&#171;<Border Width="25" Style="{StaticResource BorderBottomLineStyle}" />&#187;
+                        <TextBlock>&#171;<Border Width="25" Style="{StaticResource BorderBottomLineStyle}" />&#187;
                             <Border Width="120" Style="{StaticResource BorderBottomLineStyle}" />
                             20 <Border Width="20" Style="{StaticResource BorderBottomLineStyle}" /> г.
-                            </TextBlock>
-                        </ContentControl>
-                        <ContentControl Template="{StaticResource ReportFieldTemplate}"
+                        </TextBlock>
+                    </ContentControl>
+                    <ContentControl Template="{StaticResource ReportFieldTemplate}"
                                         Tag="Врач"
                                         Content="{Binding DoctorNameWithInitials}" />
-                        <ContentControl Template="{StaticResource ReportFieldTemplate}"
+                    <ContentControl Template="{StaticResource ReportFieldTemplate}"
                                         Tag="M/c" />
-                    </StackPanel>
                 </StackPanel>
-            </BlockUIContainer>
-        </Section>
+            </StackPanel>
+        </Paragraph>
+        <!--</Section>-->
     </FlowDocument>
 </FlowDocumentPageViewer>
