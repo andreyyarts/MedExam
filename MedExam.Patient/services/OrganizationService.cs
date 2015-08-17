@@ -16,7 +16,7 @@ namespace MedExam.Patient.services
             _entitiesFactory = entitiesFactory;
         }
 
-        public OrganizationDto[] GetOrganizations()
+        public OrganizationDto[] GetAllOrganizations()
         {
             using (var db = _entitiesFactory.GetDbContext())
             {

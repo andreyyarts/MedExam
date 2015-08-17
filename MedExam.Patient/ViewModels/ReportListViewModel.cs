@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Windows.Input;
 using MedExam.Common;
 using MedExam.Common.interfaces;
 using MedExam.Patient.Reports;
+using Microsoft.Practices.ObjectBuilder2;
 using Microsoft.Practices.Prism.Commands;
 
 namespace MedExam.Patient.ViewModels
@@ -11,7 +12,8 @@ namespace MedExam.Patient.ViewModels
     public class ReportListViewModel : ItemsNotification<long>
     {
         private readonly IPrintService _printService;
-        private ICommand _printReports;
+
+        public ReportListViewModel() : base(new long[0]) { }
 
         public ReportListViewModel(IPrintService printService, long[] items)
             : base(items)
@@ -22,20 +24,32 @@ namespace MedExam.Patient.ViewModels
             {
                 new ReportViewModel(new DirectionInImmunologyLaboratoryReport(items))
             }).ToArray();
+
+            PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
+
+            Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);
         }
 
-        public ReportListViewModel() : base(new long[0]) { }
-
-        public ICommand PrintReports
-        {
-            get { return _printReports ?? (_printReports = new DelegateCommand(OnPrintReports)); }
-        }
-
+        public DelegateCommand PrintReports { get; set; }
         public ReportViewModel[] Reports { get; set; }
+
+        private void ReportIsSelectedPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsSelected")
+            {
+                PrintReports.RaiseCanExecuteChanged();
+            }
+        }
+
+        private bool CanPrintReports()
+        {
+            return Reports.Any(r => r.IsSelected);
+        }
 
         private void OnPrintReports()
         {
-            _printService.PrintDocuments(Reports.Where(r => r.IsSelected).Select(r => r.Report));
+            var reports = Reports.Where(r => r.IsSelected).Select(r => r.Report).ToArray();
+            _printService.PrintDocuments(reports);
         }
     }
 }

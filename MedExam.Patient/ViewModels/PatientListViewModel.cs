@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
@@ -19,59 +20,52 @@ namespace MedExam.Patient.ViewModels
         private readonly PatientService _patientService;
         private readonly IPrintService _printService;
         private ICommand _refresh;
-        private ICommand _printReports;
-        private ICommand _selectPatient;
 
         public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService)
         {
             _patientService = patientService;
             _printService = printService;
 
-            var organizations = organizationService.GetOrganizations();
+            var organizations = organizationService.GetAllOrganizations();
             Organizations = new ListCollectionView(organizations);
             Patients = new ObservableCollection<PatientViewModel>();
-
+            
             Organizations.CurrentChanged += (sender, args) =>
             {
                 LoadPatients((OrganizationDto)Organizations.CurrentItem);
             };
 
-            CanPrintReports = new ObservableObject<bool>();
-            Patients.ForEach(p => p.PropertyChanged += (sender, args) =>
+            SelectPatient = new DelegateCommand<PatientViewModel>(OnSelectPatient);
+            PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
+            Patients.CollectionChanged += (sender, args) =>
             {
-                if (args.PropertyName == "IsSelected")
+                switch (args.Action)
                 {
-                    //_printReports.CanExecute(new object());
-                    CanPrintReports.Value = Patients.Any(c => c.IsSelected);
-                }
-            });
-            _printReports = new DelegateCommand(OnPrintReports, () => CanPrintReports.Value);
-            NotificationRequest = new InteractionRequest<ReportListViewModel>();
-        }
+                    case NotifyCollectionChangedAction.Add:
+                        args.NewItems.OfType<PatientViewModel>().ForEach(p => p.PropertyChanged += PatientIsSelectedPropertyChanged);
+                        break;
+                    case NotifyCollectionChangedAction.Reset:
+                        if (args.OldItems == null)
+                            break;
 
-        void _printReports_CanExecuteChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+                        args.OldItems.OfType<PatientViewModel>().ForEach(p => p.PropertyChanged -= PatientIsSelectedPropertyChanged);
+                        PrintReports.RaiseCanExecuteChanged();
+                        break;
+                }
+            };
+            
+            NotificationRequest = new InteractionRequest<ReportListViewModel>();
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; private set; }
         public ICollectionView Organizations { get; private set; }
         public InteractionRequest<ReportListViewModel> NotificationRequest { get; private set; }
-        private ObservableObject<bool> CanPrintReports { get; set; }
+        public DelegateCommand PrintReports { get; private set; }
+        public DelegateCommand<PatientViewModel> SelectPatient { get; private set; }
 
         public ICommand Refresh
         {
             get { return _refresh ?? (_refresh = new DelegateCommand<OrganizationDto>(OnRefresh)); }
-        }
-
-        public ICommand PrintReports
-        {
-            get { return _printReports; }
-        }
-
-        public ICommand SelectPatient
-        {
-            get { return _selectPatient ?? (_selectPatient = new DelegateCommand<PatientViewModel>(OnSelectPatient)); }
         }
 
         private void OnSelectPatient(PatientViewModel patient)
@@ -83,11 +77,24 @@ namespace MedExam.Patient.ViewModels
             selectPatient.IsSelected = !selectPatient.IsSelected;
         }
 
+        private void PatientIsSelectedPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsSelected")
+            {
+                PrintReports.RaiseCanExecuteChanged();
+            }
+        }
+
         private void OnPrintReports()
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
             ShowReports(new ReportListViewModel(_printService, patientIds) { Title = "Печать" });
+        }
+
+        private bool CanPrintReports()
+        {
+            return Patients.Any(c => c.IsSelected);
         }
 
         private void ShowReports(ReportListViewModel notification)

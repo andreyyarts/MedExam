@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:MedExam.Patient.ViewModels"
+             xmlns:behaviors="clr-namespace:MedExam.Common.Behaviors;assembly=MedExam.Common"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="250"
              MinHeight="200" MinWidth="250"
@@ -31,7 +32,7 @@
         <StackPanel Grid.Row="1">
             <CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />
             <DockPanel HorizontalAlignment="Center">
-                <Button Content="Печать" Command="{Binding PrintReports}" />
+                <Button Content="Печать" Command="{Binding PrintReports}" behaviors:CloseOnClickBehaviour.IsEnabled="True" />
                 <Button Content="Отмена" IsCancel="True" />
             </DockPanel>
         </StackPanel>
