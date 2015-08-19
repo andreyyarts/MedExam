@@ -27,7 +27,8 @@
         <DockPanel Margin="0 8">
             <TextBlock Text="{TemplateBinding Tag}" Margin="5 0" />
             <Border BorderThickness="0 0 0 1" BorderBrush="Black">
-                <TextBlock Text="{TemplateBinding Content}" FontStyle="Italic" HorizontalAlignment="Center" />
+                <TextBlock Text="{TemplateBinding Content}" FontStyle="Italic" FontSize="14"
+                           HorizontalAlignment="Center" />
             </Border>
         </DockPanel>
     </ControlTemplate>

@@ -19,12 +19,14 @@ namespace MedExam.Patient.ViewModels
     {
         private readonly PatientService _patientService;
         private readonly IPrintService _printService;
+        private readonly PatientReportService _patientReportService;
         private ICommand _refresh;
 
-        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService)
+        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService, PatientReportService patientReportService)
         {
             _patientService = patientService;
             _printService = printService;
+            _patientReportService = patientReportService;
 
             var organizations = organizationService.GetAllOrganizations();
             Organizations = new ListCollectionView(organizations);
@@ -89,7 +91,7 @@ namespace MedExam.Patient.ViewModels
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
-            ShowReports(new ReportListViewModel(_printService, patientIds) { Title = "Печать" });
+            ShowReports(new ReportListViewModel(_printService, _patientReportService, patientIds) { Title = "Печать" });
         }
 
         private bool CanPrintReports()
@@ -125,20 +127,18 @@ namespace MedExam.Patient.ViewModels
                 Address = patient.Address,
                 BirthDate = patient.BirthDate,
                 PersonName = PersonNameMap(patient.PersonName),
-                Policy = patient.Policy,
-                Gender = patient.Gender == Gender.Female ? "Ж" : "М"
+                PolicyDto = patient.PolicyDto,
+                Gender = patient.Gender.Text()
             };
         }
 
         private static PersonName PersonNameMap(PersonNameDto name)
         {
-            var names = !string.IsNullOrEmpty(name.FirstNameAndMiddleName) ? name.FirstNameAndMiddleName.Split(' ', '.', ',') : new string[0];
-
             return new PersonName
             {
                 LastName = name.LastName,
-                FirstName = names.Length > 0 ? names[0] : "",
-                MiddleName = names.Length > 1 ? names[1] : ""
+                FirstName = name.FirstName,
+                MiddleName = name.MiddleName
             };
         }
     }

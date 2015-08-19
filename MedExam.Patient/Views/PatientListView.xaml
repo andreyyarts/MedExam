@@ -78,7 +78,7 @@
                     <DataGridTemplateColumn Header="Полис">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate DataType="viewModels:PatientViewModel">
-                                <TextBlock DataContext="{Binding Policy}" >
+                                <TextBlock DataContext="{Binding PolicyDto}" >
                                     <Run Text="{Binding Series}"/>
                                     <Run Text=" "/>
                                     <Run Text="{Binding Number}"/>

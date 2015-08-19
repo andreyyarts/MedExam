@@ -69,6 +69,7 @@
     <Compile Include="Dto\Gender.cs" />
     <Compile Include="Dto\OrganizationDto.cs" />
     <Compile Include="Dto\PatientDto.cs" />
+    <Compile Include="Dto\PatientReportDto.cs" />
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
     <Compile Include="Reports\DirectionInImmunologyLaboratoryReport.cs" />
@@ -77,6 +78,7 @@
     </Compile>
     <Compile Include="Reports\ViewModels\DirectionInImmunologyLaboratoryReportViewModel.cs" />
     <Compile Include="Reports\ViewModels\ReportFieldViewModel.cs" />
+    <Compile Include="Services\PatientReportService.cs" />
     <Compile Include="ViewModels\ReportListViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="Views\PatientListView.xaml.cs">
@@ -88,7 +90,7 @@
     <Compile Include="ViewModels\PatientListViewModel.cs" />
     <Compile Include="ViewModels\PatientViewModel.cs" />
     <Compile Include="ViewModels\PersonName.cs" />
-    <Compile Include="Dto\Policy.cs" />
+    <Compile Include="Dto\PolicyDto.cs" />
     <Compile Include="Views\ReportListView.xaml.cs">
       <DependentUpon>ReportListView.xaml</DependentUpon>
     </Compile>

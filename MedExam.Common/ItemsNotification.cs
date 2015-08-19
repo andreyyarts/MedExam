@@ -4,11 +4,11 @@ namespace MedExam.Common
 {
     public class ItemsNotification<T> : Notification
     {
-        public ItemsNotification(T[] items)
+        protected ItemsNotification(T[] items)
         {
             Items = items;
         }
 
-        public T[] Items { get; private set; }
+        private T[] Items { get; set; }
     }
 }

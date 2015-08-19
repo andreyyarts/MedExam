@@ -4,7 +4,7 @@ using System.Linq;
 using MedExam.Common;
 using MedExam.Common.interfaces;
 using MedExam.Patient.Reports;
-using Microsoft.Practices.ObjectBuilder2;
+using MedExam.Patient.services;
 using Microsoft.Practices.Prism.Commands;
 
 namespace MedExam.Patient.ViewModels
@@ -13,25 +13,24 @@ namespace MedExam.Patient.ViewModels
     {
         private readonly IPrintService _printService;
 
-        public ReportListViewModel() : base(new long[0]) { }
-
-        public ReportListViewModel(IPrintService printService, long[] items)
+        public ReportListViewModel(IPrintService printService, PatientReportService patientReportService, long[] items)
             : base(items)
         {
             _printService = printService;
 
             Reports = new List<ReportViewModel>(new[]
             {
-                new ReportViewModel(new DirectionInImmunologyLaboratoryReport(items))
-            }).ToArray();
-
-            PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
+                new ReportViewModel(new DirectionInImmunologyLaboratoryReport(patientReportService, items))
+            });
 
             Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);
+            PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
         }
 
+        public ReportListViewModel() : base(new long[0]) { }
+
         public DelegateCommand PrintReports { get; set; }
-        public ReportViewModel[] Reports { get; set; }
+        public List<ReportViewModel> Reports { get; set; }
 
         private void ReportIsSelectedPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -48,8 +47,8 @@ namespace MedExam.Patient.ViewModels
 
         private void OnPrintReports()
         {
-            var reports = Reports.Where(r => r.IsSelected).Select(r => r.Report).ToArray();
-            _printService.PrintDocuments(reports);
+            var reports = Reports.Where(r => r.IsSelected).Select(r => r.Report);
+            _printService.PrintDocuments(reports.ToArray());
         }
     }
 }

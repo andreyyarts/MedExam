@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using MedExam.Common.interfaces;
@@ -7,50 +8,37 @@ using MedExam.Patient.Entities;
 
 namespace MedExam.Patient.services
 {
-    public class PatientService
+    public class PatientReportService
     {
         private readonly IEntitiesFactory<MedExamEntities> _entitiesFactory;
 
-        public PatientService(IEntitiesFactory<MedExamEntities> entitiesFactory)
+        public PatientReportService(IEntitiesFactory<MedExamEntities> entitiesFactory)
         {
             _entitiesFactory = entitiesFactory;
         }
 
-        public PatientDto[] GetAllPatients()
+        public PatientReportDto GetPatientById(int patientId)
         {
             using (var db = _entitiesFactory.GetDbContext())
             {
-                var patients = db.pacient
-                    .OrderByDescending(p => p.num_pac)
+                var patient = db.pacient
+                    .Where(p => p.num_pac == patientId)
+                    .Include(p => p.organization)
                     .Select(PatientMap())
-                    .ToArray();
+                    .FirstOrDefault();
 
-                return patients;
+                return patient;
             }
         }
 
-        public PatientDto[] GetPatientsByOrganizationId(int organizationId)
+        private static Expression<Func<pacient, PatientReportDto>> PatientMap()
         {
-            using (var db = _entitiesFactory.GetDbContext())
-            {
-                var patients = db.pacient
-                    .Where(p => p.num_org == organizationId)
-                    .OrderByDescending(p => p.num_pac)
-                    .Select(PatientMap())
-                    .ToArray();
-
-                return patients;
-            }
-        }
-
-        private static Expression<Func<pacient, PatientDto>> PatientMap()
-        {
-            return patient => new PatientDto
+            return patient => new PatientReportDto
             {
                 Id = patient.num_pac,
                 Address = patient.address,
                 BirthDate = patient.data_birth,
-                Gender = patient.pol == "М" ? Gender.Male : Gender.Female,
+                Gender = patient.pol == "�" ? Gender.Male : Gender.Female,
                 PersonName = new PersonNameDto
                 {
                     LastName = patient.fam_pac,
@@ -61,7 +49,8 @@ namespace MedExam.Patient.services
                     Series = patient.polic_ser,
                     Number = patient.polic_nom,
                     DateFrom = patient.polic
-                }
+                },
+                OrganizationName = patient.organization.name_org2
             };
         }
     }

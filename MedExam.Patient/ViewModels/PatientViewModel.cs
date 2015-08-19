@@ -11,7 +11,7 @@ namespace MedExam.Patient.ViewModels
         public PersonName PersonName { get; set; }
         public DateTime? BirthDate { get; set; }
         public string Address { get; set; }
-        public Policy Policy { get; set; }
+        public PolicyDto PolicyDto { get; set; }
         public string Gender { get; set; }
 
         public bool IsSelected
