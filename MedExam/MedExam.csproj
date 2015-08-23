@@ -224,7 +224,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AppSettings.xml" />
+    <Resource Include="LocalSettings.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="hospital.ico" />

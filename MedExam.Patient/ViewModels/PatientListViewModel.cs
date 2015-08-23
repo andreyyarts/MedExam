@@ -20,15 +20,17 @@ namespace MedExam.Patient.ViewModels
         private readonly PatientService _patientService;
         private readonly IPrintService _printService;
         private readonly PatientReportService _patientReportService;
+        private readonly SystemService _systemService;
         private ICommand _refresh;
 
-        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService, PatientReportService patientReportService)
+        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService, PatientReportService patientReportService, SystemService systemService)
         {
             _patientService = patientService;
             _printService = printService;
             _patientReportService = patientReportService;
+            _systemService = systemService;
 
-            var organizations = organizationService.GetAllOrganizations();
+            var organizations = organizationService.LoadAllOrganizations();
             Organizations = new ListCollectionView(organizations);
             Patients = new ObservableCollection<PatientViewModel>();
             
@@ -91,7 +93,7 @@ namespace MedExam.Patient.ViewModels
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
-            ShowReports(new ReportListViewModel(_printService, _patientReportService, patientIds) { Title = "Печать" });
+            ShowReports(new ReportListViewModel(_printService, _patientReportService, _systemService, patientIds) { Title = "Печать" });
         }
 
         private bool CanPrintReports()
@@ -115,7 +117,7 @@ namespace MedExam.Patient.ViewModels
                 throw new NullReferenceException("organization cannot be null");
 
             Patients.Clear();
-            var patients = _patientService.GetPatientsByOrganizationId(organization.Id);
+            var patients = _patientService.LoadPatientsByOrganizationId(organization.Id);
             Patients.AddRange(patients.Select(PatientDtoMap));
         }
 

@@ -8,12 +8,12 @@ using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public class DirectionInImmunologyLaboratoryReport : IReportFlow
+    public class BloodTestRpgaForTyphoidReport : IReportFlow
     {
         private readonly PatientReportService _patientReportService;
         private readonly long[] _patientIds;
 
-        public DirectionInImmunologyLaboratoryReport(PatientReportService patientReportService, long[] patientIds)
+        public BloodTestRpgaForTyphoidReport(PatientReportService patientReportService, long[] patientIds)
         {
             _patientReportService = patientReportService;
             _patientIds = patientIds;
@@ -38,7 +38,7 @@ namespace MedExam.Patient.Reports
         {
             get
             {
-                var view = new DirectionInImmunologyLaboratoryReportView();
+                var view = new BloodTestRpgaForTyphoidReportView();
                 return view.ReportBlock;
             }
         }
@@ -56,7 +56,7 @@ namespace MedExam.Patient.Reports
 
                 var datas = _patientIds.Select(pId =>
                 {
-                    var patient = _patientReportService.GetPatientById((int) pId);
+                    var patient = _patientReportService.LoadPatientById((int) pId);
                     return new DirectionInImmunologyLaboratoryReportViewModel
                     {
                         CurrentOrganizationName = settings.OrganizationName,

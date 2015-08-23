@@ -12,15 +12,17 @@ namespace MedExam.Patient.ViewModels
     public class ReportListViewModel : ItemsNotification<long>
     {
         private readonly IPrintService _printService;
+        private readonly SystemService _systemService;
 
-        public ReportListViewModel(IPrintService printService, PatientReportService patientReportService, long[] items)
+        public ReportListViewModel(IPrintService printService, PatientReportService patientReportService, SystemService systemService, long[] items)
             : base(items)
         {
             _printService = printService;
+            _systemService = systemService;
 
             Reports = new List<ReportViewModel>(new[]
             {
-                new ReportViewModel(new DirectionInImmunologyLaboratoryReport(patientReportService, items))
+                new ReportViewModel(new BloodTestRpgaForTyphoidReport(patientReportService, items))
             });
 
             Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);

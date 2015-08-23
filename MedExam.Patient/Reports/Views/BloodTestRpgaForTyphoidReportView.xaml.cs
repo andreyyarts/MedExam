@@ -1,11 +1,11 @@
 ﻿namespace MedExam.Patient.Reports.Views
 {
     /// <summary>
-    /// Interaction logic for DirectionInImmunologyLaboratoryReportView.xaml
+    /// Interaction logic for BloodTestRpgaForTyphoidReportView.xaml
     /// </summary>
-    public partial class DirectionInImmunologyLaboratoryReportView
+    public partial class BloodTestRpgaForTyphoidReportView
     {
-        public DirectionInImmunologyLaboratoryReportView(/*DirectionInImmunologyLaboratoryReportViewModel data*/)
+        public BloodTestRpgaForTyphoidReportView(/*DirectionInImmunologyLaboratoryReportViewModel data*/)
         {
             InitializeComponent();
 

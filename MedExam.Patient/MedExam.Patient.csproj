@@ -72,13 +72,13 @@
     <Compile Include="Dto\PatientReportDto.cs" />
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
-    <Compile Include="Reports\DirectionInImmunologyLaboratoryReport.cs" />
-    <Compile Include="Reports\Views\DirectionInImmunologyLaboratoryReportView.xaml.cs">
-      <DependentUpon>DirectionInImmunologyLaboratoryReportView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Reports\BloodTestRpgaForTyphoidReport.cs" />
     <Compile Include="Reports\ViewModels\DirectionInImmunologyLaboratoryReportViewModel.cs" />
-    <Compile Include="Reports\ViewModels\ReportFieldViewModel.cs" />
+    <Compile Include="Reports\Views\BloodTestRpgaForTyphoidReportView.xaml.cs">
+      <DependentUpon>BloodTestRpgaForTyphoidReportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\PatientReportService.cs" />
+    <Compile Include="Services\SystemService.cs" />
     <Compile Include="ViewModels\ReportListViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="Views\PatientListView.xaml.cs">
@@ -99,7 +99,7 @@
     <DesignData Include="SampleData\Reports.xaml">
       <SubType>Designer</SubType>
     </DesignData>
-    <Page Include="Reports\Views\DirectionInImmunologyLaboratoryReportView.xaml">
+    <Page Include="Reports\Views\BloodTestRpgaForTyphoidReportView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

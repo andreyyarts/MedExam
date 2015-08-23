@@ -7,9 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using MedExam.Common;
-using MedExam.Common.interfaces;
-
 namespace MedExam.Patient.Entities
 {
     using System;
@@ -22,7 +19,7 @@ namespace MedExam.Patient.Entities
             : base("name=MedExamEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -16,7 +16,7 @@ namespace MedExam.Patient.services
             _entitiesFactory = entitiesFactory;
         }
 
-        public PatientDto[] GetAllPatients()
+        public PatientDto[] LoadAllPatients()
         {
             using (var db = _entitiesFactory.GetDbContext())
             {
@@ -29,7 +29,7 @@ namespace MedExam.Patient.services
             }
         }
 
-        public PatientDto[] GetPatientsByOrganizationId(int organizationId)
+        public PatientDto[] LoadPatientsByOrganizationId(int organizationId)
         {
             using (var db = _entitiesFactory.GetDbContext())
             {

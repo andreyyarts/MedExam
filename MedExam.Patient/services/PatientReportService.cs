@@ -17,7 +17,7 @@ namespace MedExam.Patient.services
             _entitiesFactory = entitiesFactory;
         }
 
-        public PatientReportDto GetPatientById(int patientId)
+        public PatientReportDto LoadPatientById(int patientId)
         {
             using (var db = _entitiesFactory.GetDbContext())
             {
