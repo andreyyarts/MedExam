@@ -21,7 +21,7 @@ namespace MedExam.Patient.Reports
 
         public string Title
         {
-            get { return "Направление в иммунологическую лабораторию"; }
+            get { return "Анализ крови: РПГА на брюшной тиф"; }
         }
 
         public int CountInWidth
@@ -47,26 +47,25 @@ namespace MedExam.Patient.Reports
         {
             get
             {
-                var settings = new
+                var localSettings = new
                 {
                     OrganizationName = string.Concat("ГБУЗ ТО ", SpecialChars.Laquo, "ОКБ №1", SpecialChars.Raquo),
                     DepartmentName = "ОТДЕЛЕНИЕ ПРОФОСМОТРОВ",
                     MedExamDoctorName = "Куликова Л.В."
                 };
 
-                var datas = _patientIds.Select(pId =>
+                var patients = _patientReportService.LoadPatientsByIds(_patientIds);
+
+                var datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
                 {
-                    var patient = _patientReportService.LoadPatientById((int) pId);
-                    return new DirectionInImmunologyLaboratoryReportViewModel
-                    {
-                        CurrentOrganizationName = settings.OrganizationName,
-                        CurrentDepartmentName = settings.DepartmentName,
-                        DoctorNameWithInitials = settings.MedExamDoctorName,
-                        PatientFullName = patient.PersonName.FullName,
-                        PatientAge = patient.BirthDate.Value.ToShortDateString(),
-                        PatientOrganizationName = patient.OrganizationName
-                    };
+                    CurrentOrganizationName = localSettings.OrganizationName,
+                    CurrentDepartmentName = localSettings.DepartmentName,
+                    DoctorNameWithInitials = localSettings.MedExamDoctorName,
+                    PatientFullName = patient.PersonName.FullName,
+                    PatientAge = patient.BirthDate.Value.ToShortDateString(),
+                    PatientOrganizationName = patient.OrganizationName
                 }).Cast<object>().ToArray();
+
                 return datas;
             }
         }

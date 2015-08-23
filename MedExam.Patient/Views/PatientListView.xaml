@@ -22,6 +22,9 @@
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
+            <Style TargetType="DataGridRow">
+                <Setter Property="Cursor" Value="Hand" />
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <i:Interaction.Triggers>
@@ -56,10 +59,11 @@
 				x:Name="B" Visibility="Collapsed" Foreground="Salmon"/>
 
             <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" IsSynchronizedWithCurrentItem="True">
-                <DataGrid.InputBindings>
-                    <MouseBinding MouseAction="LeftClick" Command="{Binding SelectPatient}"
-                                  CommandParameter="{Binding Patients/}" />
-                </DataGrid.InputBindings>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseUp">
+                        <i:InvokeCommandAction Command="{Binding Patients/Select}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>

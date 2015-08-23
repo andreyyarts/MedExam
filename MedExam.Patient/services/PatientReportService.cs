@@ -31,6 +31,20 @@ namespace MedExam.Patient.services
             }
         }
 
+        public PatientReportDto[] LoadPatientsByIds(long[] patientIds)
+        {
+            using (var db = _entitiesFactory.GetDbContext())
+            {
+                var patients = db.pacient
+                    .Where(p => patientIds.Contains(p.num_pac))
+                    .Include(p => p.organization)
+                    .Select(PatientMap())
+                    .ToArray();
+
+                return patients;
+            }
+        }
+
         private static Expression<Func<pacient, PatientReportDto>> PatientMap()
         {
             return patient => new PatientReportDto
