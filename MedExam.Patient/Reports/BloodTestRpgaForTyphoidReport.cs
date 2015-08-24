@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows.Documents;
 using MedExam.Common;
+using MedExam.Common.Extensions;
 using MedExam.Common.interfaces;
 using MedExam.Patient.Reports.ViewModels;
 using MedExam.Patient.Reports.Views;
@@ -11,13 +12,15 @@ namespace MedExam.Patient.Reports
     public class BloodTestRpgaForTyphoidReport : IReportFlow
     {
         private readonly LocalSettings _localSettings;
+        private readonly SystemService _systemService;
         private readonly PatientReportService _patientReportService;
         private object[] _datas;
         private readonly long[] _patientIds;
 
-        public BloodTestRpgaForTyphoidReport(LocalSettings localSettings, PatientReportService patientReportService, long[] patientIds)
+        public BloodTestRpgaForTyphoidReport(LocalSettings localSettings, SystemService systemService, PatientReportService patientReportService, long[] patientIds)
         {
             _localSettings = localSettings;
+            _systemService = systemService;
             _patientReportService = patientReportService;
             _patientIds = patientIds;
         }
@@ -54,6 +57,9 @@ namespace MedExam.Patient.Reports
                     return _datas;
 
                 var patients = _patientReportService.LoadPatientsByIds(_patientIds);
+                var today = _systemService.Today();
+
+                
 
                 _datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
                 {
@@ -61,7 +67,7 @@ namespace MedExam.Patient.Reports
                     CurrentDepartmentName = _localSettings.DepartmentName,
                     DoctorNameWithInitials = _localSettings.MedExamDoctorName,
                     PatientFullName = patient.PersonName.FullName,
-                    PatientAge = patient.BirthDate.Value.ToShortDateString(),
+                    PatientAge = patient.BirthDate.HasValue ? patient.BirthDate.Value.GetYearsBefore(today).ToString() : "",
                     PatientOrganizationName = patient.OrganizationName
                 }).Cast<object>().ToArray();
 

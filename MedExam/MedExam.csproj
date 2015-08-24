@@ -224,9 +224,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\LocalSettings.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="hospital.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,7 +22,7 @@ namespace MedExam.Patient.ViewModels
 
             Reports = new List<ReportViewModel>(new[]
             {
-                new ReportViewModel(new BloodTestRpgaForTyphoidReport(localSettings, patientReportService, items))
+                new ReportViewModel(new BloodTestRpgaForTyphoidReport(localSettings, systemService, patientReportService, items))
             });
 
             Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);
