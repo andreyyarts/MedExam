@@ -21,6 +21,7 @@ namespace MedExam
             RegisterTypeIfMissing(typeof(ILoggerApp<>), typeof(Logger<>), false);
             RegisterTypeIfMissing(typeof(IEntitiesFactory<>), typeof(EntitiesFactory<>), true);
             RegisterTypeIfMissing(typeof(IPrintService), typeof(PrintService), true);
+            Container.RegisterInstance(SettingsService.Load<LocalSettings>());
         }
 
         protected override ILoggerFacade CreateLogger()

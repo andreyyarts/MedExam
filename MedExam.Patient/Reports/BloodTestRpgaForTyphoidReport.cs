@@ -10,11 +10,14 @@ namespace MedExam.Patient.Reports
 {
     public class BloodTestRpgaForTyphoidReport : IReportFlow
     {
+        private readonly LocalSettings _localSettings;
         private readonly PatientReportService _patientReportService;
+        private object[] _datas;
         private readonly long[] _patientIds;
 
-        public BloodTestRpgaForTyphoidReport(PatientReportService patientReportService, long[] patientIds)
+        public BloodTestRpgaForTyphoidReport(LocalSettings localSettings, PatientReportService patientReportService, long[] patientIds)
         {
+            _localSettings = localSettings;
             _patientReportService = patientReportService;
             _patientIds = patientIds;
         }
@@ -42,31 +45,27 @@ namespace MedExam.Patient.Reports
                 return view.ReportBlock;
             }
         }
-
+        
         public object[] Datas
         {
             get
             {
-                var localSettings = new
-                {
-                    OrganizationName = string.Concat("ГБУЗ ТО ", SpecialChars.Laquo, "ОКБ №1", SpecialChars.Raquo),
-                    DepartmentName = "ОТДЕЛЕНИЕ ПРОФОСМОТРОВ",
-                    MedExamDoctorName = "Куликова Л.В."
-                };
+                if (_datas != null)
+                    return _datas;
 
                 var patients = _patientReportService.LoadPatientsByIds(_patientIds);
 
-                var datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
+                _datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
                 {
-                    CurrentOrganizationName = localSettings.OrganizationName,
-                    CurrentDepartmentName = localSettings.DepartmentName,
-                    DoctorNameWithInitials = localSettings.MedExamDoctorName,
+                    CurrentOrganizationName = _localSettings.OrganizationName,
+                    CurrentDepartmentName = _localSettings.DepartmentName,
+                    DoctorNameWithInitials = _localSettings.MedExamDoctorName,
                     PatientFullName = patient.PersonName.FullName,
                     PatientAge = patient.BirthDate.Value.ToShortDateString(),
                     PatientOrganizationName = patient.OrganizationName
                 }).Cast<object>().ToArray();
 
-                return datas;
+                return _datas;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace MedExam.Patient.ViewModels
         private readonly IPrintService _printService;
         private readonly SystemService _systemService;
 
-        public ReportListViewModel(IPrintService printService, PatientReportService patientReportService, SystemService systemService, long[] items)
+        public ReportListViewModel(IPrintService printService, LocalSettings localSettings, PatientReportService patientReportService, SystemService systemService, long[] items)
             : base(items)
         {
             _printService = printService;
@@ -22,7 +22,7 @@ namespace MedExam.Patient.ViewModels
 
             Reports = new List<ReportViewModel>(new[]
             {
-                new ReportViewModel(new BloodTestRpgaForTyphoidReport(patientReportService, items))
+                new ReportViewModel(new BloodTestRpgaForTyphoidReport(localSettings, patientReportService, items))
             });
 
             Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);

@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,8 @@
     <Compile Include="Interfaces\IPrintService.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
     <Compile Include="ItemsNotification.cs" />
+    <Compile Include="LocalSettings.cs" />
+    <Compile Include="SettingsService.cs" />
     <Compile Include="LogLevel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
