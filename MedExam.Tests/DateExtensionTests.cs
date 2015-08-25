@@ -8,22 +8,19 @@ namespace MedExam.Tests
     [TestFixture]
     public class DateExtensionTests
     {
-        [Test, Sequential]
-        public void Date_GetYearsBefore_should_return_correct_yaers([Values(3, 3, 3)]int month, [Values(2, 3, 4)]int day, [Values(26, 26, 25)]int result)
+        [Test]
+        public void Date_GetYearsBefore_should_return_correct_yaers([Values(1989, 1990, 1991, 1992, 1993)]int year, [Values(1, 2, 3, 4, 5)]int month, [Values(1, 2, 3, 4, 5)]int day, [Values(2011, 2012, 2013, 2014, 2015)]int currentYear)
         {
-            var dateBefore = new DateTime(1989, month, day);
-            var currentDate = new DateTime(2015, 3, 3);
+            var dateBefore = new DateTime(year, month, day);
+            var currentDate = new DateTime(currentYear, 3, 3);
 
-            dateBefore.GetYearsBefore(currentDate).Should().Be(result);
-        }
+            var expectedYears = currentDate.Year - year
+                                - (currentDate.Month > month
+                                   || currentDate.Month == month && currentDate.Day >= day
+                                    ? 0
+                                    : 1);
 
-        [Test, Sequential]
-        public void Date_GetYearsBefore_should_return_correct_yaers([Values(1989, 1990, 1991, 1992, 1993)]int year, [Values(26, 25, 24, 23, 22)]int result)
-        {
-            var dateBefore = new DateTime(year, 3, 3);
-            var currentDate = new DateTime(2015, 3, 3);
-
-            dateBefore.GetYearsBefore(currentDate).Should().Be(result);
+            dateBefore.GetYearsBefore(currentDate).Should().Be(expectedYears);
         }
     }
 }
