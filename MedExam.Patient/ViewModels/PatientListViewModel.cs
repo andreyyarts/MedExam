@@ -5,8 +5,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
-using MedExam.Common;
-using MedExam.Common.interfaces;
 using MedExam.Patient.dto;
 using MedExam.Patient.services;
 using Microsoft.Practices.ObjectBuilder2;
@@ -19,19 +17,13 @@ namespace MedExam.Patient.ViewModels
     public class PatientListViewModel
     {
         private readonly PatientService _patientService;
-        private readonly IPrintService _printService;
-        private readonly PatientReportService _patientReportService;
-        private readonly SystemService _systemService;
-        private readonly LocalSettings _localSettings;
+        private readonly ReportService _reportService;
         private ICommand _refresh;
 
-        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, IPrintService printService, PatientReportService patientReportService, SystemService systemService, LocalSettings localSettings)
+        public PatientListViewModel(OrganizationService organizationService, PatientService patientService, ReportService reportService)
         {
             _patientService = patientService;
-            _printService = printService;
-            _patientReportService = patientReportService;
-            _systemService = systemService;
-            _localSettings = localSettings;
+            _reportService = reportService;
 
             var organizations = organizationService.LoadAllOrganizations();
             Organizations = new ListCollectionView(organizations);
@@ -96,7 +88,7 @@ namespace MedExam.Patient.ViewModels
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
-            ShowReports(new ReportListViewModel(_printService, _localSettings, _patientReportService, _systemService, patientIds) { Title = "Печать" });
+            ShowReports(new ReportListViewModel(_reportService, patientIds) { Title = "Печать" });
         }
 
         private bool CanPrintReports()

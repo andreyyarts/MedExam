@@ -1,35 +1,19 @@
-using MedExam.Common.interfaces;
 using Microsoft.Practices.Prism.ViewModel;
 
 namespace MedExam.Patient.ViewModels
 {
     public class ReportViewModel : NotificationObject
     {
-        private string _title;
         private bool _isSelected;
 
-        public ReportViewModel(IReportFlow report, string title = null)
+        public ReportViewModel(string name, string title = null)
         {
-            _title = title ?? report.Title;
-            Report = report;
+            Name = name;
+            Title = title ?? name;
         }
 
-        public ReportViewModel()
-        {
-        }
-
-        public IReportFlow Report { get; private set; }
-
-        public string Title
-        {
-            get { return _title; }
-            set
-            {
-                if (value == _title) return;
-                _title = value;
-                RaisePropertyChanged("Title");
-            }
-        }
+        public string Name { get; private set; }
+        public string Title { get; private set; }
 
         public bool IsSelected
         {

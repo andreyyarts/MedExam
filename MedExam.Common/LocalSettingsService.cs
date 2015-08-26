@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace MedExam.Common
 {
-    public class SettingsService
+    public class LocalSettingsService
     {
         private const string ConfigPath = "Settings";
 
@@ -22,7 +22,6 @@ namespace MedExam.Common
             }
             using (var stream = File.OpenRead(fullFileName))
             {
-
                 var serializer = new XmlSerializer(type);
                 var settings = (T)serializer.Deserialize(stream);
                 stream.Close();
@@ -43,13 +42,11 @@ namespace MedExam.Common
             var fullFileName = string.Format("{0}/{1}.xml", ConfigPath, fileName);
             using (var stream = File.Create(fullFileName))
             {
-                new XmlSerializer(type)
-                    .Serialize(stream, settings,
-                        new XmlSerializerNamespaces(
-                            new[]
-                            {
-                                new XmlQualifiedName(string.Empty)
-                            }));
+                new XmlSerializer(type).Serialize(stream, settings,
+                    new XmlSerializerNamespaces(new[]
+                    {
+                        new XmlQualifiedName(string.Empty)
+                    }));
                 stream.Close();
                 return settings;
             }

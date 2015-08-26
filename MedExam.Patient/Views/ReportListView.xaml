@@ -30,7 +30,7 @@
         </Grid.RowDefinitions>
         <ListBox ItemsSource="{Binding Reports}" ItemTemplate="{StaticResource ReportTemplate}" HorizontalContentAlignment="Stretch"/>
         <StackPanel Grid.Row="1">
-            <CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />
+            <!--<CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />-->
             <DockPanel HorizontalAlignment="Center">
                 <Button Content="Печать" Command="{Binding PrintReports}" behaviors:CloseOnClickBehaviour.IsEnabled="True" />
                 <Button Content="Отмена" IsCancel="True" />

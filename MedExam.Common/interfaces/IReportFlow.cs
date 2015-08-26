@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Documents;
 
 namespace MedExam.Common.interfaces
@@ -8,6 +9,7 @@ namespace MedExam.Common.interfaces
         int CountInWidth { get; }
         int CountInHeight { get; }
         Block Report { get; }
-        object[] Datas { get; }
+        IEnumerable<object> Datas { get; }
+        void SetItems(long[] itemIds);
     }
 }

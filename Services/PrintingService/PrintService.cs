@@ -1,4 +1,5 @@
-﻿using System.Printing;
+﻿using System.Collections.Generic;
+using System.Printing;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using MedExam.Common.interfaces;
@@ -7,7 +8,7 @@ namespace PrintingService
 {
     public class PrintService : IPrintService
     {
-        public void PrintDocuments(IReportFlow[] reports, bool withShowDialog = false, string printerName = "")
+        public void PrintDocuments(IEnumerable<IReportFlow> reports, bool withShowDialog = false, string printerName = "")
         {
             var dialog = new PrintDialog();
             if (withShowDialog)

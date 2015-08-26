@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Documents;
 using MedExam.Common;
 using MedExam.Common.Extensions;
@@ -14,15 +15,18 @@ namespace MedExam.Patient.Reports
         private readonly LocalSettings _localSettings;
         private readonly SystemService _systemService;
         private readonly PatientReportService _patientReportService;
-        private object[] _datas;
-        private readonly long[] _patientIds;
+        private long[] _patientIds;
 
-        public BloodTestRpgaForTyphoidReport(LocalSettings localSettings, SystemService systemService, PatientReportService patientReportService, long[] patientIds)
+        public BloodTestRpgaForTyphoidReport(LocalSettings localSettings, SystemService systemService, PatientReportService patientReportService)
         {
             _localSettings = localSettings;
             _systemService = systemService;
             _patientReportService = patientReportService;
-            _patientIds = patientIds;
+        }
+
+        public void SetItems(long[] itemIds)
+        {
+            _patientIds = itemIds;
         }
 
         public string Title
@@ -48,30 +52,30 @@ namespace MedExam.Patient.Reports
                 return view.ReportBlock;
             }
         }
-        
-        public object[] Datas
+
+        public IEnumerable<object> Datas
         {
             get
             {
-                if (_datas != null)
-                    return _datas;
+                if (_patientIds == null || _patientIds.Length == 0)
+                    return new object[0];
 
-                var patients = _patientReportService.LoadPatientsByIds(_patientIds);
                 var today = _systemService.Today();
+                var patients = _patientReportService.LoadPatientsByIds(_patientIds);
 
-                
-
-                _datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
+                var datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
                 {
                     CurrentOrganizationName = _localSettings.OrganizationName,
                     CurrentDepartmentName = _localSettings.DepartmentName,
                     DoctorNameWithInitials = _localSettings.MedExamDoctorName,
                     PatientFullName = patient.PersonName.FullName,
-                    PatientAge = patient.BirthDate.HasValue ? patient.BirthDate.Value.GetYearsBefore(today).ToString() : "",
+                    PatientAge = patient.BirthDate.HasValue
+                                 ? patient.BirthDate.Value.GetYearsBefore(today).ToString()
+                                 : "",
                     PatientOrganizationName = patient.OrganizationName
-                }).Cast<object>().ToArray();
+                });
 
-                return _datas;
+                return datas;
             }
         }
     }

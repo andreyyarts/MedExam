@@ -1,4 +1,5 @@
 ﻿using MedExam.Common;
+using MedExam.Patient.services;
 using MedExam.Patient.ViewModels;
 using MedExam.Patient.Views;
 using Microsoft.Practices.Prism.Modularity;
@@ -22,6 +23,8 @@ namespace MedExam.Patient
         public void Initialize()
         {
             _regionManager.RegisterViewWithRegion(RegionNames.MainContentRegion, GetViewWithModel);
+
+            _container.Resolve<ReportService>();
         }
 
         private PatientListView GetViewWithModel()

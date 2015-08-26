@@ -68,8 +68,8 @@
     <Compile Include="Interfaces\IPrintService.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
     <Compile Include="ItemsNotification.cs" />
-    <Compile Include="LocalSettings.cs" />
-    <Compile Include="SettingsService.cs" />
+    <Compile Include="LocalSettings\LocalSettings.cs" />
+    <Compile Include="LocalSettingsService.cs" />
     <Compile Include="LogLevel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

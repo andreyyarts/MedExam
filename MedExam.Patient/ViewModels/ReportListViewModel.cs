@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq;
 using MedExam.Common;
 using MedExam.Common.interfaces;
-using MedExam.Patient.Reports;
 using MedExam.Patient.services;
 using Microsoft.Practices.Prism.Commands;
 
@@ -11,19 +10,18 @@ namespace MedExam.Patient.ViewModels
 {
     public class ReportListViewModel : ItemsNotification<long>
     {
+        private readonly ReportService _reportService;
+        private readonly long[] _itemIds;
         private readonly IPrintService _printService;
         private readonly SystemService _systemService;
 
-        public ReportListViewModel(IPrintService printService, LocalSettings localSettings, PatientReportService patientReportService, SystemService systemService, long[] items)
-            : base(items)
+        public ReportListViewModel(ReportService reportService, long[] itemIds)
+            : base(itemIds)
         {
-            _printService = printService;
-            _systemService = systemService;
+            _reportService = reportService;
+            _itemIds = itemIds;
 
-            Reports = new List<ReportViewModel>(new[]
-            {
-                new ReportViewModel(new BloodTestRpgaForTyphoidReport(localSettings, systemService, patientReportService, items))
-            });
+            Reports = new List<ReportViewModel>(reportService.GetReports().Select(r => new ReportViewModel(r.Key, r.Value)));
 
             Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);
             PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
@@ -49,8 +47,8 @@ namespace MedExam.Patient.ViewModels
 
         private void OnPrintReports()
         {
-            var reports = Reports.Where(r => r.IsSelected).Select(r => r.Report);
-            _printService.PrintDocuments(reports.ToArray());
+            var reports = Reports.Where(r => r.IsSelected).Select(r => r.Name);
+            _reportService.PrintReports(reports, _itemIds);
         }
     }
 }
