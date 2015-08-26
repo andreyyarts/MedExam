@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using MedExam.Common;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 using Microsoft.Practices.Unity;
 
 namespace MedExam

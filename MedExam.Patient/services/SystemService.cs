@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 using MedExam.Patient.Entities;
 
 namespace MedExam.Patient.services

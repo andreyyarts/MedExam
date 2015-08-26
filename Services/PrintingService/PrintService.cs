@@ -2,7 +2,7 @@
 using System.Printing;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 
 namespace PrintingService
 {

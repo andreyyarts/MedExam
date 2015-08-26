@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using MedExam.Common;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 using MedExam.Patient;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;

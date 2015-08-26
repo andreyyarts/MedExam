@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MedExam.Common.interfaces
+namespace MedExam.Common.Interfaces
 {
     public interface IPrintService
     {

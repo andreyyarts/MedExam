@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using MedExam.Common;
-using MedExam.Common.interfaces;
+using MedExam.Common.Extensions;
+using MedExam.Common.Interfaces;
 using MedExam.Patient.Reports;
+using MedExam.Patient.Reports.ViewModels;
 using Microsoft.Practices.ObjectBuilder2;
 
 namespace MedExam.Patient.services
@@ -23,13 +25,15 @@ namespace MedExam.Patient.services
             _localSettings = localSettings;
         }
 
-        private IReportFlow[] Reports
+        private IEnumerable<IReportFlow> Reports
         {
             get
             {
                 return _reports ?? (_reports = new IReportFlow[]
                 {
-                    new BloodTestRpgaForTyphoidReport(_localSettings, _systemService, _patientReportService)
+                    new BloodTestRpgaForTyphoidReport(this),
+                    new SpecificTumorMarkerReportPsa(this),
+                    new SpecificTumorMarkerReportCa125(this)
                 });
             }
         }
@@ -44,6 +48,26 @@ namespace MedExam.Patient.services
             var selectedReports = Reports.Where(r => reports.Contains(r.GetType().Name)).ToArray();
             selectedReports.ForEach(r => r.SetItems(itemIds));
             _printService.PrintDocuments(selectedReports);
+        }
+
+        public IEnumerable<DirectionInImmunologyLaboratoryReportViewModel> GetDirectionInImmunologyLaboratoryReportData(long[] patientIds)
+        {
+            var today = _systemService.Today();
+            var patients = _patientReportService.LoadPatientsByIds(patientIds);
+
+            var datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
+            {
+                CurrentOrganizationName = _localSettings.OrganizationName,
+                CurrentDepartmentName = _localSettings.DepartmentName,
+                DoctorNameWithInitials = _localSettings.MedExamDoctorName,
+                PatientFullName = patient.PersonName.FullName,
+                PatientAge = patient.BirthDate.HasValue
+                             ? patient.BirthDate.Value.GetYearsBefore(today).ToString()
+                             : "",
+                PatientOrganizationName = patient.OrganizationName
+            });
+
+            return datas;
         }
     }
 }

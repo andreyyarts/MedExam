@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using MedExam.Common;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 
 namespace PrintingService
 {

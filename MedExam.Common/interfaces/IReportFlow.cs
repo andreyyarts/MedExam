@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Documents;
 
-namespace MedExam.Common.interfaces
+namespace MedExam.Common.Interfaces
 {
     public interface IReportFlow
     {

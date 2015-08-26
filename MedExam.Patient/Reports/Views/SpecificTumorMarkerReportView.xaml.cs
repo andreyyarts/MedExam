@@ -3,11 +3,11 @@
 namespace MedExam.Patient.Reports.Views
 {
     /// <summary>
-    /// Interaction logic for BloodTestRpgaForTyphoidReportView.xaml
+    /// Interaction logic for SpecificTumorMarkerReportView.xaml
     /// </summary>
-    public partial class BloodTestRpgaForTyphoidReportView : IReportView
+    public partial class SpecificTumorMarkerReportView : IReportView
     {
-        public BloodTestRpgaForTyphoidReportView()
+        public SpecificTumorMarkerReportView()
         {
             InitializeComponent();
         }

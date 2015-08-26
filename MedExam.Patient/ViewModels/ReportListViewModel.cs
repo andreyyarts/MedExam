@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using MedExam.Common;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 using MedExam.Patient.services;
 using Microsoft.Practices.Prism.Commands;
 

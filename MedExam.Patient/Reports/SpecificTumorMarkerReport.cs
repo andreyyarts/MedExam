@@ -6,12 +6,12 @@ using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public class BloodTestRpgaForTyphoidReport : IReportFlow
+    public class SpecificTumorMarkerReport : IReportFlow
     {
         private readonly ReportService _reportService;
         private long[] _patientIds;
 
-        public BloodTestRpgaForTyphoidReport(ReportService reportService)
+        protected SpecificTumorMarkerReport(ReportService reportService)
         {
             _reportService = reportService;
         }
@@ -21,9 +21,9 @@ namespace MedExam.Patient.Reports
             _patientIds = itemIds;
         }
 
-        public string Title
+        public virtual string Title
         {
-            get { return "Анализ крови: РПГА на брюшной тиф"; }
+            get { return "Онкомаркер специфический"; }
         }
 
         public int CountInWidth
@@ -40,7 +40,7 @@ namespace MedExam.Patient.Reports
         {
             get
             {
-                var view = new BloodTestRpgaForTyphoidReportView { Title = Title };
+                var view = new SpecificTumorMarkerReportView { Title = Title };
                 return view.ReportBlock;
             }
         }

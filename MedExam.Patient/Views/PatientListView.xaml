@@ -9,7 +9,7 @@
              xmlns:views="clr-namespace:MedExam.Patient.Views"
              xmlns:interactivity="clr-namespace:MedExam.Common.Interactivity;assembly=MedExam.Common"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance {x:Type viewModels:PatientListViewModel}}">
+             d:DataContext="{d:DesignInstance viewModels:PatientListViewModel}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

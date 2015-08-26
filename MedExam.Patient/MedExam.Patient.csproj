@@ -59,7 +59,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
@@ -73,9 +76,15 @@
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
     <Compile Include="Reports\BloodTestRpgaForTyphoidReport.cs" />
+    <Compile Include="Reports\SpecificTumorMarkerReport.cs" />
+    <Compile Include="Reports\SpecificTumorMarkerReportCa125.cs" />
+    <Compile Include="Reports\SpecificTumorMarkerReportPsa.cs" />
     <Compile Include="Reports\ViewModels\DirectionInImmunologyLaboratoryReportViewModel.cs" />
     <Compile Include="Reports\Views\BloodTestRpgaForTyphoidReportView.xaml.cs">
       <DependentUpon>BloodTestRpgaForTyphoidReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Views\SpecificTumorMarkerReportView.xaml.cs">
+      <DependentUpon>SpecificTumorMarkerReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PatientReportService.cs" />
     <Compile Include="Services\ReportService.cs" />
@@ -107,6 +116,10 @@
     <DesignData Include="SampleData\DirectionInImmunologyLaboratoryReport.xaml">
       <SubType>Designer</SubType>
     </DesignData>
+    <Page Include="Reports\Views\SpecificTumorMarkerReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PatientListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

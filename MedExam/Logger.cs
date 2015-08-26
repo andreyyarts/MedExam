@@ -1,5 +1,5 @@
 using System;
-using MedExam.Common.interfaces;
+using MedExam.Common.Interfaces;
 using NLog;
 using LogLevel = MedExam.Common.LogLevel;
 
