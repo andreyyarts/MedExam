@@ -44,7 +44,7 @@ namespace PrintingService
             });
         }
 
-        private static IEnumerable<Block> GetBlocksWithFillDatas(IReportFlow report)
+        private static IEnumerable<ReportFlowViewBase> GetBlocksWithFillDatas(IReportFlow report)
         {
             var blocks = report.Datas.Select(data =>
             {

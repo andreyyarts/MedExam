@@ -68,6 +68,8 @@
     <Compile Include="Interfaces\IPrintService.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
     <Compile Include="Interfaces\IReportView.cs" />
+    <Compile Include="ReportFlow.cs" />
+    <Compile Include="ReportFlowViewBase.cs" />
     <Compile Include="ItemsNotification.cs" />
     <Compile Include="LocalSettings\LocalSettings.cs" />
     <Compile Include="LocalSettingsService.cs" />

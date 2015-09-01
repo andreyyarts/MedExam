@@ -76,15 +76,27 @@
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
     <Compile Include="Reports\BloodTestRpgaForTyphoidReport.cs" />
-    <Compile Include="Reports\SpecificTumorMarkerReport.cs" />
-    <Compile Include="Reports\SpecificTumorMarkerReportCa125.cs" />
-    <Compile Include="Reports\SpecificTumorMarkerReportPsa.cs" />
+    <Compile Include="Reports\DirectionInImmunologyLaboratoryReport.cs" />
+    <Compile Include="Reports\SpecificTumorMarkerCa125Report.cs" />
+    <Compile Include="Reports\SpecificTumorMarkerPsaReport.cs" />
     <Compile Include="Reports\ViewModels\DirectionInImmunologyLaboratoryReportViewModel.cs" />
-    <Compile Include="Reports\Views\BloodTestRpgaForTyphoidReportView.xaml.cs">
-      <DependentUpon>BloodTestRpgaForTyphoidReportView.xaml</DependentUpon>
+    <Compile Include="Reports\Views\BorderBottomLine.xaml.cs">
+      <DependentUpon>BorderBottomLine.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\SpecificTumorMarkerReportView.xaml.cs">
-      <DependentUpon>SpecificTumorMarkerReportView.xaml</DependentUpon>
+    <Compile Include="Reports\Views\ReportField - Copy.xaml.cs">
+      <DependentUpon>ReportField - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Views\ReportHeaderField.xaml.cs">
+      <DependentUpon>ReportHeaderField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Views\ReportFieldContent.xaml.cs">
+      <DependentUpon>ReportFieldContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Views\ReportField.xaml.cs">
+      <DependentUpon>ReportField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Views\ReportFlowView.xaml.cs">
+      <DependentUpon>ReportFlowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PatientReportService.cs" />
     <Compile Include="Services\ReportService.cs" />
@@ -109,16 +121,32 @@
     <DesignData Include="SampleData\Reports.xaml">
       <SubType>Designer</SubType>
     </DesignData>
-    <Page Include="Reports\Views\BloodTestRpgaForTyphoidReportView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <DesignData Include="SampleData\DirectionInImmunologyLaboratoryReport.xaml">
       <SubType>Designer</SubType>
     </DesignData>
-    <Page Include="Reports\Views\SpecificTumorMarkerReportView.xaml">
+    <Page Include="Reports\Views\BorderBottomLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Views\ReportField - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Views\ReportHeaderField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Views\ReportFieldContent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Views\ReportField.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Views\ReportFlowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PatientListView.xaml">
       <SubType>Designer</SubType>

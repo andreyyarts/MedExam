@@ -1,0 +1,12 @@
+﻿<ContentControl x:Class="MedExam.Patient.Reports.Views.ReportDateField"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                Template="{DynamicResource ReportFieldContentTemplate}">
+    <ContentControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentControl.Resources>
+</ContentControl>

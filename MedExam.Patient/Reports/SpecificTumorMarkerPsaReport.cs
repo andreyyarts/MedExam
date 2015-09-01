@@ -2,9 +2,9 @@ using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public class SpecificTumorMarkerReportPsa : SpecificTumorMarkerReport
+    public class SpecificTumorMarkerPsaReport : DirectionInImmunologyLaboratoryReport
     {
-        public SpecificTumorMarkerReportPsa(ReportService reportService)
+        public SpecificTumorMarkerPsaReport(ReportService reportService)
             : base(reportService)
         {
         }

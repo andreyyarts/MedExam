@@ -32,8 +32,8 @@ namespace MedExam.Patient.services
                 return _reports ?? (_reports = new IReportFlow[]
                 {
                     new BloodTestRpgaForTyphoidReport(this),
-                    new SpecificTumorMarkerReportPsa(this),
-                    new SpecificTumorMarkerReportCa125(this)
+                    new SpecificTumorMarkerPsaReport(this),
+                    new SpecificTumorMarkerCa125Report(this)
                 });
             }
         }

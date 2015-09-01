@@ -2,9 +2,9 @@
 
 namespace MedExam.Patient.Reports
 {
-    public class SpecificTumorMarkerReportCa125 : SpecificTumorMarkerReport
+    public class SpecificTumorMarkerCa125Report : DirectionInImmunologyLaboratoryReport
     {
-        public SpecificTumorMarkerReportCa125(ReportService reportService)
+        public SpecificTumorMarkerCa125Report(ReportService reportService)
             : base(reportService)
         {
         }

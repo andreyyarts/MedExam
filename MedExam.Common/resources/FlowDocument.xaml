@@ -46,7 +46,7 @@
         <Setter Property="Padding" Value="15" />
         <Setter Property="FontFamily" Value="Arial" />
     </Style>
-    <Style x:Key="RootParagraphStyle" TargetType="Paragraph">
+    <Style x:Key="RootBlockStyle" TargetType="Block">
         <Setter Property="Padding" Value="15" />
         <Setter Property="FontFamily" Value="Arial" />
     </Style>
