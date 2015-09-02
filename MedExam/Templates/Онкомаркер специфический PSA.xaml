@@ -15,9 +15,16 @@
                 в иммунологическую лабораторию
             </views:ReportHeaderField>
         </StackPanel>
-        <views:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
-        <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" />
-        <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="views:ReportField">
+                    <Setter Property="Margin" Value="0 6" />
+                </Style>
+            </StackPanel.Resources>
+            <views:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
+            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" />
+            <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
+        </StackPanel>
 
         <views:ReportHeaderField Margin="0 36" Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=views:ReportFlowView}}" />
 
@@ -27,12 +34,7 @@
                     <Setter Property="Margin" Value="0" />
                 </Style>
             </StackPanel.Resources>
-            <views:ReportFieldContent Tag="Дата">
-                <TextBlock>&#171;<views:BorderBottomLine Width="25" />&#187;
-                            <views:BorderBottomLine Width="120" />
-                            20 <views:BorderBottomLine Width="20" /> г.
-                </TextBlock>
-            </views:ReportFieldContent>
+            <views:ReportDateField />
             <views:ReportField Tag="Врач" Content="{Binding DoctorNameWithInitials}" />
             <views:ReportField Tag="M/c" />
         </StackPanel>

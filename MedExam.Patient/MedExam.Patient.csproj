@@ -83,8 +83,11 @@
     <Compile Include="Reports\Views\BorderBottomLine.xaml.cs">
       <DependentUpon>BorderBottomLine.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportField - Copy.xaml.cs">
-      <DependentUpon>ReportField - Copy.xaml</DependentUpon>
+    <Compile Include="Reports\Views\ReportDateDayField.xaml.cs">
+      <DependentUpon>ReportDateDayField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Views\ReportDateField.xaml.cs">
+      <DependentUpon>ReportDateField.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reports\Views\ReportHeaderField.xaml.cs">
       <DependentUpon>ReportHeaderField.xaml</DependentUpon>
@@ -128,7 +131,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportField - Copy.xaml">
+    <Page Include="Reports\Views\ReportDateDayField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Views\ReportDateField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

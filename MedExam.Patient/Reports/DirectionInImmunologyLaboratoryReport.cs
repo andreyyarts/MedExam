@@ -9,7 +9,8 @@ namespace MedExam.Patient.Reports
         private readonly ReportService _reportService;
         private long[] _patientIds;
 
-        protected DirectionInImmunologyLaboratoryReport(ReportService reportService)
+        protected DirectionInImmunologyLaboratoryReport(ReportService reportService, string template)
+            : base(template)
         {
             _reportService = reportService;
         }

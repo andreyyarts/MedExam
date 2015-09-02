@@ -141,15 +141,15 @@
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Content Include="Templates\SpecificTumorMarkerCa125Report.xaml">
+    <Content Include="Templates\Онкомаркер специфический CA-125.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\BloodTestRpgaForTyphoidReport.xaml">
+    <Content Include="Templates\Анализ крови. РПГА на брюшной тиф.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Templates\SpecificTumorMarkerPsaReport.xaml">
+    <Content Include="Templates\Онкомаркер специфический PSA.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

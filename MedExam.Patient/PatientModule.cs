@@ -22,7 +22,8 @@ namespace MedExam.Patient
 
         public void Initialize()
         {
-            _regionManager.RegisterViewWithRegion(RegionNames.MainContentRegion, GetViewWithModel);
+            _regionManager.RegisterViewWithRegion(RegionNames.MainContentRegion,
+                                                    () => _container.Resolve<PatientListView>());
 
             _container.Resolve<ReportService>();
         }

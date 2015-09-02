@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:common="clr-namespace:MedExam.Common;assembly=MedExam.Common"
-        Title="Профосмотры" Height="600" Width="800"
+        Title="Профосмотры" Height="700" Width="900"
         WindowStartupLocation="CenterScreen" Icon="hospital.ico">
     <Grid>
         <Grid.RowDefinitions>

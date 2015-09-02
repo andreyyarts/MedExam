@@ -9,5 +9,6 @@
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonBaseStyle}" />
     <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ButtonBaseStyle}">
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="5 2" />
     </Style>
 </ResourceDictionary>

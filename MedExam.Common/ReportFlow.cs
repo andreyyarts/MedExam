@@ -7,18 +7,24 @@ namespace MedExam.Common
 {
     public abstract class ReportFlow : IReportFlow
     {
+        private readonly string _template;
+
+        protected ReportFlow(string template)
+        {
+            _template = template;
+        }
+
         public abstract string Title { get; }
-
         public abstract int CountInWidth { get; }
-
         public abstract int CountInHeight { get; }
+        public abstract IEnumerable<object> Datas { get; }
 
         public virtual ReportFlowViewBase Report
         {
             get
             {
                 ReportFlowViewBase view;
-                using (var stream = File.OpenRead(string.Format("Templates/{0}.xaml", GetType().Name)))
+                using (var stream = File.OpenRead(string.Format("Templates/{0}.xaml", _template)))
                 {
                     view = (ReportFlowViewBase)XamlReader.Load(stream);
                     view.Title = Title;
@@ -28,8 +34,6 @@ namespace MedExam.Common
                 return view;
             }
         }
-
-        public abstract IEnumerable<object> Datas { get; }
 
         public abstract void SetItems(long[] itemIds);
     }

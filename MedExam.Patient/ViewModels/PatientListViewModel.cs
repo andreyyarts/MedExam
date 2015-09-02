@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
-using System.Windows.Input;
 using MedExam.Patient.dto;
 using MedExam.Patient.services;
 using Microsoft.Practices.ObjectBuilder2;
@@ -18,7 +17,6 @@ namespace MedExam.Patient.ViewModels
     {
         private readonly PatientService _patientService;
         private readonly ReportService _reportService;
-        private ICommand _refresh;
 
         public PatientListViewModel(OrganizationService organizationService, PatientService patientService, ReportService reportService)
         {
@@ -34,8 +32,8 @@ namespace MedExam.Patient.ViewModels
                 LoadPatients((OrganizationDto)Organizations.CurrentItem);
             };
 
-            SelectPatient = new DelegateCommand<PatientViewModel>(OnSelectPatient);
             PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
+            Refresh = new DelegateCommand<OrganizationDto>(OnRefresh);
             Patients.CollectionChanged += (sender, args) =>
             {
                 switch (args.Action)
@@ -53,28 +51,14 @@ namespace MedExam.Patient.ViewModels
                 }
             };
             
-            NotificationRequest = new InteractionRequest<ReportListViewModel>();
+            ShowReportsRequest = new InteractionRequest<ReportListViewModel>();
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; private set; }
         public ICollectionView Organizations { get; private set; }
-        public InteractionRequest<ReportListViewModel> NotificationRequest { get; private set; }
+        public InteractionRequest<ReportListViewModel> ShowReportsRequest { get; private set; }
         public DelegateCommand PrintReports { get; private set; }
-        public DelegateCommand<PatientViewModel> SelectPatient { get; private set; }
-
-        public ICommand Refresh
-        {
-            get { return _refresh ?? (_refresh = new DelegateCommand<OrganizationDto>(OnRefresh)); }
-        }
-
-        private void OnSelectPatient(PatientViewModel patient)
-        {
-            if (patient == null)
-                return;
-
-            var selectPatient = Patients.Single(p => p.Id == patient.Id);
-            selectPatient.IsSelected = !selectPatient.IsSelected;
-        }
+        public DelegateCommand<OrganizationDto> Refresh { get; private set; }
 
         private void PatientIsSelectedPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -88,17 +72,12 @@ namespace MedExam.Patient.ViewModels
         {
             var patientIds = Patients.Where(p => p.IsSelected).Select(p => p.Id).ToArray();
 
-            ShowReports(new ReportListViewModel(_reportService, patientIds) { Title = "Печать" });
+            ShowReportsRequest.Raise(new ReportListViewModel(_reportService, patientIds) { Title = "Печать" });
         }
 
         private bool CanPrintReports()
         {
             return Patients.Any(c => c.IsSelected);
-        }
-
-        private void ShowReports(ReportListViewModel notification)
-        {
-            NotificationRequest.Raise(notification);
         }
 
         private void OnRefresh(OrganizationDto organization)

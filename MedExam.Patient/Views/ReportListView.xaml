@@ -28,11 +28,14 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding Reports}" ItemTemplate="{StaticResource ReportTemplate}" HorizontalContentAlignment="Stretch"/>
+        <ListBox ItemsSource="{Binding Reports}" ItemTemplate="{StaticResource ReportTemplate}" HorizontalContentAlignment="Stretch" />
         <StackPanel Grid.Row="1">
-            <!--<CheckBox DockPanel.Dock="Top" Content="Предпросмотр" />-->
+            <CheckBox Content="Выбрать все" IsChecked="{Binding IsAllSelected.Value}" />
+            <!--<CheckBox Content="Предпросмотр" IsChecked="{Binding IsPreview.Value}" />-->
             <DockPanel HorizontalAlignment="Center">
-                <Button Content="Печать" Command="{Binding PrintReports}" behaviors:CloseOnClickBehaviour.IsEnabled="True" />
+                <Button Content="{Binding PrintText.Value}" Width="90" HorizontalContentAlignment="Left"
+                        Command="{Binding PrintReports}"
+                        behaviors:CloseOnClickBehaviour.IsEnabled="True" />
                 <Button Content="Отмена" IsCancel="True" />
             </DockPanel>
         </StackPanel>

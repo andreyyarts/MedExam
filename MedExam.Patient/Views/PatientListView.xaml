@@ -28,7 +28,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <i:Interaction.Triggers>
-        <prism:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
+        <prism:InteractionRequestTrigger SourceObject="{Binding ShowReportsRequest, Mode=OneWay}">
             <interactivity:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
                 <interactivity:PopupWindowAction.WindowContent>
                     <views:ReportListView />

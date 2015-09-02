@@ -47,8 +47,8 @@
         <Setter Property="FontFamily" Value="Arial" />
     </Style>
     <Style x:Key="RootBlockStyle" TargetType="Block">
-        <Setter Property="Padding" Value="15" />
-        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="Padding" Value="10 15" />
+        <Setter Property="FontFamily" Value="Times New Roman" />
     </Style>
     <Thickness x:Key="FlowDocumentBlockPadding">15</Thickness>
 

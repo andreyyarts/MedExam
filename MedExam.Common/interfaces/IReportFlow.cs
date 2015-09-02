@@ -7,8 +7,8 @@ namespace MedExam.Common.Interfaces
         string Title { get; }
         int CountInWidth { get; }
         int CountInHeight { get; }
-        ReportFlowViewBase Report { get; }
         IEnumerable<object> Datas { get; }
+        ReportFlowViewBase Report { get; }
         void SetItems(long[] itemIds);
     }
 }
