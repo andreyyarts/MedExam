@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Interactivity;
 using MedExam.Common;
 using MedExam.Patient.services;
 using Microsoft.Practices.Prism;
@@ -27,30 +26,21 @@ namespace MedExam.Patient.ViewModels
             IsPreview = new ObservableObject<bool>();
             IsAllSelected = new ObservableObject<bool>();
             PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
-            IsAllSelected.PropertyChanged += OnAllSelected;
-            //AllSelect = new DelegateCommand<bool?>(OnAllSelect);
+            IsAllSelected.PropertyChanged += AllSelectedChanged;
         }
 
         public ReportListViewModel() : base(new long[0]) { }
 
         public DelegateCommand PrintReports { get; set; }
-        //public DelegateCommand<bool?> AllSelect { get; set; }
         public List<ReportViewModel> Reports { get; set; }
         public ObservableObject<string> PrintText { get; set; }
         public ObservableObject<bool> IsAllSelected { get; set; }
         public ObservableObject<bool> IsPreview { get; set; }
 
-        private void OnAllSelected(object sender, PropertyChangedEventArgs e)
+        private void AllSelectedChanged(object sender, PropertyChangedEventArgs e)
         {
             Reports.ForEach(r => r.IsSelected = IsAllSelected.Value);
         }
-        /*private void OnAllSelect(bool? isSelected)
-        {
-            if (!isSelected.HasValue)
-                return;
-
-            Reports.ForEach(r => r.IsSelected = isSelected.Value);
-        }*/
 
         private void ReportIsSelectedPropertyChanged(object sender, PropertyChangedEventArgs e)
         {

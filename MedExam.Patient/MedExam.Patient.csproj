@@ -80,8 +80,8 @@
     <Compile Include="Reports\SpecificTumorMarkerCa125Report.cs" />
     <Compile Include="Reports\SpecificTumorMarkerPsaReport.cs" />
     <Compile Include="Reports\ViewModels\DirectionInImmunologyLaboratoryReportViewModel.cs" />
-    <Compile Include="Reports\Views\BorderBottomLine.xaml.cs">
-      <DependentUpon>BorderBottomLine.xaml</DependentUpon>
+    <Compile Include="Reports\Views\BorderBottomBlackLine.xaml.cs">
+      <DependentUpon>BorderBottomBlackLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reports\Views\ReportDateDayField.xaml.cs">
       <DependentUpon>ReportDateDayField.xaml</DependentUpon>
@@ -127,7 +127,7 @@
     <DesignData Include="SampleData\DirectionInImmunologyLaboratoryReport.xaml">
       <SubType>Designer</SubType>
     </DesignData>
-    <Page Include="Reports\Views\BorderBottomLine.xaml">
+    <Page Include="Reports\Views\BorderBottomBlackLine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

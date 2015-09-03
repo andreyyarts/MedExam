@@ -3,9 +3,9 @@
     /// <summary>
     /// Interaction logic for ReportField.xaml
     /// </summary>
-    public partial class BorderBottomLine
+    public partial class BorderBottomBlackLine
     {
-        public BorderBottomLine()
+        public BorderBottomBlackLine()
         {
             InitializeComponent();
         }

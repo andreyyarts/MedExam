@@ -8,5 +8,6 @@
         public string PatientOrganizationName { get; set; }
         public string PatientAge { get; set; }
         public string DoctorNameWithInitials { get; set; }
+        public string CurrentDate { get; set; }
     }
 }
