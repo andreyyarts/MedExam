@@ -1,12 +1,35 @@
 ﻿<ContentControl x:Class="MedExam.Patient.Reports.Views.ReportDateField"
                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                xmlns:views="clr-namespace:MedExam.Patient.Reports.Views">
-    <DockPanel Margin="0 2">
-        <TextBlock Text="Дата" Margin="5 0" />
-        <TextBlock>&#171;<views:BorderBottomBlackLine Width="25" />&#187;
-            <views:BorderBottomBlackLine Width="120" />
-            20 <views:BorderBottomBlackLine Width="20" /> г.
+                xmlns:views="clr-namespace:MedExam.Patient.Reports.Views"
+                xmlns:converters="clr-namespace:MedExam.Common.Converters;assembly=MedExam.Common">
+    <ContentControl.Template>
+        <ControlTemplate TargetType="ContentControl">
+            <ControlTemplate.Resources>
+                <converters:DateTimeToMonthGenitiveNameConverter x:Key="DateTimeToMonthGenitiveNameConverter"/>
+            </ControlTemplate.Resources>
+            <DockPanel Margin="0 2">
+                <views:ReportFieldTitle Text="Дата" />
+                <TextBlock>
+            &#171;<views:BorderBottomBlackLine Width="25">
+                <TextBlock TextAlignment="Center" FontStyle="Italic"
+                           Text="{Binding Value, StringFormat=\{0:dd\}, Mode=OneWay,
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
+            </views:BorderBottomBlackLine>&#187;
+            <views:BorderBottomBlackLine Width="120" >
+                <TextBlock TextAlignment="Center" FontStyle="Italic"
+                           Text="{Binding Value, Mode=OneWay, ConverterCulture=ru-RU, Converter={StaticResource DateTimeToMonthGenitiveNameConverter},
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
+            </views:BorderBottomBlackLine>
+            20
+            <views:BorderBottomBlackLine Width="20">
+                <TextBlock TextAlignment="Center" FontStyle="Italic"
+                           Text="{Binding Value, StringFormat=\{0:yy\}, Mode=OneWay,
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
+            </views:BorderBottomBlackLine>
+            г.
         </TextBlock>
-    </DockPanel>
+            </DockPanel>
+        </ControlTemplate>
+    </ContentControl.Template>
 </ContentControl>

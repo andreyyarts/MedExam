@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\CloseOnClickBehaviour.cs" />
+    <Compile Include="Converters\DateTimeToMonthGenitiveNameConverter.cs" />
+    <Compile Include="Converters\DateTimeToStringConverter.cs" />
     <Compile Include="Extensions\DateTimeExt.cs" />
     <Compile Include="FormatSizes.cs" />
     <Compile Include="Interactivity\PopupWindowAction.cs" />

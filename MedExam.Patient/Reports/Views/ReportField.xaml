@@ -5,7 +5,7 @@
     <ContentControl.Template>
         <ControlTemplate TargetType="ContentControl">
             <DockPanel Margin="0 2">
-                <TextBlock Text="{TemplateBinding Tag}" Margin="5 0" FontSize="16" />
+                <views:ReportFieldTitle Text="{TemplateBinding Tag}" />
                 <views:BorderBottomBlackLine>
                     <TextBlock Text="{TemplateBinding Content}" FontStyle="Italic" FontSize="{TemplateBinding FontSize}"
                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" />
