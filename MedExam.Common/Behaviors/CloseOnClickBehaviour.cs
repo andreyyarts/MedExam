@@ -49,14 +49,14 @@ namespace MedExam.Common.Behaviors
             if (button == null)
                 return;
 
-            if (button.Command != null && button.Command.CanExecute(button.CommandParameter))
-            {
-                button.Command.Execute(button.CommandParameter);
-            }
-
             var win = Window.GetWindow(button);
             if (win == null)
                 return;
+
+            if (win.Owner != null && button.Command != null && button.Command.CanExecute(button.CommandParameter))
+            {
+                button.Command.Execute(button.CommandParameter);
+            }
 
             win.Close();
         }

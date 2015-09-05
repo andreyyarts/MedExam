@@ -31,7 +31,7 @@
         <ListBox ItemsSource="{Binding Reports}" ItemTemplate="{StaticResource ReportTemplate}" HorizontalContentAlignment="Stretch" />
         <StackPanel Grid.Row="1">
             <CheckBox Content="Выбрать все" IsChecked="{Binding IsAllSelected.Value}" />
-            <!--<CheckBox Content="Предпросмотр" IsChecked="{Binding IsPreview.Value}" />-->
+            <CheckBox Content="Предпросмотр" IsChecked="{Binding IsPreview.Value}" />
             <DockPanel HorizontalAlignment="Center">
                 <Button Content="{Binding PrintText.Value}" Width="90" HorizontalContentAlignment="Left"
                         Command="{Binding PrintReports}"

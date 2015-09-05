@@ -3,4 +3,5 @@
 
     <ImageSource x:Key="RefreshSource">refresh.png</ImageSource>
     <ImageSource x:Key="PrinterSource">printer.png</ImageSource>
+    <ImageSource x:Key="PrinterButtonSource">printer_48.png</ImageSource>
 </ResourceDictionary>

@@ -43,11 +43,11 @@ namespace MedExam.Patient.services
             return Reports.ToDictionary(r => r.GetType().Name, r => r.Title);
         }
 
-        public void PrintReports(IEnumerable<string> reports, long[] itemIds)
+        public void PrintReports(IEnumerable<string> reports, long[] itemIds, bool isPreview)
         {
             var selectedReports = Reports.Where(r => reports.Contains(r.GetType().Name)).ToArray();
             selectedReports.ForEach(r => r.SetItems(itemIds));
-            _printService.PrintDocuments(selectedReports);
+            _printService.PrintDocuments(selectedReports, isPreview);
         }
 
         public IEnumerable<DirectionInImmunologyLaboratoryReportViewModel> GetDirectionInImmunologyLaboratoryReportData(long[] patientIds)

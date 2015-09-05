@@ -63,7 +63,7 @@ namespace MedExam.Patient.ViewModels
         private void OnPrintReports()
         {
             var reports = Reports.Where(r => r.IsSelected).Select(r => r.Name);
-            _reportService.PrintReports(reports, _itemIds);
+            _reportService.PrintReports(reports, _itemIds, IsPreview.Value);
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="PrintingService.FlowDocumentPreView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:printingService="clr-namespace:PrintingService"
+             xmlns:behaviors="clr-namespace:MedExam.Common.Behaviors;assembly=MedExam.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance printingService:FlowDocumentPreViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ToolBar>
+            <Button Command="{Binding PrintDocument}" Padding="3"
+                    behaviors:CloseOnClickBehaviour.IsEnabled="True">
+                <DockPanel>
+                    <Image Width="16" Margin="3 0" Source="{StaticResource PrinterButtonSource}"></Image>
+                    <TextBlock Text="Печать" />
+                </DockPanel>
+            </Button>
+        </ToolBar>
+        <FlowDocumentPageViewer Grid.Row="1" Document="{Binding Document, Mode=OneWay}" />
+    </Grid>
+</UserControl>
