@@ -19,7 +19,12 @@ namespace PrintingService
                     DataContext = new FlowDocumentPreViewModel(document)
                 };
 
-                var window = new Window { Content = view };
+                var window = new Window
+                {
+                    Content = view,
+                    SizeToContent = SizeToContent.Width,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                };
                 window.Show();
             }
             else
