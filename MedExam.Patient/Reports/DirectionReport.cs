@@ -4,12 +4,12 @@ using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public abstract class DirectionInImmunologyLaboratoryReport : ReportFlow
+    public abstract class DirectionReport : ReportFlow
     {
         private readonly ReportService _reportService;
         private long[] _patientIds;
 
-        protected DirectionInImmunologyLaboratoryReport(ReportService reportService, string template)
+        protected DirectionReport(ReportService reportService, string template)
             : base(template)
         {
             _reportService = reportService;
@@ -37,7 +37,7 @@ namespace MedExam.Patient.Reports
                 if (_patientIds == null || _patientIds.Length == 0)
                     return new object[0];
 
-                return _reportService.GetDirectionInImmunologyLaboratoryReportData(_patientIds);
+                return _reportService.GetDirectionReportData(_patientIds);
             }
         }
     }

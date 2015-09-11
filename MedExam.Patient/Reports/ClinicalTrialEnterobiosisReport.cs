@@ -2,11 +2,11 @@ using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public class SpecificTumorMarkerPsaReport : DirectionReport
+    public class ClinicalTrialEnterobiosisReport : DirectionReport
     {
-        private const string Template = "Онкомаркер специфический PSA";
+        private const string Template = "Клиническое исследование (энтеробиоз)";
 
-        public SpecificTumorMarkerPsaReport(ReportService reportService)
+        public ClinicalTrialEnterobiosisReport(ReportService reportService)
             : base(reportService, Template)
         {
         }

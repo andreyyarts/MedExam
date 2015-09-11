@@ -8,27 +8,28 @@
             <ControlTemplate.Resources>
                 <converters:DateTimeToMonthGenitiveNameConverter x:Key="DateTimeToMonthGenitiveNameConverter"/>
             </ControlTemplate.Resources>
-            <DockPanel Margin="0 2">
-                <views:ReportFieldTitle Text="Дата" />
+            <DockPanel>
+                <views:ReportFieldTitle Text="Дата" Padding="0 0 0 2"/>
                 <TextBlock>
-            &#171;<views:BorderBottomBlackLine Width="25">
-                <TextBlock TextAlignment="Center" FontStyle="Italic"
-                           Text="{Binding Value, StringFormat=\{0:dd\}, Mode=OneWay,
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
-            </views:BorderBottomBlackLine>&#187;
-            <views:BorderBottomBlackLine Width="120" >
-                <TextBlock TextAlignment="Center" FontStyle="Italic"
-                           Text="{Binding Value, Mode=OneWay, ConverterCulture=ru-RU, Converter={StaticResource DateTimeToMonthGenitiveNameConverter},
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
-            </views:BorderBottomBlackLine>
-            20
-            <views:BorderBottomBlackLine Width="20">
-                <TextBlock TextAlignment="Center" FontStyle="Italic"
-                           Text="{Binding Value, StringFormat=\{0:yy\}, Mode=OneWay,
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
-            </views:BorderBottomBlackLine>
-            г.
-        </TextBlock>
+                    &#171;<views:BorderBottomBlackLine Width="25">
+                        <TextBlock TextAlignment="Center" FontStyle="Italic"
+                                   Text="{Binding Value, StringFormat=\{0:dd\}, Mode=OneWay,
+                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
+                    </views:BorderBottomBlackLine>&#187;
+                    <views:BorderBottomBlackLine Width="120" >
+                        <TextBlock TextAlignment="Center" FontStyle="Italic"
+                                   Text="{Binding Value, Mode=OneWay, ConverterCulture=ru-RU,
+                                    Converter={StaticResource DateTimeToMonthGenitiveNameConverter},
+                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
+                    </views:BorderBottomBlackLine>
+                    20
+                    <views:BorderBottomBlackLine Width="20">
+                        <TextBlock TextAlignment="Center" FontStyle="Italic"
+                                   Text="{Binding Value, StringFormat=\{0:yy\}, Mode=OneWay,
+                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:ReportDateField}}}" />
+                    </views:BorderBottomBlackLine>
+                    г.
+                </TextBlock>
             </DockPanel>
         </ControlTemplate>
     </ContentControl.Template>

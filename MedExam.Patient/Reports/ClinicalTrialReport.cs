@@ -2,11 +2,11 @@
 
 namespace MedExam.Patient.Reports
 {
-    public class SpecificTumorMarkerCa125Report : DirectionReport
+    public class ClinicalTrialReport : DirectionReport
     {
-        private const string Template = "Онкомаркер специфический CA-125";
+        private const string Template = "Клиническое исследование";
 
-        public SpecificTumorMarkerCa125Report(ReportService reportService)
+        public ClinicalTrialReport(ReportService reportService)
             : base(reportService, Template)
         {
         }

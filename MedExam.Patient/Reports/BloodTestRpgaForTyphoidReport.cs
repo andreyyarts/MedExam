@@ -2,7 +2,7 @@
 
 namespace MedExam.Patient.Reports
 {
-    public class BloodTestRpgaForTyphoidReport : DirectionInImmunologyLaboratoryReport
+    public class BloodTestRpgaForTyphoidReport : DirectionReport
     {
         public BloodTestRpgaForTyphoidReport(ReportService reportService)
             : base(reportService, "Анализ крови. РПГА на брюшной тиф")

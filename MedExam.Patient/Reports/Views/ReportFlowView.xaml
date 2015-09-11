@@ -6,8 +6,17 @@
                            Padding="10 15"
                            FontFamily="Times New Roman">
     <common:ReportFlowViewBase.Resources>
+        <DataTemplate x:Key="FieldWrapTemplate" DataType="{x:Type views:ReportField}">
+            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" />
+        </DataTemplate>
         <Style TargetType="views:ReportField">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontStyle" Value="Italic" />
+            <Style.Triggers>
+                <Trigger Property="TextWrapping" Value="Wrap">
+                    <Setter Property="ContentTemplate" Value="{StaticResource FieldWrapTemplate}" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </common:ReportFlowViewBase.Resources>
 </common:ReportFlowViewBase>

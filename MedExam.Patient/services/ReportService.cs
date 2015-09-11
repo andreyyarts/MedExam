@@ -15,7 +15,7 @@ namespace MedExam.Patient.services
         private readonly PatientReportService _patientReportService;
         private readonly SystemService _systemService;
         private readonly LocalSettings _localSettings;
-        private IReportFlow[] _reports;
+        private List<IReportFlow> _reports;
 
         public ReportService(IPrintService printService, PatientReportService patientReportService, SystemService systemService, LocalSettings localSettings)
         {
@@ -29,12 +29,16 @@ namespace MedExam.Patient.services
         {
             get
             {
-                return _reports ?? (_reports = new IReportFlow[]
-                {
-                    new BloodTestRpgaForTyphoidReport(this),
-                    new SpecificTumorMarkerPsaReport(this),
-                    new SpecificTumorMarkerCa125Report(this)
-                });
+                return _reports
+                       ?? (_reports = new IReportFlow[]
+                       {
+                           new BloodTestRpgaForTyphoidReport(this),
+                           new SpecificTumorMarkerPsaReport(this),
+                           new SpecificTumorMarkerCa125Report(this),
+                           new ClinicalTrialEnterobiosisReport(this),
+                       }
+                           .OrderBy(r => r.Title)
+                           .ToList());
             }
         }
 
@@ -50,12 +54,12 @@ namespace MedExam.Patient.services
             _printService.PrintDocuments(selectedReports, isPreview);
         }
 
-        public IEnumerable<DirectionInImmunologyLaboratoryReportViewModel> GetDirectionInImmunologyLaboratoryReportData(long[] patientIds)
+        public IEnumerable<DirectionReportViewModel> GetDirectionReportData(long[] patientIds)
         {
             var today = _systemService.Today();
             var patients = _patientReportService.LoadPatientsByIds(patientIds);
 
-            var datas = patients.Select(patient => new DirectionInImmunologyLaboratoryReportViewModel
+            var datas = patients.Select(patient => new DirectionReportViewModel
             {
                 CurrentOrganizationName = _localSettings.OrganizationName,
                 CurrentDepartmentName = _localSettings.DepartmentName,
@@ -65,7 +69,8 @@ namespace MedExam.Patient.services
                              ? patient.BirthDate.Value.GetYearsBefore(today).ToString()
                              : "",
                 PatientOrganizationName = patient.OrganizationName,
-                CurrentDate = today
+                CurrentDate = today,
+                HomeAddress = patient.Address
             });
 
             return datas;

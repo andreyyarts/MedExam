@@ -2,7 +2,7 @@
 
 namespace MedExam.Patient.Reports.ViewModels
 {
-    public class DirectionInImmunologyLaboratoryReportViewModel
+    public class DirectionReportViewModel
     {
         public string CurrentOrganizationName { get; set; }
         public string CurrentDepartmentName { get; set; }
@@ -11,5 +11,6 @@ namespace MedExam.Patient.Reports.ViewModels
         public string PatientAge { get; set; }
         public string DoctorNameWithInitials { get; set; }
         public DateTime CurrentDate { get; set; }
+        public string HomeAddress { get; set; }
     }
 }

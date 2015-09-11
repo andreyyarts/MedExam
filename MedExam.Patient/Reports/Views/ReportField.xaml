@@ -4,11 +4,16 @@
                 xmlns:views="clr-namespace:MedExam.Patient.Reports.Views">
     <ContentControl.Template>
         <ControlTemplate TargetType="ContentControl">
-            <DockPanel Margin="0 2">
-                <views:ReportFieldTitle Text="{TemplateBinding Tag}" />
+            <DockPanel>
+                <views:ReportFieldTitle Text="{TemplateBinding Tag}" FontStyle="Normal" />
                 <views:BorderBottomBlackLine>
-                    <TextBlock Text="{TemplateBinding Content}" FontStyle="Italic" FontSize="{TemplateBinding FontSize}"
-                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" />
+                    <ContentPresenter ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                      ContentSource="{TemplateBinding Content}" 
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                      />
                 </views:BorderBottomBlackLine>
             </DockPanel>
         </ControlTemplate>

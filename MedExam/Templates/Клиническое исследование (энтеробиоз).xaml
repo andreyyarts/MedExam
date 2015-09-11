@@ -9,7 +9,7 @@
             <views:ReportHeaderField Margin="0 18">
                 НАПРАВЛЕНИЕ
                 <LineBreak />
-                в иммунологическую лабораторию
+                на клиническое исследование
             </views:ReportHeaderField>
         </StackPanel>
         <StackPanel>
@@ -19,15 +19,20 @@
                 </Style>
             </StackPanel.Resources>
             <views:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
-            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" />
+            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
             <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
+            <views:ReportField Tag="Диагноз:" Content="обследование" />
         </StackPanel>
-        <views:ReportHeaderField Margin="0 36" Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=views:ReportFlowView}}" />
+
+        <views:ReportHeaderField Margin="0 36" TextAlignment="Left">
+            Исследование биологического материала на
+            <Run TextDecorations="Underline">энтеробиоз</Run>
+        </views:ReportHeaderField>
 
         <StackPanel Margin="0 24 60 0">
-            <views:ReportDateField />
             <views:ReportField Tag="Врач" Content="{Binding DoctorNameWithInitials}" />
             <views:ReportField Tag="M/c" />
+            <views:ReportDateField Margin="0 24" />
         </StackPanel>
     </StackPanel>
 </views:ReportFlowView>
