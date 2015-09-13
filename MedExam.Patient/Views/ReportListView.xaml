@@ -33,7 +33,7 @@
             <CheckBox Content="Выбрать все" IsChecked="{Binding IsAllSelected.Value}" />
             <CheckBox Content="Предпросмотр" IsChecked="{Binding IsPreview.Value}" />
             <DockPanel HorizontalAlignment="Center">
-                <Button Content="{Binding PrintText.Value}" Width="90" HorizontalContentAlignment="Left"
+                <Button Content="{Binding PrintText.Value}" HorizontalContentAlignment="Left"
                         Command="{Binding PrintReports}"
                         behaviors:CloseOnClickBehaviour.IsEnabled="True" />
                 <Button Content="Отмена" IsCancel="True" />

@@ -19,7 +19,7 @@
                 </Style>
             </StackPanel.Resources>
             <views:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
-            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" />
+            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
             <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
         </StackPanel>
         <views:ReportHeaderField Margin="0 36" Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=views:ReportFlowView}}" />

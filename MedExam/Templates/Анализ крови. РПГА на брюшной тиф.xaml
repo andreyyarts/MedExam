@@ -20,7 +20,7 @@
                 </Style>
             </StackPanel.Resources>
             <views:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
-            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" />
+            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
             <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
             <views:ReportField Tag="Диагноз:" Content="обследование" />
         </StackPanel>

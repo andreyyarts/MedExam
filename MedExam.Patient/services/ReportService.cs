@@ -36,6 +36,7 @@ namespace MedExam.Patient.services
                            new SpecificTumorMarkerPsaReport(this),
                            new SpecificTumorMarkerCa125Report(this),
                            new ClinicalTrialEnterobiosisReport(this),
+                           new ClinicalTrialReport(this),
                        }
                            .OrderBy(r => r.Title)
                            .ToList());

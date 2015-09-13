@@ -50,9 +50,7 @@ namespace MedExam.Patient.ViewModels
             PrintReports.RaiseCanExecuteChanged();
 
             var countSelectedReports = Reports.Count(r => r.IsSelected);
-            PrintText.Value = countSelectedReports > 0
-                                ? string.Format("Печать ({0})", countSelectedReports)
-                                : "Печать";
+            PrintText.Value = string.Format("Печать ({0})", countSelectedReports);
         }
 
         private bool CanPrintReports()
