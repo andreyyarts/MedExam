@@ -78,6 +78,7 @@
     <Compile Include="Reports\BloodTestRpgaForTyphoidReport.cs" />
     <Compile Include="Reports\ClinicalTrialReport.cs" />
     <Compile Include="Reports\ClinicalTrialEnterobiosisReport.cs" />
+    <Compile Include="Reports\DirectionInBacteriologicalLaboratoryReport.cs" />
     <Compile Include="Reports\DirectionReport.cs" />
     <Compile Include="Reports\SpecificTumorMarkerCa125Report.cs" />
     <Compile Include="Reports\SpecificTumorMarkerPsaReport.cs" />

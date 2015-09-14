@@ -3,7 +3,7 @@
                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                            xmlns:common="clr-namespace:MedExam.Common;assembly=MedExam.Common"
                            xmlns:views="clr-namespace:MedExam.Patient.Reports.Views"
-                           Padding="15 10"
+                           Padding="15 10 10 10"
                            FontFamily="Times New Roman">
     <common:ReportFlowViewBase.Resources>
         <DataTemplate x:Key="FieldWrapTemplate" DataType="{x:Type views:ReportField}">
