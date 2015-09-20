@@ -10,7 +10,7 @@ namespace PrintingService
 {
     public class CompositionReportsOnFlowDocument : FlowDocument
     {
-        public CompositionReportsOnFlowDocument(IEnumerable<IReportFlow> reports)
+        public CompositionReportsOnFlowDocument(IEnumerable<ReportFlow<IReportData>> reports)
         {
             IsHyphenationEnabled = true;
             IsOptimalParagraphEnabled = true;
@@ -32,7 +32,7 @@ namespace PrintingService
             Blocks.Add(paragraph);
         }
 
-        private IEnumerable<Figure> DataToInline(IReportFlow report)
+        private IEnumerable<Figure> DataToInline(ReportFlow<IReportData> report)
         {
             return GetBlocksWithFillDatas(report).Select(block => new Figure(block)
             {
@@ -44,7 +44,7 @@ namespace PrintingService
             });
         }
 
-        private static IEnumerable<ReportFlowViewBase> GetBlocksWithFillDatas(IReportFlow report)
+        private static IEnumerable<ReportFlowViewBase> GetBlocksWithFillDatas(ReportFlow<IReportData> report)
         {
             var blocks = report.Datas.Select(data =>
             {

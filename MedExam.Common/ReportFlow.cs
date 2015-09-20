@@ -5,7 +5,7 @@ using MedExam.Common.Interfaces;
 
 namespace MedExam.Common
 {
-    public abstract class ReportFlow : IReportFlow
+    public abstract class ReportFlow<T> : IReportFlow where T : IReportData
     {
         private readonly string _template;
 
@@ -17,9 +17,9 @@ namespace MedExam.Common
         public abstract string Title { get; }
         public abstract int CountInWidth { get; }
         public abstract int CountInHeight { get; }
-        public abstract IEnumerable<object> Datas { get; }
+        public abstract IEnumerable<T> Datas { get; }
 
-        public virtual ReportFlowViewBase Report
+        public ReportFlowViewBase Report
         {
             get
             {

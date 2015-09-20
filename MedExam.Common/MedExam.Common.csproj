@@ -68,8 +68,11 @@
     <Compile Include="Interactivity\IInteractionRequestAware.cs" />
     <Compile Include="Interfaces\ILoggerApp.cs" />
     <Compile Include="Interfaces\IPrintService.cs" />
+    <Compile Include="Interfaces\IReportData.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
     <Compile Include="Interfaces\IReportView.cs" />
+    <Compile Include="LocalSettings\ReportListSettings.cs" />
+    <Compile Include="LocalSettings\SettingPair.cs" />
     <Compile Include="ReportFlow.cs" />
     <Compile Include="ReportFlowViewBase.cs" />
     <Compile Include="ItemsNotification.cs" />
@@ -88,6 +91,7 @@
     </Compile>
     <Compile Include="RegionNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportList.cs" />
     <Compile Include="SpecialChars.cs" />
     <Compile Include="Windows\DefaultConfirmationWindow.xaml.cs">
       <DependentUpon>DefaultConfirmationWindow.xaml</DependentUpon>

@@ -3,9 +3,10 @@ using System.Linq;
 using MedExam.Common;
 using MedExam.Common.Extensions;
 using MedExam.Common.Interfaces;
-using MedExam.Patient.Reports;
+using MedExam.Common.LocalSettings;
 using MedExam.Patient.Reports.ViewModels;
 using Microsoft.Practices.ObjectBuilder2;
+using ReportList = MedExam.Common.ReportList;
 
 namespace MedExam.Patient.services
 {
@@ -15,43 +16,28 @@ namespace MedExam.Patient.services
         private readonly PatientReportService _patientReportService;
         private readonly SystemService _systemService;
         private readonly LocalSettings _localSettings;
-        private List<IReportFlow> _reports;
+        private readonly ReportList _reportList;
 
-        public ReportService(IPrintService printService, PatientReportService patientReportService, SystemService systemService, LocalSettings localSettings)
+        public ReportService(IPrintService printService, PatientReportService patientReportService, SystemService systemService, LocalSettings localSettings, ReportList reportList)
         {
             _printService = printService;
             _patientReportService = patientReportService;
             _systemService = systemService;
             _localSettings = localSettings;
-        }
-
-        private IEnumerable<IReportFlow> Reports
-        {
-            get
-            {
-                return _reports
-                       ?? (_reports = new IReportFlow[]
-                       {
-                           new BloodTestRpgaForTyphoidReport(this),
-                           new SpecificTumorMarkerPsaReport(this),
-                           new SpecificTumorMarkerCa125Report(this),
-                           new ClinicalTrialEnterobiosisReport(this),
-                           new ClinicalTrialReport(this),
-                           new DirectionInBacteriologicalLaboratoryReport(this),
-                       }
-                           .OrderBy(r => r.Title)
-                           .ToList());
-            }
+            _reportList = reportList;
         }
 
         public Dictionary<string, string> GetReports()
         {
-            return Reports.ToDictionary(r => r.GetType().Name, r => r.Title);
+            return _reportList.Reports.ToDictionary(r => r.GetType().Name, r => r.Title);
         }
 
         public void PrintReports(IEnumerable<string> reports, long[] itemIds, bool isPreview)
         {
-            var selectedReports = Reports.Where(r => reports.Contains(r.GetType().Name)).ToArray();
+            var selectedReports = _reportList.Reports.Where(r => reports.Contains(r.GetType().Name))
+                                                     .OfType<ReportFlow<IReportData>>()
+                                                     .ToArray();
+
             selectedReports.ForEach(r => r.SetItems(itemIds));
             _printService.PrintDocuments(selectedReports, isPreview);
         }

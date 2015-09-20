@@ -1,8 +1,9 @@
 ﻿using System;
+using MedExam.Common.Interfaces;
 
 namespace MedExam.Patient.Reports.ViewModels
 {
-    public class DirectionReportViewModel
+    public class DirectionReportViewModel : IReportData
     {
         public string CurrentOrganizationName { get; set; }
         public string CurrentDepartmentName { get; set; }

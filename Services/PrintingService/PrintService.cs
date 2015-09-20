@@ -3,13 +3,14 @@ using System.Printing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using MedExam.Common;
 using MedExam.Common.Interfaces;
 
 namespace PrintingService
 {
     public class PrintService : IPrintService
     {
-        public void PrintDocuments(IEnumerable<IReportFlow> reports, bool isPreview = false, bool withShowDialog = false, string printerName = "")
+        public void PrintDocuments(IEnumerable<ReportFlow<IReportData>> reports, bool isPreview = false, bool withShowDialog = false, string printerName = "")
         {
             if (isPreview)
             {

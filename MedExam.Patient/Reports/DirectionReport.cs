@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using MedExam.Common;
+using MedExam.Common.Interfaces;
+using MedExam.Patient.Reports.ViewModels;
 using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public abstract class DirectionReport : ReportFlow
+    public abstract class DirectionReport : ReportFlow<IReportData>
     {
         private readonly ReportService _reportService;
         private long[] _patientIds;
@@ -30,12 +32,12 @@ namespace MedExam.Patient.Reports
             get { return 2; }
         }
 
-        public override IEnumerable<object> Datas
+        public override IEnumerable<IReportData> Datas
         {
             get
             {
                 if (_patientIds == null || _patientIds.Length == 0)
-                    return new object[0];
+                    return new DirectionReportViewModel[0];
 
                 return _reportService.GetDirectionReportData(_patientIds);
             }

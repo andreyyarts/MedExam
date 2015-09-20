@@ -22,7 +22,7 @@ namespace MedExam.Patient.ViewModels
             Reports = new List<ReportViewModel>(reportService.GetReports().Select(r => new ReportViewModel(r.Key, r.Value)));
             Reports.ForEach(r => r.PropertyChanged += ReportIsSelectedPropertyChanged);
 
-            PrintText = new ObservableObject<string> { Value = "Печать" };
+            PrintText = new ObservableObject<string> { Value = "Печать (0)" };
             IsPreview = new ObservableObject<bool>();
             IsAllSelected = new ObservableObject<bool>();
             PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);

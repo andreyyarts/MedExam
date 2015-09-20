@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using MedExam.Common;
 using MedExam.Common.Interfaces;
+using MedExam.Common.LocalSettings;
 using MedExam.Patient;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
@@ -22,6 +23,10 @@ namespace MedExam
             RegisterTypeIfMissing(typeof(IEntitiesFactory<>), typeof(EntitiesFactory<>), true);
             RegisterTypeIfMissing(typeof(IPrintService), typeof(PrintService), true);
             Container.RegisterInstance(LocalSettingsService.Load<LocalSettings>());
+            var reports = new ReportList(ReportListResolve.BuildReports(Container));
+            Container.RegisterInstance(reports);
+
+            //Container.RegisterInstance(LocalSettingsService.Load<ReportList>());
         }
 
         protected override ILoggerFacade CreateLogger()
