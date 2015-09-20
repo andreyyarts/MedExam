@@ -9,11 +9,9 @@ namespace MedExam.Patient.Reports
         public ClinicalTrialEnterobiosisReport(ReportService reportService)
             : base(reportService, Template)
         {
+            Title = Template;
         }
 
-        public override string Title
-        {
-            get { return Template; }
-        }
+        public override string Title { get; set; }
     }
 }

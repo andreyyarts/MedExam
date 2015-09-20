@@ -7,11 +7,9 @@ namespace MedExam.Patient.Reports
         public BloodTestRpgaForTyphoidReport(ReportService reportService)
             : base(reportService, "Анализ крови. РПГА на брюшной тиф")
         {
+            Title = "Анализ крови: РПГА на брюшной тиф";
         }
 
-        public override string Title
-        {
-            get { return "Анализ крови: РПГА на брюшной тиф"; }
-        }
+        public override string Title { get; set; }
     }
 }

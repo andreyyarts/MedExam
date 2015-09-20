@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
@@ -61,6 +62,8 @@
     <Compile Include="Behaviors\CloseOnClickBehaviour.cs" />
     <Compile Include="Converters\DateTimeToMonthGenitiveNameConverter.cs" />
     <Compile Include="Converters\DateTimeToStringConverter.cs" />
+    <Compile Include="DynamicDictionary.cs" />
+    <Compile Include="DynamicObjectService.cs" />
     <Compile Include="Extensions\DateTimeExt.cs" />
     <Compile Include="FormatSizes.cs" />
     <Compile Include="Interactivity\PopupWindowAction.cs" />
@@ -71,7 +74,7 @@
     <Compile Include="Interfaces\IReportData.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
     <Compile Include="Interfaces\IReportView.cs" />
-    <Compile Include="LocalSettings\ReportListSettings.cs" />
+    <Compile Include="LocalSettings\ReportPropertiesSettings.cs" />
     <Compile Include="LocalSettings\SettingPair.cs" />
     <Compile Include="ReportFlow.cs" />
     <Compile Include="ReportFlowViewBase.cs" />

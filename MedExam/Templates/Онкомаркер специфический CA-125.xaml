@@ -22,7 +22,7 @@
             <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
             <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
         </StackPanel>
-        <views:ReportHeaderField Margin="0 36" Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=views:ReportFlowView}}" />
+        <views:ReportHeaderField Margin="0 36" Text="Онкомаркер специфический CA-125" />
 
         <StackPanel Margin="0 24 60 0">
             <views:ReportDateField />

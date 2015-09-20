@@ -24,8 +24,8 @@
             <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
             <views:ReportField Tag="Диагноз:" Content="обследование" />
         </StackPanel>
-        
-        <views:ReportHeaderField Margin="0 36" Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType=views:ReportFlowView}}" />
+
+        <views:ReportHeaderField Margin="0 36" Text="Анализ крови: РПГА на брюшной тиф" />
 
         <StackPanel Margin="0 24 60 0">
             <!--<views:ReportField Tag="Дата:" HorizontalAlignment="Left">

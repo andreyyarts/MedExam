@@ -1,10 +1,8 @@
 ﻿using System.Windows.Documents;
-using MedExam.Common.Interfaces;
 
 namespace MedExam.Common
 {
-    public class ReportFlowViewBase : BlockUIContainer, IReportView
+    public class ReportFlowViewBase : BlockUIContainer
     {
-        public string Title { get; set; }
     }
 }

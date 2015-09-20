@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using MedExam.Common;
 using MedExam.Common.Interfaces;
 using MedExam.Common.LocalSettings;
 using MedExam.Patient;
+using Microsoft.Practices.ObjectBuilder2;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
@@ -23,10 +25,20 @@ namespace MedExam
             RegisterTypeIfMissing(typeof(IEntitiesFactory<>), typeof(EntitiesFactory<>), true);
             RegisterTypeIfMissing(typeof(IPrintService), typeof(PrintService), true);
             Container.RegisterInstance(LocalSettingsService.Load<LocalSettings>());
-            var reports = new ReportList(ReportListResolve.BuildReports(Container));
-            Container.RegisterInstance(reports);
 
+            LoadReports();
             //Container.RegisterInstance(LocalSettingsService.Load<ReportList>());
+        }
+
+        private void LoadReports()
+        {
+            var reports = new ReportList(ReportListResolve.BuildReports(Container));
+            var propertiesSettings = new ReportPropertiesSettings();
+            propertiesSettings.SetReports(reports.Reports);
+            var loadedPropertiesSettings = LocalSettingsService.Load(propertiesSettings);
+            reports.Reports.ForEach(r => r.Title = 
+                    loadedPropertiesSettings.Reports.Single(lr => lr.Key == r.GetType().Name).Value);
+            Container.RegisterInstance(reports);
         }
 
         protected override ILoggerFacade CreateLogger()
@@ -60,8 +72,8 @@ namespace MedExam
         {
             base.ConfigureModuleCatalog();
 
-            var moduleCatalog = (ModuleCatalog) ModuleCatalog;
-            moduleCatalog.AddModule(typeof (PatientModule));
+            var moduleCatalog = (ModuleCatalog)ModuleCatalog;
+            moduleCatalog.AddModule(typeof(PatientModule));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace MedExam.Common
             _template = template;
         }
 
-        public abstract string Title { get; }
+        public abstract string Title { get; set; }
         public abstract int CountInWidth { get; }
         public abstract int CountInHeight { get; }
         public abstract IEnumerable<T> Datas { get; }
@@ -27,7 +27,6 @@ namespace MedExam.Common
                 using (var stream = File.OpenRead(string.Format("Templates/{0}.xaml", _template)))
                 {
                     view = (ReportFlowViewBase)XamlReader.Load(stream);
-                    view.Title = Title;
                     stream.Close();
                 }
 

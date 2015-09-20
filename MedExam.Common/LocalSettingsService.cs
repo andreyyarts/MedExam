@@ -9,7 +9,7 @@ namespace MedExam.Common
     {
         private const string ConfigPath = "Settings";
 
-        public static T Load<T>() where T : new()
+        public static T Load<T>(T settingsDefault = default(T)) where T : new()
         {
             var type = typeof(T);
             var fileName = type.Name;
@@ -18,7 +18,7 @@ namespace MedExam.Common
 
             if (!File.Exists(fullFileName))
             {
-                return SaveDefaultSettings<T>();
+                return SaveDefaultSettings(settingsDefault);
             }
             using (var stream = File.OpenRead(fullFileName))
             {
@@ -29,10 +29,15 @@ namespace MedExam.Common
             }
         }
 
-        private static T SaveDefaultSettings<T>() where T : new()
+        private static T SaveDefaultSettings<T>(T settingsDefault = default(T)) where T : new()
         {
-            var settings = new T();
+            var settings = Equals(settingsDefault, default(T)) ? new T() : settingsDefault;
 
+            return Save(settings);
+        }
+
+        private static T Save<T>(T settings) where T : new()
+        {
             if (!Directory.Exists(ConfigPath))
             {
                 Directory.CreateDirectory(ConfigPath);
