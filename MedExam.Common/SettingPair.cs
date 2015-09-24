@@ -1,4 +1,4 @@
-﻿namespace MedExam.Common.LocalSettings
+﻿namespace MedExam.Common
 {
     public class SettingPair
     {

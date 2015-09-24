@@ -62,8 +62,6 @@
     <Compile Include="Behaviors\CloseOnClickBehaviour.cs" />
     <Compile Include="Converters\DateTimeToMonthGenitiveNameConverter.cs" />
     <Compile Include="Converters\DateTimeToStringConverter.cs" />
-    <Compile Include="DynamicDictionary.cs" />
-    <Compile Include="DynamicObjectService.cs" />
     <Compile Include="Extensions\DateTimeExt.cs" />
     <Compile Include="FormatSizes.cs" />
     <Compile Include="Interactivity\PopupWindowAction.cs" />
@@ -73,9 +71,9 @@
     <Compile Include="Interfaces\IPrintService.cs" />
     <Compile Include="Interfaces\IReportData.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
-    <Compile Include="Interfaces\IReportView.cs" />
     <Compile Include="LocalSettings\ReportPropertiesSettings.cs" />
-    <Compile Include="LocalSettings\SettingPair.cs" />
+    <Compile Include="ReportSetting.cs" />
+    <Compile Include="SettingPair.cs" />
     <Compile Include="ReportFlow.cs" />
     <Compile Include="ReportFlowViewBase.cs" />
     <Compile Include="ItemsNotification.cs" />

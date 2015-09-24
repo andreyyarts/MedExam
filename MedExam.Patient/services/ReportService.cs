@@ -29,12 +29,12 @@ namespace MedExam.Patient.services
 
         public Dictionary<string, string> GetReports()
         {
-            return _reportList.Reports.ToDictionary(r => r.GetType().Name, r => r.Title);
+            return _reportList.Reports.ToDictionary(r => r.Name, r => r.Title);
         }
 
         public void PrintReports(IEnumerable<string> reports, long[] itemIds, bool isPreview)
         {
-            var selectedReports = _reportList.Reports.Where(r => reports.Contains(r.GetType().Name))
+            var selectedReports = _reportList.Reports.Where(r => reports.Contains(r.Name))
                                                      .OfType<ReportFlow<IReportData>>()
                                                      .ToArray();
 

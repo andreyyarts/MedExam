@@ -75,13 +75,7 @@
     <Compile Include="Dto\PatientReportDto.cs" />
     <Compile Include="Dto\PersonNameDto.cs" />
     <Compile Include="PatientModule.cs" />
-    <Compile Include="Reports\BloodTestRpgaForTyphoidReport.cs" />
-    <Compile Include="Reports\ClinicalTrialReport.cs" />
-    <Compile Include="Reports\ClinicalTrialEnterobiosisReport.cs" />
-    <Compile Include="Reports\DirectionInBacteriologicalLaboratoryReport.cs" />
     <Compile Include="Reports\DirectionReport.cs" />
-    <Compile Include="Reports\SpecificTumorMarkerCa125Report.cs" />
-    <Compile Include="Reports\SpecificTumorMarkerPsaReport.cs" />
     <Compile Include="Reports\ViewModels\DirectionReportViewModel.cs" />
     <Compile Include="Reports\Views\ReportDefaultDateField.xaml.cs">
       <DependentUpon>ReportDefaultDateField.xaml</DependentUpon>

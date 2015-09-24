@@ -5,16 +5,14 @@ using System.Xml.Serialization;
 
 namespace MedExam.Common
 {
-    public class LocalSettingsService
+    public static class LocalSettingsService
     {
         private const string ConfigPath = "Settings";
 
         public static T Load<T>(T settingsDefault = default(T)) where T : new()
         {
             var type = typeof(T);
-            var fileName = type.Name;
-
-            var fullFileName = String.Format("{0}/{1}.xml", ConfigPath, fileName);
+            var fullFileName = GetFullFileName(type);
 
             if (!File.Exists(fullFileName))
             {
@@ -27,6 +25,22 @@ namespace MedExam.Common
                 stream.Close();
                 return settings;
             }
+        }
+
+        public static bool Exists<T>()
+        {
+            return Exists(typeof(T));
+        }
+
+        public static bool Exists(Type type)
+        {
+            var fullFileName = GetFullFileName(type);
+            return File.Exists(fullFileName);
+        }
+
+        private static string GetFullFileName(Type type)
+        {
+            return String.Format("{0}/{1}.xml", ConfigPath, type.Name);
         }
 
         private static T SaveDefaultSettings<T>(T settingsDefault = default(T)) where T : new()
@@ -43,8 +57,7 @@ namespace MedExam.Common
                 Directory.CreateDirectory(ConfigPath);
             }
             var type = typeof(T);
-            var fileName = type.Name;
-            var fullFileName = string.Format("{0}/{1}.xml", ConfigPath, fileName);
+            var fullFileName = GetFullFileName(type);
             using (var stream = File.Create(fullFileName))
             {
                 new XmlSerializer(type).Serialize(stream, settings,

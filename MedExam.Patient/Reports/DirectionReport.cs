@@ -6,13 +6,12 @@ using MedExam.Patient.services;
 
 namespace MedExam.Patient.Reports
 {
-    public abstract class DirectionReport : ReportFlow<IReportData>
+    public sealed class DirectionReport : ReportFlow<IReportData>
     {
         private readonly ReportService _reportService;
         private long[] _patientIds;
 
-        protected DirectionReport(ReportService reportService, string template)
-            : base(template)
+        public DirectionReport(ReportService reportService)
         {
             _reportService = reportService;
         }
@@ -21,6 +20,10 @@ namespace MedExam.Patient.Reports
         {
             _patientIds = itemIds;
         }
+
+        public override string Name { get; set; }
+        public override string Title { get; set; }
+        public override string Template { get; set; }
 
         public override int CountInWidth
         {

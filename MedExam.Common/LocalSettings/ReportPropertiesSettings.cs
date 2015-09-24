@@ -6,11 +6,20 @@ namespace MedExam.Common.LocalSettings
 {
     public class ReportPropertiesSettings
     {
-        public SettingPair[] Reports { get; set; }
-
-        public void SetReports(IEnumerable<IReportFlow> reports)
+        public ReportPropertiesSettings(IEnumerable<IReportFlow> reports)
         {
-            Reports = reports.Select(r => new SettingPair { Key = r.GetType().Name, Value = r.Title }).ToArray();
+            ReportSettings = reports.Select(r => new ReportSetting
+            {
+                Type = r.GetType().Name,
+                Title = r.Title,
+                Template = r.Template
+            }).ToArray();
         }
+
+        public ReportPropertiesSettings()
+        {
+        }
+
+        public ReportSetting[] ReportSettings { get; set; }
     }
 }
