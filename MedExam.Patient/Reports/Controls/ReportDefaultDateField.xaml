@@ -1,4 +1,4 @@
-﻿<TextBlock x:Class="MedExam.Patient.Reports.Views.ReportDefaultDateField"
+﻿<TextBlock x:Class="MedExam.Patient.Reports.Controls.ReportDefaultDateField"
                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Run Text="{Binding Text, StringFormat=D, ConverterCulture=ru-RU, RelativeSource={RelativeSource FindAncestor, AncestorType=TextBlock}}" />

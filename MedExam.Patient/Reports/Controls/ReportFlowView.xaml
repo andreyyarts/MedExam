@@ -1,15 +1,15 @@
-﻿<common:ReportFlowViewBase x:Class="MedExam.Patient.Reports.Views.ReportFlowView"
+﻿<common:ReportFlowViewBase x:Class="MedExam.Patient.Reports.Controls.ReportFlowView"
                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                            xmlns:common="clr-namespace:MedExam.Common;assembly=MedExam.Common"
-                           xmlns:views="clr-namespace:MedExam.Patient.Reports.Views"
+                           xmlns:controls="clr-namespace:MedExam.Patient.Reports.Controls"
                            Padding="15 10 10 10"
                            FontFamily="Times New Roman">
     <common:ReportFlowViewBase.Resources>
-        <DataTemplate x:Key="FieldWrapTemplate" DataType="{x:Type views:ReportField}">
+        <DataTemplate x:Key="FieldWrapTemplate" DataType="{x:Type controls:ReportField}">
             <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" />
         </DataTemplate>
-        <Style TargetType="views:ReportField">
+        <Style TargetType="controls:ReportField">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="FontStyle" Value="Italic" />
             <Style.Triggers>

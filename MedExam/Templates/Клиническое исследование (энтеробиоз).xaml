@@ -1,44 +1,44 @@
-﻿<views:ReportFlowView xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<controls:ReportFlowView xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:views="clr-namespace:MedExam.Patient.Reports.Views;assembly=MedExam.Patient">
-    <views:ReportFlowView.Resources />
+                      xmlns:controls="clr-namespace:MedExam.Patient.Reports.Controls;assembly=MedExam.Patient">
+    <controls:ReportFlowView.Resources />
     <StackPanel Margin="0">
         <TextBlock Text="12 каб." FontSize="14" FontStyle="Italic" />
         <TextBlock Text="12:00-12:30" FontSize="14" FontStyle="Italic" />
         <StackPanel Margin="0 10" HorizontalAlignment="Center">
-            <views:ReportHeaderField Text="{Binding CurrentOrganizationName}" />
-            <views:ReportHeaderField Margin="0 18">
+            <controls:ReportHeaderField Text="{Binding CurrentOrganizationName}" />
+            <controls:ReportHeaderField Margin="0 18">
                 НАПРАВЛЕНИЕ
                 <LineBreak />
                 на клиническое исследование
-            </views:ReportHeaderField>
+            </controls:ReportHeaderField>
         </StackPanel>
         <StackPanel>
             <StackPanel.Resources>
-                <Style TargetType="views:ReportField" BasedOn="{StaticResource {x:Type views:ReportField}}">
+                <Style TargetType="controls:ReportField" BasedOn="{StaticResource {x:Type controls:ReportField}}">
                     <Setter Property="Margin" Value="0 6" />
                 </Style>
             </StackPanel.Resources>
-            <views:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
-            <views:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
-            <views:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
-            <views:ReportField Tag="Диагноз:" Content="обследование" />
+            <controls:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
+            <controls:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
+            <controls:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
+            <controls:ReportField Tag="Диагноз:" Content="обследование" />
         </StackPanel>
 
-        <views:ReportHeaderField Margin="0 36" TextAlignment="Left">
+        <controls:ReportHeaderField Margin="0 36" TextAlignment="Left">
             Исследование биологического материала на
             <Run TextDecorations="Underline">энтеробиоз</Run>
-        </views:ReportHeaderField>
+        </controls:ReportHeaderField>
 
         <StackPanel Margin="0 0 60 0">
             <StackPanel.Resources>
-                <Style TargetType="views:ReportField" BasedOn="{StaticResource {x:Type views:ReportField}}">
+                <Style TargetType="controls:ReportField" BasedOn="{StaticResource {x:Type controls:ReportField}}">
                     <Setter Property="Margin" Value="0 2" />
                 </Style>
             </StackPanel.Resources>
-            <views:ReportField Tag="Врач" Content="{Binding DoctorNameWithInitials}" />
-            <views:ReportField Tag="M/c" />
-            <views:ReportDateField Margin="0 24" />
+            <controls:ReportField Tag="Врач" Content="{Binding DoctorNameWithInitials}" />
+            <controls:ReportField Tag="M/c" />
+            <controls:ReportDateField Margin="0 24" />
         </StackPanel>
     </StackPanel>
-</views:ReportFlowView>
+</controls:ReportFlowView>

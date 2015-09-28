@@ -1,0 +1,6 @@
+﻿<TextBlock x:Class="MedExam.Patient.Reports.Controls.ReportDateDayField"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:controls="clr-namespace:MedExam.Patient.Reports.Controls">
+    &#171;<controls:BorderBottomBlackLine Width="25" />&#187;
+</TextBlock>

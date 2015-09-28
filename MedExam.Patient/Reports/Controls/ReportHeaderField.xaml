@@ -1,4 +1,4 @@
-﻿<TextBlock x:Class="MedExam.Patient.Reports.Views.ReportHeaderField"
+﻿<TextBlock x:Class="MedExam.Patient.Reports.Controls.ReportHeaderField"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
            TextAlignment="Center"

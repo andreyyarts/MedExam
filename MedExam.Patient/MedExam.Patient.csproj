@@ -77,34 +77,34 @@
     <Compile Include="PatientModule.cs" />
     <Compile Include="Reports\DirectionReport.cs" />
     <Compile Include="Reports\ViewModels\DirectionReportViewModel.cs" />
-    <Compile Include="Reports\Views\ReportDefaultDateField.xaml.cs">
+    <Compile Include="Reports\Controls\ReportDefaultDateField.xaml.cs">
       <DependentUpon>ReportDefaultDateField.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportFieldTitle.xaml.cs">
+    <Compile Include="Reports\Controls\ReportFieldTitle.xaml.cs">
       <DependentUpon>ReportFieldTitle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\BorderBottomBlackLine.xaml.cs">
+    <Compile Include="Reports\Controls\BorderBottomBlackLine.xaml.cs">
       <DependentUpon>BorderBottomBlackLine.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportDateDayField.xaml.cs">
+    <Compile Include="Reports\Controls\ReportDateDayField.xaml.cs">
       <DependentUpon>ReportDateDayField.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportDateField.xaml.cs">
+    <Compile Include="Reports\Controls\ReportDateField.xaml.cs">
       <DependentUpon>ReportDateField.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportHeaderField.xaml.cs">
+    <Compile Include="Reports\Controls\ReportHeaderField.xaml.cs">
       <DependentUpon>ReportHeaderField.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportFieldContent.xaml.cs">
+    <Compile Include="Reports\Controls\ReportFieldContent.xaml.cs">
       <DependentUpon>ReportFieldContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportField.xaml.cs">
+    <Compile Include="Reports\Controls\ReportField.xaml.cs">
       <DependentUpon>ReportField.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\ReportFlowView.xaml.cs">
+    <Compile Include="Reports\Controls\ReportFlowView.xaml.cs">
       <DependentUpon>ReportFlowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Views\TextWrapping.cs" />
+    <Compile Include="Reports\Controls\TextWrapping.cs" />
     <Compile Include="Services\PatientReportService.cs" />
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\SystemService.cs" />
@@ -131,39 +131,39 @@
     <DesignData Include="SampleData\DirectionInImmunologyLaboratoryReport.xaml">
       <SubType>Designer</SubType>
     </DesignData>
-    <Page Include="Reports\Views\ReportDefaultDateField.xaml">
+    <Page Include="Reports\Controls\ReportDefaultDateField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportFieldTitle.xaml">
+    <Page Include="Reports\Controls\ReportFieldTitle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\BorderBottomBlackLine.xaml">
+    <Page Include="Reports\Controls\BorderBottomBlackLine.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportDateDayField.xaml">
+    <Page Include="Reports\Controls\ReportDateDayField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportDateField.xaml">
+    <Page Include="Reports\Controls\ReportDateField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportHeaderField.xaml">
+    <Page Include="Reports\Controls\ReportHeaderField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportFieldContent.xaml">
+    <Page Include="Reports\Controls\ReportFieldContent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Reports\Views\ReportField.xaml">
+    <Page Include="Reports\Controls\ReportField.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Reports\Views\ReportFlowView.xaml">
+    <Page Include="Reports\Controls\ReportFlowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

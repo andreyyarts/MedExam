@@ -1,4 +1,4 @@
-﻿namespace MedExam.Patient.Reports.Views
+﻿namespace MedExam.Patient.Reports.Controls
 {
     /// <summary>
     /// Interaction logic for SpecificTumorMarkerReportView.xaml

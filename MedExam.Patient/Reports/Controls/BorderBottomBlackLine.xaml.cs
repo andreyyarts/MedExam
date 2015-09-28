@@ -1,11 +1,11 @@
-﻿namespace MedExam.Patient.Reports.Views
+﻿namespace MedExam.Patient.Reports.Controls
 {
     /// <summary>
     /// Interaction logic for ReportField.xaml
     /// </summary>
-    public partial class ReportDateDayField
+    public partial class BorderBottomBlackLine
     {
-        public ReportDateDayField()
+        public BorderBottomBlackLine()
         {
             InitializeComponent();
         }
