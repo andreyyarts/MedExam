@@ -16,11 +16,15 @@
                 <ResourceDictionary Source="pack://application:,,,/MedExam.Common;component/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <VerticalAlignment x:Key="VerticalCenter">Center</VerticalAlignment>
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonIconStyle}" />
             <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
                 <Setter Property="Margin" Value="5 0" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="{StaticResource VerticalCenter}" />
+            </Style>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="Margin" Value="5 0" />
             </Style>
             <Style TargetType="DataGridRow">
                 <Setter Property="Cursor" Value="Hand" />
@@ -47,16 +51,31 @@
                 <ComboBox DockPanel.Dock="Left" ItemsSource="{Binding Organizations}" Width="400"
 					IsSynchronizedWithCurrentItem="True" IsReadOnly="True"
 					SelectedValuePath="Id" DisplayMemberPath="FullName"
-					VerticalContentAlignment="Center"/>
+					VerticalContentAlignment="{StaticResource VerticalCenter}"/>
                 <Button ToolTip="Печать отчетов" Command="{Binding PrintReports, UpdateSourceTrigger=PropertyChanged}">
                     <Image Source="{StaticResource PrinterSource}" />
                 </Button>
             </WrapPanel>
         </DockPanel>
+        <DockPanel DockPanel.Dock="Top" Margin="5" Height="25">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Поиск по ФИО:" VerticalAlignment="{StaticResource VerticalCenter}" />
+                <TextBox x:Name="SearchText" Width="300">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextInput">
+                            <i:InvokeCommandAction Command="{Binding SearchPatients}"
+                                                   CommandParameter="{Binding Text, ElementName=SearchText}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <TextBlock Text="{Binding FoundCountPatients.Value}" Foreground="Green"
+                           VerticalAlignment="{StaticResource VerticalCenter}" />
+            </StackPanel>
+        </DockPanel>
         <Grid>
-            <ProgressBar HorizontalAlignment="Center" VerticalAlignment="Center"
+            <!--<ProgressBar HorizontalAlignment="Center" VerticalAlignment="Center"
 				Height="20" Margin="10,10,0,0" Width="200"
-				x:Name="B" Visibility="Collapsed" Foreground="Salmon"/>
+				x:Name="B" Visibility="Collapsed" Foreground="Salmon"/>-->
 
             <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" IsSynchronizedWithCurrentItem="True">
                 <i:Interaction.Triggers>
@@ -72,13 +91,12 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="№" Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding PersonName.LastName}" Width="100" />
-                    <DataGridTextColumn Header="Имя" Binding="{Binding PersonName.FirstName}" Width="100" />
-                    <DataGridTextColumn Header="Отчество" Binding="{Binding PersonName.MiddleName}" Width="100" />
-                    <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" Width="40" />
-                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" />
-                    <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" />
+                    <DataGridTextColumn Header="№" Binding="{Binding Id}" MinWidth="40" />
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding PersonName.LastName}" MinWidth="80" />
+                    <DataGridTextColumn Header="Имя" Binding="{Binding PersonName.FirstName}" MinWidth="80" />
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding PersonName.MiddleName}" MinWidth="80" />
+                    <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" MinWidth="25" />
+                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDate, StringFormat=\{0:dd.MM.yyyy\}}" MinWidth="60" />
                     <DataGridTemplateColumn Header="Полис">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate DataType="viewModels:PatientViewModel">
@@ -90,6 +108,8 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="*" />
+                    <DataGridTextColumn Header="Организация" Binding="{Binding Organization}" MinWidth="100" Width="2*" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

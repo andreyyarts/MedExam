@@ -26,7 +26,7 @@ namespace MedExam.Patient.ViewModels
             var organizations = organizationService.LoadAllOrganizations();
             Organizations = new ListCollectionView(organizations);
             Patients = new ObservableCollection<PatientViewModel>();
-            
+
             Organizations.CurrentChanged += (sender, args) =>
             {
                 LoadPatients((OrganizationDto)Organizations.CurrentItem);
@@ -34,6 +34,8 @@ namespace MedExam.Patient.ViewModels
 
             PrintReports = new DelegateCommand(OnPrintReports, CanPrintReports);
             Refresh = new DelegateCommand<OrganizationDto>(OnRefresh);
+            SearchPatients = new DelegateCommand<string>(OnSearchPatients);
+            FoundCountPatients = new ObservableObject<string>();
             Patients.CollectionChanged += (sender, args) =>
             {
                 switch (args.Action)
@@ -50,7 +52,7 @@ namespace MedExam.Patient.ViewModels
                         break;
                 }
             };
-            
+
             ShowReportsRequest = new InteractionRequest<ReportListViewModel>();
         }
 
@@ -59,6 +61,16 @@ namespace MedExam.Patient.ViewModels
         public InteractionRequest<ReportListViewModel> ShowReportsRequest { get; private set; }
         public DelegateCommand PrintReports { get; private set; }
         public DelegateCommand<OrganizationDto> Refresh { get; private set; }
+        public DelegateCommand<string> SearchPatients { get; private set; }
+        public ObservableObject<string> FoundCountPatients { get; private set; }
+
+        private void OnSearchPatients(string searchText)
+        {
+            Patients.Clear();
+            var patients = _patientService.LoadPatientsByToken(searchText);
+            Patients.AddRange(patients.Select(PatientDtoMap));
+            FoundCountPatients.Value = string.Format("Найдено: {0}", patients.Length);
+        }
 
         private void PatientIsSelectedPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -91,6 +103,7 @@ namespace MedExam.Patient.ViewModels
                 throw new NullReferenceException("organization cannot be null");
 
             Patients.Clear();
+            FoundCountPatients.Value = "";
             var patients = _patientService.LoadPatientsByOrganizationId(organization.Id);
             Patients.AddRange(patients.Select(PatientDtoMap));
         }
@@ -104,7 +117,8 @@ namespace MedExam.Patient.ViewModels
                 BirthDate = patient.BirthDate,
                 PersonName = PersonNameMap(patient.PersonName),
                 PolicyDto = patient.PolicyDto,
-                Gender = patient.Gender.Text()
+                Gender = patient.Gender.Text(),
+                Organization = patient.Organization.FullName
             };
         }
 

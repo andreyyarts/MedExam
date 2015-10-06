@@ -10,5 +10,6 @@ namespace MedExam.Patient.dto
         public string Address { get; set; }
         public PolicyDto PolicyDto { get; set; }
         public Gender Gender { get; set; }
+        public OrganizationDto Organization { get; set; }
     }
 }

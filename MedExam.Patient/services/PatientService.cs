@@ -61,8 +61,35 @@ namespace MedExam.Patient.services
                     Series = patient.polic_ser,
                     Number = patient.polic_nom,
                     DateFrom = patient.polic
+                },
+                Organization = new OrganizationDto
+                {
+                    Id = patient.num_org,
+                    ShortName = patient.organization.name_org2,
+                    FullName = patient.organization.name_org
                 }
             };
+        }
+
+        public PatientDto[] LoadPatientsByToken(string searchText)
+        {
+            using (var db = _entitiesFactory.GetDbContext())
+            {
+                var words = searchText.Split(' ').ToList();
+                var length = words.Count;
+                var searchForFamily = words.First();
+                words.Remove(searchForFamily);
+
+                var patients = db.pacient
+                    .Where(p => p.fam_pac.Contains(searchForFamily) &&
+                                (length == 1 || words.All(w => p.io_pac.Contains(w))))
+                    //.Where(p => words.All(w => p.fam_pac.Contains(w) || p.io_pac.Contains(w)))
+                    .OrderByDescending(p => p.num_pac)
+                    .Select(PatientMap())
+                    .ToArray();
+
+                return patients;
+            }
         }
     }
 }

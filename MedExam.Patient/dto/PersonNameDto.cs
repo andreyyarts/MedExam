@@ -7,14 +7,19 @@ namespace MedExam.Patient.dto
     {
         private string[] _names;
         private string _lastName;
+        private string _firstNameAndMiddleName;
 
         public string LastName
         {
             get { return ToUpperFirstWithLowerEnd(_lastName); }
-            set { _lastName = value; }
+            set { _lastName = value.Trim(); }
         }
 
-        public string FirstNameAndMiddleName { get; set; }
+        public string FirstNameAndMiddleName
+        {
+            private get { return _firstNameAndMiddleName; }
+            set { _firstNameAndMiddleName = value.Trim(); }
+        }
 
         public string FirstName
         {

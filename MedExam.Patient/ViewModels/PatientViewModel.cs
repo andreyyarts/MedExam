@@ -21,6 +21,7 @@ namespace MedExam.Patient.ViewModels
         public PolicyDto PolicyDto { get; set; }
         public string Gender { get; set; }
         public DelegateCommand Select { get; private set; }
+        public string Organization { get; set; }
 
         public bool IsSelected
         {
