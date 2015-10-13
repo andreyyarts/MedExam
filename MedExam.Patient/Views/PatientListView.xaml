@@ -61,12 +61,17 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <TextBlock Text="Поиск по ФИО:" VerticalAlignment="{StaticResource VerticalCenter}" />
                 <TextBox x:Name="SearchText" Width="300">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="TextInput">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter"
+                                    Command="{Binding SearchPatients}"
+                                    CommandParameter="{Binding Text, ElementName=SearchText}" />
+                    </TextBox.InputBindings>
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding SearchPatients}"
                                                    CommandParameter="{Binding Text, ElementName=SearchText}"/>
                         </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    </i:Interaction.Triggers>-->
                 </TextBox>
                 <TextBlock Text="{Binding FoundCountPatients.Value}" Foreground="Green"
                            VerticalAlignment="{StaticResource VerticalCenter}" />

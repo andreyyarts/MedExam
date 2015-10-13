@@ -33,16 +33,13 @@ namespace MedExam
 
         private void LoadReports()
         {
+            var loadedReportSettings = LocalSettingsService.Load<ReportPropertiesSettings>();
             var reportTypes = ReportTypes.GetAll().ToArray();
-            var settingsDefault = LocalSettingsService.Exists<ReportPropertiesSettings>()
-                                    ? default(ReportPropertiesSettings)
-                                    : GetReportSettingsDefault(reportTypes);
-            var loadedReportSettings = LocalSettingsService.Load(settingsDefault);
 
             var reports = loadedReportSettings.ReportSettings
-                .Select(s => SettingsToReportFlow(s, reportTypes))
-                .OrderBy(r => r.Title)
-                .ToArray();
+                                            .Select(s => SettingsToReportFlow(s, reportTypes))
+                                            .OrderBy(r => r.Title)
+                                            .ToArray();
 
             Container.RegisterInstance(new ReportList(reports));
         }
@@ -55,12 +52,6 @@ namespace MedExam
             report.Title = s.Title;
             report.Template = s.Template;
             return report;
-        }
-
-        private ReportPropertiesSettings GetReportSettingsDefault(IEnumerable<Type> reportTypes)
-        {
-            var reportsDefault = reportTypes.Select(t => Container.Resolve(t)).Cast<IReportFlow>().ToArray();
-            return new ReportPropertiesSettings(reportsDefault);
         }
 
         protected override ILoggerFacade CreateLogger()

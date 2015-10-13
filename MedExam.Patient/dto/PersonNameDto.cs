@@ -12,13 +12,13 @@ namespace MedExam.Patient.dto
         public string LastName
         {
             get { return ToUpperFirstWithLowerEnd(_lastName); }
-            set { _lastName = value.Trim(); }
+            set { _lastName = SafeGet(value); }
         }
 
         public string FirstNameAndMiddleName
         {
             private get { return _firstNameAndMiddleName; }
-            set { _firstNameAndMiddleName = value.Trim(); }
+            set { _firstNameAndMiddleName = SafeGet(value); }
         }
 
         public string FirstName
@@ -62,6 +62,11 @@ namespace MedExam.Patient.dto
         private static string ToLower(char ch)
         {
             return ch.ToString().ToLower();
+        }
+
+        private static string SafeGet(string value)
+        {
+            return value != null ? value.Trim() : "";
         }
     }
 }

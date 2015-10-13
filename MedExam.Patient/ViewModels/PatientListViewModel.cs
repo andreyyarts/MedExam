@@ -66,6 +66,9 @@ namespace MedExam.Patient.ViewModels
 
         private void OnSearchPatients(string searchText)
         {
+            if (string.IsNullOrWhiteSpace(searchText))
+                return;
+
             Patients.Clear();
             var patients = _patientService.LoadPatientsByToken(searchText);
             Patients.AddRange(patients.Select(PatientDtoMap));

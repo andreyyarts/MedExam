@@ -64,7 +64,8 @@ namespace MedExam.Patient.services
                     Number = patient.polic_nom,
                     DateFrom = patient.polic
                 },
-                OrganizationName = patient.organization.name_org2
+                OrganizationShortName = patient.organization.name_org2,
+                OrganizationFullName = patient.organization.name_org
             };
         }
     }

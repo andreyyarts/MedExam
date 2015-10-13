@@ -56,7 +56,8 @@ namespace MedExam.Patient.services
                 PatientAge = patient.BirthDate.HasValue
                              ? patient.BirthDate.Value.GetYearsBefore(today).ToString()
                              : "",
-                PatientOrganizationName = patient.OrganizationName,
+                PatientOrganizationShortName = patient.OrganizationShortName,
+                PatientOrganizationFullName = patient.OrganizationFullName,
                 CurrentDate = today,
                 HomeAddress = patient.Address
             });
