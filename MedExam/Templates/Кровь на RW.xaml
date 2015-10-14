@@ -22,7 +22,7 @@
             <controls:ReportField Tag="№ и.б." />
             <controls:ReportField Tag="Дом. адрес" Content="{Binding HomeAddress}" FontSize="12"
                                   TextWrapping="Wrap" VerticalContentAlignment="Bottom" />
-            <controls:ReportField Tag="Место раб." Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
+            <controls:ReportField Tag="Место раб." Content="{Binding PatientOrganizationShortName}" FontSize="14" TextWrapping="Wrap" />
             <controls:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
             <controls:ReportField Tag="Диагноз" />
             <controls:ReportField Tag="Дата заболевания" />

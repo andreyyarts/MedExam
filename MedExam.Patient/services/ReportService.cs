@@ -35,7 +35,7 @@ namespace MedExam.Patient.services
         public void PrintReports(IEnumerable<string> reports, long[] itemIds, bool isPreview)
         {
             var selectedReports = _reportList.Reports.Where(r => reports.Contains(r.Name))
-                                                     .OfType<ReportFlow<IReportData>>()
+                                                     .OfType<ReportFlowBase>()
                                                      .ToArray();
 
             selectedReports.ForEach(r => r.SetItems(itemIds));

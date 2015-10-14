@@ -72,6 +72,7 @@
     <Compile Include="Interfaces\IReportData.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
     <Compile Include="LocalSettings\ReportPropertiesSettings.cs" />
+    <Compile Include="ReportFlowBase.cs" />
     <Compile Include="ReportSetting.cs" />
     <Compile Include="SettingPair.cs" />
     <Compile Include="ReportFlow.cs" />

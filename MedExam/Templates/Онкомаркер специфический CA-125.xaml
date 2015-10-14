@@ -18,7 +18,7 @@
                 </Style>
             </StackPanel.Resources>
             <controls:ReportField Tag="Ф.И.О." Content="{Binding PatientFullName}" />
-            <controls:ReportField Tag="Организация" Content="{Binding PatientOrganizationName}" FontSize="14" TextWrapping="Wrap" />
+            <controls:ReportField Tag="Организация" Content="{Binding PatientOrganizationShortName}" FontSize="14" TextWrapping="Wrap" />
             <controls:ReportField Tag="Возраст" Content="{Binding PatientAge}" />
         </StackPanel>
         <controls:ReportHeaderField Margin="0 36" Text="Онкомаркер специфический CA-125" />

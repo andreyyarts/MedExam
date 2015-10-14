@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Printing;
+﻿using System.Printing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -10,7 +9,7 @@ namespace PrintingService
 {
     public class PrintService : IPrintService
     {
-        public void PrintDocuments(IEnumerable<ReportFlow<IReportData>> reports, bool isPreview = false, bool withShowDialog = false, string printerName = "")
+        public void PrintDocuments(ReportFlowBase[] reports, bool isPreview = false, bool withShowDialog = false, string printerName = "")
         {
             if (isPreview)
             {

@@ -82,14 +82,28 @@
 				Height="20" Margin="10,10,0,0" Width="200"
 				x:Name="B" Visibility="Collapsed" Foreground="Salmon"/>-->
 
-            <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" IsSynchronizedWithCurrentItem="True">
+            <DataGrid ItemsSource="{Binding Patients}" AutoGenerateColumns="False" IsReadOnly="True" IsSynchronizedWithCurrentItem="True"
+                      RowBackground="GhostWhite" AlternatingRowBackground="LightCyan" BorderBrush="CadetBlue"
+                      HorizontalGridLinesBrush="CadetBlue" VerticalGridLinesBrush="CadetBlue">
+                <!--<DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow" BasedOn="{StaticResource {x:Type DataGridRow}}">
+                        <Setter Property="BorderBrush" Value="CadetBlue" />
+                    </Style>
+                </DataGrid.RowStyle>-->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+                        <Setter Property="OverridesDefaultStyle" Value="True" />
+                        <Setter Property="SeparatorBrush" Value="CadetBlue" />
+                        <Setter Property="BorderThickness" Value="0.5" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseUp">
                         <i:InvokeCommandAction Command="{Binding Patients/Select}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn MinWidth="28">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate DataType="viewModels:PatientViewModel">
                                 <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}" />

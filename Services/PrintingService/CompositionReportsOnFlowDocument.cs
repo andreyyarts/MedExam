@@ -4,13 +4,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using MedExam.Common;
-using MedExam.Common.Interfaces;
 
 namespace PrintingService
 {
     public class CompositionReportsOnFlowDocument : FlowDocument
     {
-        public CompositionReportsOnFlowDocument(IEnumerable<ReportFlow<IReportData>> reports)
+        public CompositionReportsOnFlowDocument(IEnumerable<ReportFlowBase> reports)
         {
             IsHyphenationEnabled = true;
             IsOptimalParagraphEnabled = true;
@@ -32,7 +31,7 @@ namespace PrintingService
             Blocks.Add(paragraph);
         }
 
-        private IEnumerable<Figure> DataToInline(ReportFlow<IReportData> report)
+        private IEnumerable<Figure> DataToInline(ReportFlowBase report)
         {
             return GetBlocksWithFillDatas(report).Select(block => new Figure(block)
             {
@@ -44,7 +43,7 @@ namespace PrintingService
             });
         }
 
-        private static IEnumerable<ReportFlowViewBase> GetBlocksWithFillDatas(ReportFlow<IReportData> report)
+        private static IEnumerable<ReportFlowViewBase> GetBlocksWithFillDatas(ReportFlowBase report)
         {
             var blocks = report.Datas.Select(data =>
             {
