@@ -9,14 +9,24 @@ namespace MedExam.Common
     {
         private const string ConfigPath = "Settings";
 
-        public static T Load<T>(T settingsDefault = default(T)) where T : new()
+        public static T LoadSetting<T>() where T : new()
+        {
+            return Load(new T());
+        }
+
+        public static T[] LoadSettings<T>() where T : new()
+        {
+            return Load(new[] { new T(), new T()  });
+        }
+
+        private static T Load<T>(T defaultSetting)
         {
             var type = typeof(T);
             var fullFileName = GetFullFileName(type);
 
             if (!File.Exists(fullFileName))
             {
-                return SaveDefaultSettings(settingsDefault);
+                return Save(defaultSetting);
             }
             using (var stream = File.OpenRead(fullFileName))
             {
@@ -50,7 +60,7 @@ namespace MedExam.Common
             return Save(settings);
         }
 
-        private static T Save<T>(T settings) where T : new()
+        private static T Save<T>(T settings)
         {
             if (!Directory.Exists(ConfigPath))
             {

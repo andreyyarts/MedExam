@@ -25,21 +25,20 @@ namespace MedExam
             RegisterTypeIfMissing(typeof(ILoggerApp<>), typeof(Logger<>), false);
             RegisterTypeIfMissing(typeof(IEntitiesFactory<>), typeof(EntitiesFactory<>), true);
             RegisterTypeIfMissing(typeof(IPrintService), typeof(PrintService), true);
-            Container.RegisterInstance(LocalSettingsService.Load<LocalSettings>());
+            Container.RegisterInstance(LocalSettingsService.LoadSetting<LocalSettings>());
+            //LocalSettingsService.LoadSettings<ReportSetting>();
 
             LoadReports();
-            //Container.RegisterInstance(LocalSettingsService.Load<ReportList>());
         }
 
         private void LoadReports()
         {
-            var loadedReportSettings = LocalSettingsService.Load<ReportPropertiesSettings>();
+            var loadedReportSettings = LocalSettingsService.LoadSettings<ReportSetting>();
             var reportTypes = ReportTypes.GetAll().ToArray();
 
-            var reports = loadedReportSettings.ReportSettings
-                                            .Select(s => SettingsToReportFlow(s, reportTypes))
-                                            .OrderBy(r => r.Title)
-                                            .ToArray();
+            var reports = loadedReportSettings.Select(s => SettingsToReportFlow(s, reportTypes))
+                                              .OrderBy(r => r.Title)
+                                              .ToArray();
 
             Container.RegisterInstance(new ReportList(reports));
         }

@@ -4,7 +4,7 @@
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:common="clr-namespace:MedExam.Common;assembly=MedExam.Common"
         Title="Профосмотры" Height="700" Width="900"
-        WindowStartupLocation="CenterScreen" Icon="hospital.ico">
+        WindowStartupLocation="CenterScreen" Icon="hospital.ico" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

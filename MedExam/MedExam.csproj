@@ -144,9 +144,9 @@
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Resource Include="Settings\ReportPropertiesSettings.xml">
+    <EmbeddedResource Include="Settings\ReportSetting[].xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </EmbeddedResource>
     <Content Include="Templates\Онкомаркер специфический CA-125.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -263,6 +263,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="hospital.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cache\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

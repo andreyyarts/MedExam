@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<ArrayOfReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>BloodTestRpgaForTyphoid</Name>
+    <Title>Анализ крови: РПГА на брюшной тиф</Title>
+    <Template>Анализ крови. РПГА на брюшной тиф</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>SpecificTumorMarkerPsa</Name>
+    <Title>Онкомаркер специфический PSA</Title>
+    <Template>Онкомаркер специфический PSA</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>SpecificTumorMarkerCa125</Name>
+    <Title>Онкомаркер специфический CA-125</Title>
+    <Template>Онкомаркер специфический CA-125</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>ClinicalTrialEnterobiosis</Name>
+    <Title>Клиническое исследование (энтеробиоз)</Title>
+    <Template>Клиническое исследование (энтеробиоз)</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>ClinicalTrial</Name>
+    <Title>Клиническое исследование</Title>
+    <Template>Клиническое исследование</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>DirectionInBacteriologicalLaboratory</Name>
+    <Title>Направление в бактериологическую лабораторию</Title>
+    <Template>Направление в бактериологическую лабораторию</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>BiochemicalExamination</Name>
+    <Title>Направление на биохимическое исследование</Title>
+    <Template>Направление на биохимическое исследование</Template>
+  </ReportSetting>
+  <ReportSetting>
+    <Type>DirectionReport</Type>
+    <Name>BloodOnRw</Name>
+    <Title>Кровь на RW</Title>
+    <Template>Кровь на RW</Template>
+  </ReportSetting>
+</ArrayOfReportSetting>
