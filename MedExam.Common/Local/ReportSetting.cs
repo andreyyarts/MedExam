@@ -1,4 +1,4 @@
-﻿namespace MedExam.Common
+﻿namespace MedExam.Common.Local
 {
     public class ReportSetting
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using MedExam.Common;
 using MedExam.Common.Extensions;
 using MedExam.Common.Interfaces;
-using MedExam.Common.LocalSettings;
+using MedExam.Common.Local;
 using MedExam.Patient.Reports.ViewModels;
 using Microsoft.Practices.ObjectBuilder2;
 using ReportList = MedExam.Common.ReportList;

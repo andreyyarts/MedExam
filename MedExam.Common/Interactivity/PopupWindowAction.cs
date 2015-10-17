@@ -87,7 +87,6 @@ namespace MedExam.Common.Interactivity
                 return;
 
             var wrapperWindow = GetWindow(args.Context);
-            wrapperWindow.SizeToContent = SizeToContent.WidthAndHeight;
 
             var callback = args.Callback;
             EventHandler handler = null;
@@ -109,10 +108,13 @@ namespace MedExam.Common.Interactivity
                 }
                 wrapperWindow.Owner = viewCurrent as Window;
 
-                wrapperWindow.WindowStartupLocation = CenterOverAssociatedObject
+                /*wrapperWindow.WindowStartupLocation = CenterOverAssociatedObject
                                                       ? WindowStartupLocation.CenterOwner
-                                                      : WindowStartupLocation.CenterScreen;
+                                                      : WindowStartupLocation.CenterScreen;*/
             }
+
+            wrapperWindow.Closed += WindowBase.WindowClosed;
+            WindowBase.WindowInitialized(wrapperWindow, EventArgs.Empty);
 
             if (IsModal)
             {

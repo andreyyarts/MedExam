@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows;
 using MedExam.Common;
 using MedExam.Common.Interfaces;
-using MedExam.Common.LocalSettings;
+using MedExam.Common.Local;
 using MedExam.Patient;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
@@ -25,7 +25,7 @@ namespace MedExam
             RegisterTypeIfMissing(typeof(ILoggerApp<>), typeof(Logger<>), false);
             RegisterTypeIfMissing(typeof(IEntitiesFactory<>), typeof(EntitiesFactory<>), true);
             RegisterTypeIfMissing(typeof(IPrintService), typeof(PrintService), true);
-            Container.RegisterInstance(LocalSettingsService.LoadSetting<LocalSettings>());
+            Container.RegisterInstance(LocalSettingsRepository.LoadSetting<LocalSettings>());
             //LocalSettingsService.LoadSettings<ReportSetting>();
 
             LoadReports();
@@ -33,7 +33,7 @@ namespace MedExam
 
         private void LoadReports()
         {
-            var loadedReportSettings = LocalSettingsService.LoadSettings<ReportSetting>();
+            var loadedReportSettings = LocalSettingsRepository.LoadSettings<ReportSetting>();
             var reportTypes = ReportTypes.GetAll().ToArray();
 
             var reports = loadedReportSettings.Select(s => SettingsToReportFlow(s, reportTypes))

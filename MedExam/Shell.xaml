@@ -1,10 +1,11 @@
-﻿<Window x:Class="MedExam.Shell"
+﻿<windows:WindowBase x:Class="MedExam.Shell"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://www.codeplex.com/prism"
         xmlns:common="clr-namespace:MedExam.Common;assembly=MedExam.Common"
-        Title="Профосмотры" Height="700" Width="900"
-        WindowStartupLocation="CenterScreen" Icon="hospital.ico" Closed="Window_Closed">
+        xmlns:windows="clr-namespace:MedExam.Common.Windows;assembly=MedExam.Common"
+        Title="Профосмотры"
+        Icon="hospital.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -13,4 +14,4 @@
         <ContentControl prism:RegionManager.RegionName="{x:Static common:RegionNames.FiltersRegion}" />
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static common:RegionNames.MainContentRegion}" />
     </Grid>
-</Window>
+</windows:WindowBase>

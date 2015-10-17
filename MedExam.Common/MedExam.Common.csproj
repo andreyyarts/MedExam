@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\CloseOnClickBehaviour.cs" />
+    <Compile Include="Interfaces\IShell.cs" />
+    <Compile Include="Local\CacheViewsRepository.cs" />
     <Compile Include="Converters\DateTimeToMonthGenitiveNameConverter.cs" />
     <Compile Include="Converters\DateTimeToStringConverter.cs" />
     <Compile Include="Extensions\DateTimeExt.cs" />
@@ -71,15 +73,15 @@
     <Compile Include="Interfaces\IPrintService.cs" />
     <Compile Include="Interfaces\IReportData.cs" />
     <Compile Include="Interfaces\IReportFlow.cs" />
-    <Compile Include="LocalSettings\ReportPropertiesSettings.cs" />
+    <Compile Include="Local\ViewSetting.cs" />
     <Compile Include="ReportFlowBase.cs" />
-    <Compile Include="ReportSetting.cs" />
-    <Compile Include="SettingPair.cs" />
+    <Compile Include="Local\ReportSetting.cs" />
+    <Compile Include="Local\SettingPair.cs" />
     <Compile Include="ReportFlow.cs" />
     <Compile Include="ReportFlowViewBase.cs" />
     <Compile Include="ItemsNotification.cs" />
-    <Compile Include="LocalSettings\LocalSettings.cs" />
-    <Compile Include="LocalSettingsService.cs" />
+    <Compile Include="Local\LocalSettings.cs" />
+    <Compile Include="Local\LocalSettingsRepository.cs" />
     <Compile Include="LogLevel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -101,6 +103,7 @@
     <Compile Include="Windows\DefaultNotificationWindow.xaml.cs">
       <DependentUpon>DefaultNotificationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources.xaml">
